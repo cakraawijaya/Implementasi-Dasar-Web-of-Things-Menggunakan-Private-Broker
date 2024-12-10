@@ -12,22 +12,22 @@ Coming Soon...
 
 ## Project Requirements
 
-| Part                    | Description                                                                                                                                        |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Features                | • Publish<br>• Subscribe<br>• Create<br>• Read<br>• Update<br>• Delete<br>• Pagination<br>• Search<br>• Validation<br>• Print<br>• Export<br>• ETC |
-| Development Board       | DOIT ESP32 DEVKIT V1                                                                                                                               |
-| Code Editor             | • Arduino IDE<br>• Visual Studio Code                                                                                                              |
-| Application Support     | Laragon                                                                                                                                            |
-| Driver                  | CP210X USB Driver                                                                                                                                  |
-| IoT Platform            | Shiftr.io                                                                                                                                          |
-| Communications Protocol | • WebSocket Secure (WSS)<br>• Message Queuing Telemetry Transport (MQTT)                                                                           |
-| IoT Architecture        | 3 Layer                                                                                                                                            |
-| Framework               | AdminLTE v3.2.0                                                                                                                                    |
-| Web Library             | MQTT.js                                                                                                                                            |
-| Arduino Library         | • WiFi (default)<br>• Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer                                                             |
-| Actuators               | • Servo Motor SG90 180° (x1)<br>• LED (1x)<br>• RGB LED (1x)                                                                                       |
-| Sensor                  | • DHT22: Air Temperature & Humidity (x1)<br>• LDR: Light Dependent Resistor (x1)                                                                   |
-| Other Components        | • Micro USB cable - USB type A (x1)<br>• Jumper cable (1 set)<br>• Breadboard (x1)<br>• Resistor (x1)                                              |
+| Part | Description |
+| --- | --- |
+| Features | • Publish<br>• Subscribe<br>• Create<br>• Read<br>• Update<br>• Delete<br>• Pagination<br>• Search<br>• Validation<br>• Print<br>• Export<br>• ETC |
+| Development Board | DOIT ESP32 DEVKIT V1 |
+| Code Editor | • Arduino IDE<br>• Visual Studio Code |
+| Application Support | Laragon |
+| Driver | CP210X USB Driver |
+| IoT Platform | Shiftr.io |
+| Communications Protocol | • WebSocket Secure (WSS)<br>• Message Queuing Telemetry Transport (MQTT) |
+| IoT Architecture | 3 Layer |
+| Framework | AdminLTE v3.2.0 |
+| Web Library | MQTT.js |
+| Arduino Library | • WiFi (default)<br>• Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer |
+| Actuators | • Servo Motor SG90 180° (x1)<br>• LED (1x)<br>• RGB LED (1x) |
+| Sensor | • DHT22: Air Temperature & Humidity (x1)<br>• LDR: Light Dependent Resistor (x1) |
+| Other Components | • Micro USB cable - USB type A (x1)<br>• Jumper cable (1 set)<br>• Breadboard (x1)<br>• Resistor (x1) |
 
 <br><br>
 
