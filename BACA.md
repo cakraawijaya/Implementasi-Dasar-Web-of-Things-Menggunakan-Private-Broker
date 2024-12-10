@@ -14,20 +14,20 @@ Segera Hadir...
 
 | Part | Description |
 | --- | --- |
-| Fitur | • Publish<br>• Subscribe<br>• Create<br>• Read<br>• Update<br>• Delete<br>• Pagination<br>• Search<br>• Validation<br>• Print<br>• Export<br>• ETC |
+| Fitur | • Publish<br>• Subscribe<br>• Buat<br>• Baca<br>• Ubah<br>• Hapus<br>• Paginasi<br>• Cari<br>• Validasi<br>• Cetak<br>• Ekspor<br>• DLL |
 | Papan Pengembangan | DOIT ESP32 DEVKIT V1 |
 | Editor Kode | • Arduino IDE<br>• Visual Studio Code |
 | Dukungan Aplikasi | Laragon |
 | Driver | CP210X USB Driver |
 | Platform IoT | Shiftr.io |
 | Protokol Komunikasi | • WebSocket Secure (WSS)<br>• Message Queuing Telemetry Transport (MQTT) |
-| Arsitektur IoT | 3 Layer |
+| Arsitektur IoT | 3 Lapisan |
 | Kerangka Kerja | AdminLTE v3.2.0 |
 | Pustaka Web | MQTT.js |
 | Pustaka Arduino | • WiFi (default)<br>• Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer |
-| Aktuator | • Servo Motor SG90 180° (x1)<br>• LED (1x)<br>• RGB LED (1x) |
-| Sensor | • DHT22: Air Temperature & Humidity (x1)<br>• LDR: Light Dependent Resistor (x1) |
-| Komponen Lainnya | • Micro USB cable - USB type A (x1)<br>• Jumper cable (1 set)<br>• Breadboard (x1)<br>• Resistor (x1) |
+| Aktuator | • Motor Servo SG90 180° (x1)<br>• LED (1x)<br>• LED RGB (1x) |
+| Sensor | • DHT22: Suhu & Kelembaban Udara (x1)<br>• LDR: Cahaya (x1) |
+| Komponen Lainnya | • Kabel USB Mikro - USB tipe A (x1)<br>• Kabel jumper (1 set)<br>• Breadboard (x1)<br>• Resistor (x1) |
 
 <br><br>
 
