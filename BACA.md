@@ -25,7 +25,7 @@ Segera Hadir...
 | Kerangka Kerja | AdminLTE v3.2.0 |
 | Pustaka Web | MQTT.js |
 | Pustaka Arduino | • WiFi (default)<br>• Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer |
-| Aktuator | • Motor Servo SG90 180° (x1)<br>• LED (1x)<br>• LED RGB (1x) |
+| Aktuator | • Motor Servo SG90 180° (x1)<br>• LED (x1)<br>• LED RGB (x1) |
 | Sensor | • DHT22: Suhu & Kelembaban Udara (x1)<br>• LDR: Cahaya (x1) |
 | Komponen Lainnya | • Kabel USB Mikro - USB tipe A (x1)<br>• Kabel jumper (1 set)<br>• Breadboard (x1)<br>• Resistor (x1) |
 
