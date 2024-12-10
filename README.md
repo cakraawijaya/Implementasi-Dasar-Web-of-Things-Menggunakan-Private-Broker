@@ -25,7 +25,7 @@ Coming Soon...
 | Framework | AdminLTE v3.2.0 |
 | Web Library | MQTT.js |
 | Arduino Library | • WiFi (default)<br>• Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer |
-| Actuators | • Servo Motor SG90 180° (x1)<br>• LED (1x)<br>• RGB LED (1x) |
+| Actuators | • Servo Motor SG90 180° (x1)<br>• LED (x1)<br>• RGB LED (x1) |
 | Sensor | • DHT22: Air Temperature & Humidity (x1)<br>• LDR: Light Dependent Resistor (x1) |
 | Other Components | • Micro USB cable - USB type A (x1)<br>• Jumper cable (1 set)<br>• Breadboard (x1)<br>• Resistor (x1) |
 
