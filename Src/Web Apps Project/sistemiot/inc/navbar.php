@@ -12,10 +12,10 @@
       </li>
     <?php } ?>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link"><i class="fas fa-address-card mr-2"></i>Profil Saya</a>
+      <a href="?page=profile" class="nav-link"><i class="fas fa-address-card mr-2"></i>Profil Saya</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link"><i class="fas fa-phone-alt mr-2"></i>Kontak</a>
+      <a href="https://wa.me/6283857950321" class="nav-link" target="_blank"><i class="fas fa-phone-alt mr-2"></i>Kontak</a>
     </li>
   </ul>  
 </nav>

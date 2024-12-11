@@ -20,6 +20,7 @@
             if (password_verify($password, $data['password'])) {
                 $_SESSION['username'] = $username;
                 $_SESSION['fullname'] = $data['fullname'];
+                $_SESSION['gender'] = $data['gender'];
                 $_SESSION['role'] = $data['role'];
 
                 echo "<script> location.href = 'index.php' </script>";
