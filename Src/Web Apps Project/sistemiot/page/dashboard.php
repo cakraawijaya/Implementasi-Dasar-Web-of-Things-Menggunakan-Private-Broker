@@ -1,7 +1,6 @@
 <?php
   $sql = "SELECT * FROM devices WHERE active = 'Yes'";
   $result = mysqli_query($conn, $sql);
-
 ?>
 
 <div class="content-wrapper">
@@ -149,6 +148,7 @@
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 
 <script>
+  const serialNumber = "12345678";
   const clientId = "mqttjs_" + Math.random().toString(16).substr(2, 8);
   const port = "443";
   const host = "wss://kelasiotdevan.cloud.shiftr.io:"+port;
@@ -176,23 +176,23 @@
   });
 
   client.on("message", function(topic, payload) {
-    if (topic === "kelasiot/suhu") {
+    if (topic === "kelasiot/"+serialNumber+"/suhu") {
       document.getElementById("suhu").innerHTML = payload;
     }
-    else if (topic === "kelasiot/kelembapan") {
+    else if (topic === "kelasiot/"+serialNumber+"/kelembapan") {
       document.getElementById("kelembapan").innerHTML = payload;
     }
-    else if (topic === "kelasiot/intensitas_cahaya") {
+    else if (topic === "kelasiot/"+serialNumber+"/intensitas_cahaya") {
       document.getElementById("intensitas_cahaya").innerHTML = payload;
     }
-    else if (topic === "kelasiot/servo") {
+    else if (topic === "kelasiot/"+serialNumber+"/servo") {
       let servo1 = $("#servo").data("ionRangeSlider");
 
       servo1.update({
         from: payload.toString()
       });
     }
-    else if (topic === "kelasiot/led") {
+    else if (topic === "kelasiot/"+serialNumber+"/led") {
       if (payload == "nyala") {
         document.getElementById("label-lampu1-nyala").classList.add("active");
         document.getElementById("label-lampu1-mati").classList.remove("active");
@@ -217,7 +217,7 @@
 
   function publishServo(value) {
     data = document.getElementById("servo").value;  
-    client.publish("kelasiot/servo", data, {qos: 1, retain: true});
+    client.publish("kelasiot/"+serialNumber+"/servo", data, {qos: 1, retain: true});
   }
 
   function publishLampu(value) {
@@ -229,6 +229,6 @@
       data = "mati";
     }
     
-    client.publish("kelasiot/led", data, {qos: 1, retain: true});
+    client.publish("kelasiot/"+serialNumber+"/led", data, {qos: 1, retain: true});
   }
 </script>

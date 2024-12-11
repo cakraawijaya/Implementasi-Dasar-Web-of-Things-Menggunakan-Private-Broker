@@ -35,6 +35,7 @@
                     <th>Name</th>
                     <th>Nilai</th>
                     <th>Topic</th>
+                    <th>Waktu</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -45,6 +46,7 @@
                     <td><?php echo $row['name']; ?></td>
                     <td><?php echo $row['value']; ?></td>
                     <td><?php echo $row['mqtt_topic']; ?></td>
+                    <td><?php echo $row['time']; ?></td>
                   </tr>
                   <?php } ?>
                 </tbody>
