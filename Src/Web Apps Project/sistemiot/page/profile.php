@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <?php
                 if ($update == true) {
-                alertUpdate("Data berhasil diperbarui");
+                alertType2("Data berhasil diperbarui");
                 }
             ?>
             <div class="row">
@@ -71,7 +71,13 @@
                                                             <p class="card-text mt-2">
                                                                 <strong><i class="fas fa-female mr-1"></i><i class="fas fa-male mr-2"></i>Jenis Kelamin :</strong><br>
                                                                 <p class="text-capitalize">
-                                                                    <?php echo $_SESSION['gender']; ?>
+                                                                    <?php 
+                                                                        if ($_SESSION['gender'] == "Undefined") {
+                                                                            echo "Tidak Dijelaskan"; 
+                                                                        } else {
+                                                                            echo $_SESSION['gender'];
+                                                                        }
+                                                                    ?>
                                                                 </p>
                                                             </p>
                                                         </div>
@@ -138,12 +144,18 @@
                         <p class="font-weight-light text-red"><strong>*Silakan abaikan jika tidak ingin mengubah!</strong></p>
                         <div class="input-group">
                             <select class="form-control" name="gender">
-                            <?php if ($_SESSION['gender'] == "Wanita"){ ?>
+                            <?php if ($_SESSION['gender'] == "Wanita") { ?>
                                 <option value="Wanita">Wanita</option>
                                 <option value="Pria">Pria</option>
+                                <option value="Undefined">Tidak Dijelaskan</option>
+                            <?php } else if ($_SESSION['gender'] == "Undefined") { ?>
+                                <option value="Undefined">Tidak Dijelaskan</option>
+                                <option value="Pria">Pria</option>
+                                <option value="Wanita">Wanita</option>
                             <?php } else { ?>
                                 <option value="Pria">Pria</option>
                                 <option value="Wanita">Wanita</option>
+                                <option value="Undefined">Tidak Dijelaskan</option>
                             <?php } ?>
                             </select>
                         </div>

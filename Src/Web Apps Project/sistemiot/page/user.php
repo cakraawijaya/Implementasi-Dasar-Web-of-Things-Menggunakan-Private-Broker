@@ -69,15 +69,15 @@
     <div class="container-fluid">
       <?php
         if ($insert == true) {
-          alertSuccess("Data berhasil ditambahkan");
+          alertType1("Data berhasil ditambahkan");
         }
 
         if ($update == true) {
-          alertUpdate("Data berhasil diperbarui");
+          alertType2("Data berhasil diperbarui");
         }
 
         if ($delete == true) {
-          alertDelete("Data berhasil dihapus");
+          alertType3("Data berhasil dihapus");
         }
       ?>
       <div class="row">
@@ -104,7 +104,15 @@
                   <tr>
                     <td><?php echo $row['username']; ?></td>
                     <td><?php echo $row['fullname']; ?></td>
-                    <td><?php echo $row['gender']; ?></td>
+                    <td>
+                      <?php 
+                          if ($row['gender'] == "Undefined") {
+                              echo "Tidak Dijelaskan"; 
+                          } else {
+                            echo $row['gender'];
+                          }
+                      ?>                         
+                    </td>
                     <td><?php echo $row['role']; ?></td>
                     <td><?php echo $row['active']; ?></td>
                     <td style="text-align:center;">
@@ -219,12 +227,18 @@
                           <div class="input-group-text" style="padding-right:18px;"><i class="fas fa-female mr-1"></i><i class="fas fa-male" style="padding-right:7px;"></i>Jenis Kelamin</div>
                         </div>
                         <select class="form-control" name="gender">
-                          <?php if ($data['gender'] == "Wanita"){ ?>
+                          <?php if ($data['gender'] == "Wanita") { ?>
                             <option value="Wanita">Wanita</option>
                             <option value="Pria">Pria</option>
+                            <option value="Undefined">Tidak Dijelaskan</option>
+                          <?php } else if ($data['gender'] == "Undefined") { ?>
+                            <option value="Undefined">Tidak Dijelaskan</option>
+                            <option value="Pria">Pria</option>
+                            <option value="Wanita">Wanita</option>
                           <?php } else { ?>
                             <option value="Pria">Pria</option>
                             <option value="Wanita">Wanita</option>
+                            <option value="Undefined">Tidak Dijelaskan</option>
                           <?php } ?>
                         </select>
                       </div>

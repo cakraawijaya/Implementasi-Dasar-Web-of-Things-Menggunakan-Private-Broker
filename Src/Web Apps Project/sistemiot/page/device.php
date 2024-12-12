@@ -55,15 +55,15 @@
     <div class="container-fluid">
       <?php
         if ($insert == true) {
-          alertSuccess("Data berhasil ditambahkan");
+          alertType1("Data berhasil ditambahkan");
         }
 
         if ($update == true) {
-          alertUpdate("Data berhasil diperbarui");
+          alertType2("Data berhasil diperbarui");
         }
 
         if ($delete == true) {
-          alertDelete("Data berhasil dihapus");
+          alertType3("Data berhasil dihapus");
         }
       ?>
       <div class="row">

@@ -95,11 +95,11 @@
       </form>
 
       <p class="mt-4 mb-1"><hr>
-        <a href="/forgot-password.php">Lupa Password</a>
+        <a href="forgot-password.php">Lupa Password</a>
       </p>
       <p class="mb-0">
         Belum Punya Akun? 
-        <a href="/register.php" class="text-center">Daftar</a>
+        <a href="register.php" class="text-center">Daftar</a>
       </p>
     </div>
     <!-- /.card-body -->
