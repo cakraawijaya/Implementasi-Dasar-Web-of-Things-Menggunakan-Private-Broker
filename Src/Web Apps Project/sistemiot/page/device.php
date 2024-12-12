@@ -27,12 +27,19 @@
     $insert = true;
   }
 
-  // Mengambil id
+  // Mengambil id untuk Edit
   if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
     $sql_select_data = "SELECT * FROM devices WHERE serial_number = '$id' LIMIT 1";
     $result = mysqli_query($conn, $sql_select_data);
     $data = mysqli_fetch_assoc($result);
+  }
+
+  // Mengambil id untuk Delete
+  if (isset($_GET['delete'])) {
+    $id = $_GET['delete'];
+    $sql_delete_data = "DELETE FROM devices WHERE serial_number = '$id' LIMIT 1";
+    mysqli_query($conn, $sql_delete_data);
   }
 
   // Baca Tabel devices
@@ -41,18 +48,6 @@
 ?>
 
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1 class="m-0">Perangkat</h1><hr>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
-
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
@@ -67,9 +62,9 @@
       ?>
       <div class="row">
         <div class="col-lg-12">
-          <div class="card card-dark">
+          <div class="card card-dark mt-4">
             <div class="card-header">
-              <h3 class="card-title">Perangkat Yang Terdaftar</h3>
+              <h3 class="card-title"><i class="nav-icon fas fa-laptop-code mr-2"></i>Perangkat Yang Terdaftar</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -94,7 +89,7 @@
                     <td><?php echo $row['active']; ?></td>
                     <td style="text-align:center;">
                       <a href="?page=<?php echo $page ?>&edit=<?php echo $row['serial_number'] ?>" class="btn btn-warning fas fa-edit"></a>
-                      <!-- <a href="" class="btn btn-danger fas fa-trash-alt"></a> -->
+                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['serial_number'] ?>" class="btn btn-danger fas fa-trash-alt"></a>
                     </td>
                   </tr>
                   <?php } ?>

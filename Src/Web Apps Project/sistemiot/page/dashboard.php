@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12">
-            <h1 class="m-0">Dashboard</h1><hr>
+            <h1 class="m-0"><i class="nav-icon fas fa-industry mr-2"></i>Dashboard</h1><hr>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

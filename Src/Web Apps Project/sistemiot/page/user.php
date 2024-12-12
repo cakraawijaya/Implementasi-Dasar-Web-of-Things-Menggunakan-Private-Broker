@@ -12,15 +12,16 @@
     $old_id = $_POST['edit_data'];
     $username = $_POST['username'];
     $fullname = $_POST['fullname'];
+    $gender = $_POST['gender'];
     $role = $_POST['role'];
     $active = $_POST['active'];
 
     if ($_POST['password'] == "") {
-      $sql_edit = "UPDATE user SET username = '$username', fullname = '$fullname', role = '$role', active = '$active' WHERE username = '$old_id'";
+      $sql_edit = "UPDATE user SET username = '$username', gender = '$gender', fullname = '$fullname', role = '$role', active = '$active' WHERE username = '$old_id'";
     }
     else {
       $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-      $sql_edit = "UPDATE user SET username = '$username', password = '$password', fullname = '$fullname', role = '$role', active = '$active' WHERE username = '$old_id'";
+      $sql_edit = "UPDATE user SET username = '$username', password = '$password', gender = '$gender', fullname = '$fullname', role = '$role', active = '$active' WHERE username = '$old_id'";
     }
 
     mysqli_query($conn, $sql_edit);
@@ -32,19 +33,27 @@
     $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $fullname = $_POST['fullname'];
+    $gender = $_POST['gender'];
     $role = $_POST['role'];
 
-    $sql_insert = "INSERT INTO user (username, password, fullname, role) VALUES ('$username', '$password', '$fullname', '$role')";
+    $sql_insert = "INSERT INTO user (username, password, gender, fullname, role) VALUES ('$username', '$password', '$gender', '$fullname', '$role')";
     mysqli_query($conn, $sql_insert);
     $insert = true;
   }
 
-  // Mengambil id
+  // Mengambil id untuk Edit
   if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
     $sql_select_data = "SELECT * FROM user WHERE username = '$id' LIMIT 1";
     $result = mysqli_query($conn, $sql_select_data);
     $data = mysqli_fetch_assoc($result);
+  }
+
+  // Mengambil id untuk Delete
+  if (isset($_GET['delete'])) {
+    $id = $_GET['delete'];
+    $sql_delete_data = "DELETE FROM user WHERE username = '$id' LIMIT 1";
+    mysqli_query($conn, $sql_delete_data);
   }
 
   // Baca Tabel user
@@ -53,18 +62,6 @@
 ?>
 
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1 class="m-0">Pengguna</h1><hr>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
-
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
@@ -79,9 +76,9 @@
       ?>
       <div class="row">
         <div class="col-lg-12">
-          <div class="card card-dark">
+          <div class="card card-dark mt-4">
             <div class="card-header">
-              <h3 class="card-title">Pengguna Yang Terdaftar</h3>
+              <h3 class="card-title"><i class="nav-icon fas fa-users mr-2"></i>Pengguna Yang Terdaftar</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -90,6 +87,7 @@
                   <tr>
                     <th>Username</th>
                     <th>Nama Lengkap</th>
+                    <th>Jenis Kelamin</th>
                     <th>Hak Akses</th>
                     <th>Aktif (?)</th>
                     <th>Aksi</th>
@@ -100,11 +98,12 @@
                   <tr>
                     <td><?php echo $row['username']; ?></td>
                     <td><?php echo $row['fullname']; ?></td>
+                    <td><?php echo $row['gender']; ?></td>
                     <td><?php echo $row['role']; ?></td>
                     <td><?php echo $row['active']; ?></td>
                     <td style="text-align:center;">
                       <a href="?page=<?php echo $page ?>&edit=<?php echo $row['username'] ?>" class="btn btn-warning fas fa-edit"></a>
-                      <!-- <a href="" class="btn btn-danger fas fa-trash-alt"></a> -->
+                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['username'] ?>" class="btn btn-danger fas fa-trash-alt"></a>
                     </td>
                   </tr>
                   <?php } ?>
@@ -160,7 +159,26 @@
                             <option value="User">Pengguna</option>
                         </select>
                       </div>
-                    </div>    
+                    </div>                
+                    <div class="col-lg-6">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:18px;"><i class="fas fa-female mr-1"></i><i class="fas fa-male" style="padding-right:7px;"></i>Jenis Kelamin</div>
+                        </div>
+                        <select class="form-control" name="gender">
+                            <option value="Pria">Pria</option>
+                            <option value="Wanita">Wanita</option>
+                        </select>
+                      </div>
+                    </div>                    
+                    <div class="col-lg-6 mt-2">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:28px;"><i class="fas fa-images" style="padding-right:6px;"></i>Unggah Foto</div>
+                        </div>
+                        <input type="file" class="form-control" name="profile">
+                      </div>
+                    </div>       
                   </div>  
                 </div>
                 <!-- /.card-body -->                            
@@ -181,12 +199,28 @@
               <form method="POST" action="?page=<?php echo $page; ?>">
                 <div class="card-body">
                   <div class="row">            
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:12px;"><i class="fas fa-file-signature" style="padding-right:7px;"></i>Nama Lengkap</div>
                         </div>
                         <input type="text" class="form-control" name="fullname" value="<?php echo $data['fullname']; ?>" required>
+                      </div>
+                    </div>            
+                    <div class="col-lg-6">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:18px;"><i class="fas fa-female mr-1"></i><i class="fas fa-male" style="padding-right:7px;"></i>Jenis Kelamin</div>
+                        </div>
+                        <select class="form-control" name="gender">
+                          <?php if ($data['gender'] == "Wanita"){ ?>
+                            <option value="Wanita">Wanita</option>
+                            <option value="Pria">Pria</option>
+                          <?php } else { ?>
+                            <option value="Pria">Pria</option>
+                            <option value="Wanita">Wanita</option>
+                          <?php } ?>
+                        </select>
                       </div>
                     </div>
                     <div class="col-lg-6 mt-4">
@@ -239,7 +273,15 @@
                           <?php } ?>
                         </select>
                       </div>
-                    </div>      
+                    </div>                                            
+                    <div class="col-lg-6 mt-2">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:28px;"><i class="fas fa-images" style="padding-right:6px;"></i>Unggah Foto</div>
+                        </div>
+                        <input type="file" class="form-control" name="profile">
+                      </div>
+                    </div>  
                   </div>
                 </div>                      
                 <!-- /.card-body -->

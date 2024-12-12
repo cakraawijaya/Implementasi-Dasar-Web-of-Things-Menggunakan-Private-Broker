@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a href="#" class="brand-link">
-    <span class="brand-text font-weight-light">Sistem IoT <i class="fas fa-laptop-house"></i></span>
+  <a class="brand-link">
+    <span class="brand-text font-weight-light"><strong>Sistem IoT <i class="fas fa-laptop-house"></i></strong></span>
   </a>
 
   <!-- Sidebar -->
@@ -9,10 +9,10 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="dist/img/admin.jpg" class="img-circle elevation-2" alt="User Image">
+        <img src="<?php echo $_SESSION['profile']; ?>" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block"><?php echo $_SESSION['fullname']; ?></a>
+        <a href="?page=profile" class="d-block"><?php echo $_SESSION['fullname']; ?></a>
       </div>
     </div>
 

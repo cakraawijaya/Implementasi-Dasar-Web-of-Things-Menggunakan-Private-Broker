@@ -4,26 +4,14 @@
 ?>
 
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12">
-          <h1 class="m-0">Aktuator</h1><hr>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
-
   <!-- Main content -->
   <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12">
-          <div class="card card-dark">
+          <div class="card card-dark mt-4">
             <div class="card-header">
-              <h3 class="card-title">Riwayat Data Aktuator</h3>
+              <h3 class="card-title"><i class="nav-icon fas fa-th mr-2"></i>Riwayat Data Aktuator</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
