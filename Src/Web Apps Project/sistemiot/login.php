@@ -19,6 +19,7 @@
         else {
             if (password_verify($password, $data['password'])) {
                 $_SESSION['username'] = $username;
+                $_SESSION['password'] = $password;
                 $_SESSION['fullname'] = $data['fullname'];
                 $_SESSION['gender'] = $data['gender'];
                 $_SESSION['profile'] = $data['profile'];

@@ -2,6 +2,7 @@
   $page = $_GET['page'];
   $insert = false;
   $update = false;
+  $delete = false;
 
   // Ubah data
   if (isset($_POST['edit_data'])) {
@@ -40,6 +41,7 @@
     $id = $_GET['delete'];
     $sql_delete_data = "DELETE FROM devices WHERE serial_number = '$id' LIMIT 1";
     mysqli_query($conn, $sql_delete_data);
+    $delete = true;
   }
 
   // Baca Tabel devices
@@ -58,6 +60,10 @@
 
         if ($update == true) {
           alertUpdate("Data berhasil diperbarui");
+        }
+
+        if ($delete == true) {
+          alertDelete("Data berhasil dihapus");
         }
       ?>
       <div class="row">
@@ -157,7 +163,7 @@
                 <div class="card-body">
                   <div class="row">                    
                     <div class="col-lg-6">
-                      <span class="font-weight-light text-red"><strong>*Serial number tidak boleh sama!</strong></span>
+                      <span class="font-weight-light text-red"><strong>*Silakan abaikan jika tidak ingin mengubah!</strong></span>
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:9px;"><i class="fas fa-tags mr-2"></i>Serial Number</div>

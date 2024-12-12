@@ -6,6 +6,7 @@
   $page = $_GET['page'];
   $insert = false;
   $update = false;
+  $delete = false;
 
   // Ubah data
   if (isset($_POST['edit_data'])) {
@@ -54,6 +55,7 @@
     $id = $_GET['delete'];
     $sql_delete_data = "DELETE FROM user WHERE username = '$id' LIMIT 1";
     mysqli_query($conn, $sql_delete_data);
+    $delete = true;
   }
 
   // Baca Tabel user
@@ -72,6 +74,10 @@
 
         if ($update == true) {
           alertUpdate("Data berhasil diperbarui");
+        }
+
+        if ($delete == true) {
+          alertDelete("Data berhasil dihapus");
         }
       ?>
       <div class="row">
@@ -171,10 +177,10 @@
                         </select>
                       </div>
                     </div>                    
-                    <div class="col-lg-6 mt-2">
+                    <div class="col-lg-6">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:28px;"><i class="fas fa-images" style="padding-right:6px;"></i>Unggah Foto</div>
+                          <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-images" style="padding-right:6px;"></i>Foto Pengguna</div>
                         </div>
                         <input type="file" class="form-control" name="profile">
                       </div>
@@ -224,7 +230,7 @@
                       </div>
                     </div>
                     <div class="col-lg-6 mt-4">
-                      <span class="font-weight-light text-red"><strong>*Username tidak boleh sama!</strong></span>
+                      <span class="font-weight-light text-red"><strong>*Jika ingin mengubah, Username tidak boleh sama!</strong></span>
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:44px;"><i class="fas fa-user" style="padding-right:11px;"></i>Username</div>
@@ -234,7 +240,7 @@
                       </div>
                     </div>
                     <div class="col-lg-6 mt-4">
-                      <span class="font-weight-light text-red"><strong>*Kosongkan jika tidak ingin mengubah Password!</strong></span>
+                      <span class="font-weight-light text-red"><strong>*Isi jika ingin mengubah Password!</strong></span>
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:48px;"><i class="fas fa-lock" style="padding-right:11px;"></i>Password</div>
@@ -274,10 +280,11 @@
                         </select>
                       </div>
                     </div>                                            
-                    <div class="col-lg-6 mt-2">
+                    <div class="col-lg-6 mt-4">
+                      <span class="font-weight-light text-red"><strong>*Upload File jika ingin mengubah Foto Pengguna!</strong></span>
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:28px;"><i class="fas fa-images" style="padding-right:6px;"></i>Unggah Foto</div>
+                          <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-images" style="padding-right:6px;"></i>Foto Pengguna</div>
                         </div>
                         <input type="file" class="form-control" name="profile">
                       </div>
