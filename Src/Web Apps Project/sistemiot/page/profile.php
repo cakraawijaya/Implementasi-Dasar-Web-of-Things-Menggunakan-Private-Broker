@@ -43,10 +43,10 @@
                                 <div class="col">
                                     <div class="card">
                                         <div class="row g-0">
-                                            <div class="col-4">
-                                                <img src="<?php echo $_SESSION['profile']; ?>" class="img-fluid rounded-start img-profile" alt="gambarpengguna" style="height:240px;max-height:auto;width:240px;max-width:auto;">
+                                            <div class="col-5">
+                                                <img src="<?php echo $_SESSION['profile']; ?>" class="img-fluid rounded-start" alt="gambarpengguna" style="height:340px;max-height:auto;width:400px;max-width:auto;">
                                             </div>
-                                            <div class="col-8">
+                                            <div class="col-7">
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-6">

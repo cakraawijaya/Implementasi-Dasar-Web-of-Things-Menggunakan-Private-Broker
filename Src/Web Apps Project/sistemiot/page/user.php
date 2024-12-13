@@ -11,18 +11,29 @@
   // Ubah data
   if (isset($_POST['edit_data'])) {
     $old_id = $_POST['edit_data'];
+    $oldProfile = $_POST['oldProfile'];
     $username = $_POST['username'];
     $fullname = $_POST['fullname'];
     $gender = $_POST['gender'];
     $role = $_POST['role'];
-    $active = $_POST['active'];
-
+    $active = $_POST['active'];  
+    
+    // Fungsi Edit Gambar
+    if ($_FILES['profile']['error'] === 4) {
+      $profile = $oldProfile;
+    } else {
+      $profile = upload_img();
+      if (!$profile) {
+        return false;
+      }
+    }
+    
     if ($_POST['password'] == "") {
-      $sql_edit = "UPDATE user SET username = '$username', gender = '$gender', fullname = '$fullname', role = '$role', active = '$active' WHERE username = '$old_id'";
+      $sql_edit = "UPDATE user SET username = '$username', gender = '$gender', fullname = '$fullname', profile = '$profile', role = '$role', active = '$active' WHERE username = '$old_id'";
     }
     else {
       $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-      $sql_edit = "UPDATE user SET username = '$username', password = '$password', gender = '$gender', fullname = '$fullname', role = '$role', active = '$active' WHERE username = '$old_id'";
+      $sql_edit = "UPDATE user SET username = '$username', password = '$password', gender = '$gender', fullname = '$fullname', profile = '$profile', role = '$role', active = '$active' WHERE username = '$old_id'";
     }
 
     mysqli_query($conn, $sql_edit);
@@ -34,12 +45,55 @@
     $username = $_POST['username'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $fullname = $_POST['fullname'];
-    $gender = $_POST['gender'];
+    $gender = $_POST['gender'];    
     $role = $_POST['role'];
 
-    $sql_insert = "INSERT INTO user (username, password, gender, fullname, role) VALUES ('$username', '$password', '$gender', '$fullname', '$role')";
+    // Fungsi Add Gambar
+    if ($_FILES['profile']['error'] === 4) {
+      $profile = "dist/img/default.jpg";
+    } else {
+      $profile = upload_img();
+      if (!$profile) {
+        return false;
+      }
+    }
+
+    $sql_insert = "INSERT INTO user (username, password, gender, fullname, profile, role) VALUES ('$username', '$password', '$gender', '$fullname', '$profile', '$role')";
     mysqli_query($conn, $sql_insert);
     $insert = true;
+  }
+
+  function upload_img() {
+    $namaFile = $_FILES['profile']['name'];
+    $ukuranFile = $_FILES['profile']['size'];
+    $tmpName = $_FILES['profile']['tmp_name'];
+
+    // Mengecek ekstensi gambar
+    $ekstensiGambarDefault = ['jpg', 'jpeg', 'png'];
+    $ekstensiGambarUpload = explode('.', $namaFile);
+    $ekstensiGambarUpload = strtolower(end($ekstensiGambarUpload));
+
+    if (!in_array($ekstensiGambarUpload, $ekstensiGambarDefault)) {
+      echo "<script>
+        alert('Yang anda upload bukan gambar!');
+        location.href = '?page=user';
+      </script>";
+      return false;
+    }
+
+    // Cek Ukuran Gambar
+    if ($ukuranFile > 2000000) {
+      echo "<script>
+        alert('Gambar yang anda upload melebihi 2mb!');
+        location.href = '?page=user';
+      </script>";
+      return false;
+    }
+
+    // Lolos Pengecekan Gambar maka simpan gambar ke lokasi yang telah ditentukan
+    $destination = 'dist/img/'.$namaFile;
+    move_uploaded_file($tmpName, $destination);
+    return $destination;
   }
 
   // Mengambil id untuk Edit
@@ -135,7 +189,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="?page=<?php echo $page; ?>">
+              <form method="POST" action="?page=<?php echo $page; ?>" enctype="multipart/form-data">
                 <div class="card-body">
                   <div class="row">
                     <div class="col-lg-6">
@@ -210,7 +264,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="?page=<?php echo $page; ?>">
+              <form method="POST" action="?page=<?php echo $page; ?>" enctype="multipart/form-data">
                 <div class="card-body">
                   <div class="row">            
                     <div class="col-lg-6">
@@ -300,6 +354,7 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-images" style="padding-right:6px;"></i>Foto Pengguna</div>
                         </div>
+                        <input type="hidden" name="oldProfile" value="<?php echo $data['profile']; ?>">
                         <input type="file" class="form-control" name="profile">
                       </div>
                     </div>  

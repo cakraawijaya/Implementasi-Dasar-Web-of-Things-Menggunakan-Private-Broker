@@ -5,7 +5,7 @@
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           <h5><i class="fas fa-exclamation-circle"></i> Pemberitahuan Sistem :</h5>'
           . $message .
-        '&nbsp;&nbsp;&nbsp;<i class="fas fa-check"></i><strong></strong></div>';
+        '&nbsp;&nbsp;&nbsp;<i class="fas fa-check"></i></div>';
     }
 
     function alertType2($message) {
@@ -14,7 +14,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h5><i class="fas fa-exclamation-circle"></i> Pemberitahuan Sistem :</h5>'
         . $message .
-      '&nbsp;&nbsp;&nbsp;<i class="fas fa-check"></i><strong></strong></div>';
+      '&nbsp;&nbsp;&nbsp;<i class="fas fa-check"></i></div>';
     }
 
     function alertType3($message) {
@@ -23,6 +23,6 @@
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h5><i class="fas fa-exclamation-circle"></i> Pemberitahuan Sistem :</h5>'
         . $message .
-      '&nbsp;&nbsp;&nbsp;<i class="fas fa-check"></i><strong></strong></div>';
+      '&nbsp;&nbsp;&nbsp;<i class="fas fa-check"></i></div>';
     }
 ?>
