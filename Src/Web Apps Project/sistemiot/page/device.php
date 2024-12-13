@@ -18,13 +18,13 @@
   }
 
   // Tambah data
-  // --->> di bagian ini ada yang bermasalah
   else if (isset($_POST['serial_number'])) {
     $serial_number = $_POST['serial_number'];
+    $username = $_POST['username'];
     $controller_type = $_POST['controller'];
     $location = $_POST['location'];
 
-    $sql_insert = "INSERT INTO devices (serial_number, mcu_type, location) VALUES ('$serial_number', '$controller_type', '$location')";
+    $sql_insert = "INSERT INTO devices (serial_number, username, mcu_type, location) VALUES ('$serial_number', '$username', '$controller_type', '$location')";
     mysqli_query($conn, $sql_insert);
     $insert = true;
   }
@@ -32,7 +32,8 @@
   // Mengambil id untuk Edit
   if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
-    $sql_select_data = "SELECT * FROM devices WHERE serial_number = '$id' LIMIT 1";
+    $username = $_SESSION['username'];
+    $sql_select_data = "SELECT * FROM devices WHERE serial_number = '$id' AND username = '$username' LIMIT 1";
     $result = mysqli_query($conn, $sql_select_data);
     $data = mysqli_fetch_assoc($result);
   }
@@ -40,7 +41,8 @@
   // Mengambil id untuk Delete
   if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $sql_delete_data = "DELETE FROM devices WHERE serial_number = '$id' LIMIT 1";
+    $username = $_SESSION['username'];
+    $sql_delete_data = "DELETE FROM devices WHERE serial_number = '$id' AND username = '$username' LIMIT 1";
     mysqli_query($conn, $sql_delete_data);
     $delete = true;
   }
@@ -126,6 +128,7 @@
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:9px;"><i class="fas fa-tags mr-2"></i>Serial Number</div>
                         </div>
+                        <input type="hidden" name="username" value="<?php echo $_SESSION['username']; ?>">
                         <input type="text" class="form-control" name="serial_number" required>
                       </div>
                     </div>
