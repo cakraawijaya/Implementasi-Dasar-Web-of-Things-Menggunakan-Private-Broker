@@ -8,11 +8,20 @@
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="<?php echo $_SESSION['profile']; ?>" class="img-circle" alt="User Image" style="height:35px;max-height:auto;width:35px;max-width:auto;">
-      </div>
-      <div class="info">
-        <a href="?page=profile" class="d-block"><?php echo $_SESSION['fullname']; ?></a>
+      <?php if (strlen($_SESSION['fullname']) <= 15 ) { ?>
+        <div class="image">
+          <img src="<?php echo $_SESSION['profile']; ?>" class="img-circle" alt="User Image" style="height:35px;max-height:auto;width:35px;max-width:auto;">
+        </div>
+      <?php } else { ?>
+        <div class="image" style="padding-top:12px;">
+          <img src="<?php echo $_SESSION['profile']; ?>" class="img-circle" alt="User Image" style="height:35px;max-height:auto;width:35px;max-width:auto;">
+        </div>
+      <?php } ?>
+      
+      <div class="info" style="white-space:normal;">
+        <a href="?page=profile" class="d-block">
+          <?php echo $_SESSION['fullname']; ?>
+        </a>
       </div>
     </div>
 
