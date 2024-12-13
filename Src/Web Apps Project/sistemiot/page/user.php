@@ -1,6 +1,6 @@
 <?php
   if ($_SESSION['role'] != "Admin") {
-    echo "<script> location.href = 'index.php' </script>";
+    echo "<script> location.href = 'index.php'; </script>";
   }
 
   $page = $_GET['page'];
@@ -170,8 +170,8 @@
                     <td><?php echo $row['role']; ?></td>
                     <td><?php echo $row['active']; ?></td>
                     <td style="text-align:center;">
-                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['username'] ?>" class="btn btn-warning fas fa-edit"></a>
-                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['username'] ?>" class="btn btn-danger fas fa-trash-alt"></a>
+                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['username']; ?>" class="btn btn-warning fas fa-edit"></a>
+                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['username']; ?>" class="btn btn-danger fas fa-trash-alt"></a>
                     </td>
                   </tr>
                   <?php } ?>
@@ -223,8 +223,8 @@
                           <div class="input-group-text" style="padding-right:44px;"><i class="fas fa-user-tag" style="padding-right:5px;"></i>Hak Akses</div>
                         </div>
                         <select class="custom-select form-control" name="role">
-                            <option value="Admin">Admin</option>
-                            <option value="User">Pengguna</option>
+                          <option value="User">Pengguna</option>
+                          <option value="Admin">Admin</option>
                         </select>
                       </div>
                     </div>                
@@ -234,8 +234,9 @@
                           <div class="input-group-text" style="padding-right:18px;"><i class="fas fa-female mr-1"></i><i class="fas fa-male" style="padding-right:7px;"></i>Jenis Kelamin</div>
                         </div>
                         <select class="form-control" name="gender">
-                            <option value="Pria">Pria</option>
-                            <option value="Wanita">Wanita</option>
+                          <option value="Undefined">Tidak Dijelaskan</option>
+                          <option value="Pria">Pria</option>
+                          <option value="Wanita">Wanita</option>
                         </select>
                       </div>
                     </div>                    

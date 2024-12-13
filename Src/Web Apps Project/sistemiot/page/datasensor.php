@@ -1,6 +1,10 @@
 <?php
-  $sql = "SELECT * FROM data WHERE sensor_actuator = 'sensor'";
-  $result = mysqli_query($conn, $sql);
+  // Baca Tabel Sensor
+  if ($_SESSION['username'] > 0) {
+    $username = $_SESSION['username'];
+    $sql = "SELECT * FROM data WHERE username = '$username' AND sensor_actuator = 'sensor'";
+    $result = mysqli_query($conn, $sql);
+  }
 ?>
 
 <div class="content-wrapper">

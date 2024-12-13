@@ -18,6 +18,7 @@
   }
 
   // Tambah data
+  // --->> di bagian ini ada yang bermasalah
   else if (isset($_POST['serial_number'])) {
     $serial_number = $_POST['serial_number'];
     $controller_type = $_POST['controller'];
@@ -45,8 +46,11 @@
   }
 
   // Baca Tabel devices
-  $sql = "SELECT * FROM devices";
-  $result = mysqli_query($conn, $sql);
+  if ($_SESSION['username'] > 0) {
+    $username = $_SESSION['username'];
+    $sql = "SELECT * FROM devices WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql);
+  }
 ?>
 
 <div class="content-wrapper">
@@ -94,8 +98,8 @@
                     <td><?php echo $row['created_time']; ?></td>
                     <td><?php echo $row['active']; ?></td>
                     <td style="text-align:center;">
-                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['serial_number'] ?>" class="btn btn-warning fas fa-edit"></a>
-                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['serial_number'] ?>" class="btn btn-danger fas fa-trash-alt"></a>
+                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['serial_number']; ?>" class="btn btn-warning fas fa-edit"></a>
+                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['serial_number']; ?>" class="btn btn-danger fas fa-trash-alt"></a>
                     </td>
                   </tr>
                   <?php } ?>
