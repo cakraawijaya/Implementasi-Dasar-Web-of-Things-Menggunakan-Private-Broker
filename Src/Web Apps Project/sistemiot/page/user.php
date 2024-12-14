@@ -3,6 +3,11 @@
     echo "<script> location.href = 'index.php'; </script>";
   }
 
+  if ($_SESSION['active'] == "No") {
+    session_destroy();
+    echo "<script> location.href = 'login.php'; </script>";
+  }
+
   $page = $_GET['page'];
   $insert = false;
   $update = false;
@@ -31,7 +36,7 @@
     }
     
     if ($_POST['password'] == "") {
-      $sql_edit = "UPDATE user SET username = '$username', gender = '$gender', fullname = '$fullname', profile = '$profile', role = '$role', active = '$active' WHERE username = '$old_id'";
+      $sql_edit = "UPDATE user SET username = '$username', email = '$email', gender = '$gender', fullname = '$fullname', profile = '$profile', role = '$role', active = '$active' WHERE username = '$old_id'";
     }
     else {
       $sql_edit = "UPDATE user SET username = '$username', password = '$password', email = '$email', gender = '$gender', fullname = '$fullname', profile = '$profile', role = '$role', active = '$active' WHERE username = '$old_id'";

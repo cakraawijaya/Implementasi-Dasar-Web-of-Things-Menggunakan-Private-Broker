@@ -1,4 +1,9 @@
 <?php
+  if ($_SESSION['active'] == "No") {
+    session_destroy();
+    echo "<script> location.href = 'login.php'; </script>";
+  }
+
   $page = $_GET['page'];
   $insert = false;
   $update = false;
@@ -24,9 +29,22 @@
     $controller_type = $_POST['controller'];
     $location = $_POST['location'];
 
-    $sql_insert = "INSERT INTO devices (serial_number, username, mcu_type, location) VALUES ('$serial_number', '$username', '$controller_type', '$location')";
-    mysqli_query($conn, $sql_insert);
-    $insert = true;
+    $select_serialNumber = "SELECT serial_number FROM devices WHERE serial_number = '$serial_number'";
+    $check_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, $select_serialNumber));
+
+    // Input serial number tidak boleh sama
+    if ($check_serialNumber) {
+      echo "<script>
+        alert('Serial Number sudah ada di database!');
+        location.href = '?page=device';  
+      </script>";
+      return false;
+    }
+    else {
+      $sql_insert = "INSERT INTO devices (serial_number, username, mcu_type, location) VALUES ('$serial_number', '$username', '$controller_type', '$location')";
+      mysqli_query($conn, $sql_insert);
+      $insert = true;
+    }
   }
 
   // Mengambil id untuk Edit

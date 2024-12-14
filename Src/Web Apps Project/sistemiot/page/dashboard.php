@@ -1,6 +1,15 @@
 <?php
-  $sql = "SELECT * FROM devices WHERE active = 'Yes'";
-  $result = mysqli_query($conn, $sql);
+  if ($_SESSION['active'] == "No") {
+    session_destroy();
+    echo "<script> location.href = 'login.php'; </script>";
+  }
+
+  // Baca Tabel Perangkat Yang Aktif
+  if ($_SESSION['username'] > 0) {
+    $username = $_SESSION['username'];
+    $sql = "SELECT * FROM devices WHERE username = '$username' AND active = 'Yes'";
+    $result = mysqli_query($conn, $sql);
+  }
 ?>
 
 <div class="content-wrapper">

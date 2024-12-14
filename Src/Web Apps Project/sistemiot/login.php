@@ -24,6 +24,7 @@
                 $_SESSION['gender'] = $data['gender'];
                 $_SESSION['profile'] = $data['profile'];
                 $_SESSION['role'] = $data['role'];
+                $_SESSION['active'] = $data['active'];
 
                 echo "<script> location.href = 'index.php' </script>";
             }
