@@ -4,6 +4,30 @@
 
     $message = "Masukkan Username dan Password";
 
+    // Akses Cookie
+    if (isset($_COOKIE['username'])) {
+      $username = $_COOKIE['username'];
+
+      $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username' LIMIT 1");
+      $row = mysqli_fetch_assoc($result);
+
+      if ($username === $row['username']) {
+        // Buat Session
+        $_SESSION['username'] = $row['username'];
+        $_SESSION['password'] = $row['password'];
+        $_SESSION['fullname'] = $row['fullname'];
+        $_SESSION['gender'] = $row['gender'];
+        $_SESSION['profile'] = $row['profile'];
+        $_SESSION['role'] = $row['role'];
+        $_SESSION['active'] = $row['active'];
+      }
+    }
+
+    // Akses Session
+    if (isset($_SESSION['username'])) {  
+      echo "<script> location.href = 'index.php' </script>";
+    }
+
     if (isset($_POST['username'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
@@ -14,22 +38,29 @@
         $data = mysqli_fetch_assoc($result);
 
         if (!mysqli_num_rows($result) > 0) {
-            $message = "<b style='color:red;'><i class='fas fa-exclamation-triangle'></i> Username tidak terdaftar!</b>";
+          $message = "<b style='color:red;'><i class='fas fa-exclamation-triangle'></i> Username tidak terdaftar!</b>";
         }
         else {
             if (password_verify($password, $data['password'])) {
-                $_SESSION['username'] = $username;
-                $_SESSION['password'] = $password;
-                $_SESSION['fullname'] = $data['fullname'];
-                $_SESSION['gender'] = $data['gender'];
-                $_SESSION['profile'] = $data['profile'];
-                $_SESSION['role'] = $data['role'];
-                $_SESSION['active'] = $data['active'];
+              // Buat Session
+              $_SESSION['username'] = $username;
+              $_SESSION['password'] = $password;
+              $_SESSION['fullname'] = $data['fullname'];
+              $_SESSION['gender'] = $data['gender'];
+              $_SESSION['profile'] = $data['profile'];
+              $_SESSION['role'] = $data['role'];
+              $_SESSION['active'] = $data['active'];
+              $_SESSION['last_login_timestamps'] = time();
 
-                echo "<script> location.href = 'index.php' </script>";
+              // Buat Cookie
+              if (isset($_POST['remember'])) {
+                setcookie('username', $data['username'], time() + 86400);
+              }
+
+              echo "<script> location.href = 'index.php' </script>";
             }
             else {
-                $message = "<b style='color:red;'><i class='fas fa-exclamation-triangle'></i> Password salah!</b>";
+              $message = "<b style='color:red;'><i class='fas fa-exclamation-triangle'></i> Password salah!</b>";
             }
         }
     }
@@ -86,7 +117,7 @@
           <!-- /.col -->
           <div class="col-6 d-flex align-items-end flex-column">
             <div class="icheck-primary">
-              <input type="checkbox" id="remember">
+              <input type="checkbox" name="remember" id="remember">
               <label for="remember">
                 Ingat Saya
               </label>

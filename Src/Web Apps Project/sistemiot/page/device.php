@@ -1,9 +1,4 @@
 <?php
-  if ($_SESSION['active'] == "No") {
-    session_destroy();
-    echo "<script> location.href = 'login.php'; </script>";
-  }
-
   $page = $_GET['page'];
   $insert = false;
   $update = false;

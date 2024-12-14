@@ -3,11 +3,6 @@
     echo "<script> location.href = 'index.php'; </script>";
   }
 
-  if ($_SESSION['active'] == "No") {
-    session_destroy();
-    echo "<script> location.href = 'login.php'; </script>";
-  }
-
   $page = $_GET['page'];
   $insert = false;
   $update = false;
@@ -330,7 +325,7 @@
                     <div class="col-lg-6">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:12px;"><i class="fas fa-file-signature" style="padding-right:7px;"></i>Nama Lengkap</div>
+                          <div class="input-group-text" style="padding-right:12px;"><i class="fas fa-file-signature" style="padding-right:8px;"></i>Nama Lengkap</div>
                         </div>
                         <input type="text" class="form-control" name="fullname" value="<?php echo $data['fullname']; ?>" required>
                       </div>
@@ -347,7 +342,7 @@
                     <div class="col-lg-6 mt-2">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:12px;"><i class="fas fa-envelope" style="padding-right:7px;"></i>Email</div>
+                          <div class="input-group-text" style="padding-right:75px;"><i class="fas fa-envelope" style="padding-right:10px;"></i>Email</div>
                         </div>
                         <input type="email" class="form-control" name="email" value="<?php echo $data['email']; ?>" required>
                       </div>

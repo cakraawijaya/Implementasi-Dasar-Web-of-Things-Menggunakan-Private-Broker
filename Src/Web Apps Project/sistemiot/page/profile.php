@@ -1,10 +1,3 @@
-<?php 
-  if ($_SESSION['active'] == "No") {
-    session_destroy();
-    echo "<script> location.href = 'login.php'; </script>";
-  }
-?>
-
 <div class="content-wrapper">
     <!-- Main content -->
     <div class="content">

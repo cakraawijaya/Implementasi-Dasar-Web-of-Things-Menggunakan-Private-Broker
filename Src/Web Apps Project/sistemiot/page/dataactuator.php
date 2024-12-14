@@ -1,9 +1,4 @@
 <?php
-  if ($_SESSION['active'] == "No") {
-    session_destroy();
-    echo "<script> location.href = 'login.php'; </script>";
-  }
-
   // Baca Tabel Aktuator
   if ($_SESSION['username'] > 0) {
     $username = $_SESSION['username'];

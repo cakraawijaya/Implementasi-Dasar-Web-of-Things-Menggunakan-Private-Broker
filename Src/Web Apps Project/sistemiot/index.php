@@ -5,6 +5,16 @@
     echo "<script> location.href = 'login.php'; </script>";
   }
 
+  if ($_SESSION['active'] == "No") {
+    echo "<script> location.href = 'logout.php'; </script>";
+  }
+
+  if (isset($_SESSION['username'])) {   
+    if (time() - $_SESSION['last_login_timestamps'] > 1800) {
+      echo "<script> location.href = 'logout.php' </script>";
+    }
+  }
+
   include "config/database.php";
   include "inc/header.php";
   include "inc/navbar.php";
