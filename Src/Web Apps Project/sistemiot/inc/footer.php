@@ -4,5 +4,5 @@
         Versi 1.0.0
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2024 <a href="https://kelasiot.id/iot-pemula">Kelas IoT</a> by Cakra Wijaya.</strong> All rights reserved.
+    <strong>Copyright &copy; 2024 <a href="https://kelasiot.id/iot-pemula" target="_blank">Kelas IoT</a> by Cakra Wijaya.</strong> All rights reserved.
 </footer>

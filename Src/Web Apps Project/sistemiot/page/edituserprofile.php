@@ -10,7 +10,6 @@
     if (isset($_POST['edit_data'])) {
         $old_id = $_POST['edit_data'];
         $oldProfile = $_POST['oldProfile'];
-        $username = preg_replace('~\P{L}+~u', '', strtolower($_POST['username']));
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $email = $_POST['email'];
         $gender = $_POST['gender'];
@@ -27,11 +26,11 @@
         }
 
         if ($_POST['password'] == "") {
-            $sql_edit = "UPDATE user SET username = '$username', email = '$email', gender = '$gender', fullname = '$fullname', profile = '$profile' WHERE username = '$old_id'";
+            $sql_edit = "UPDATE user SET email = '$email', gender = '$gender', fullname = '$fullname', profile = '$profile' WHERE username = '$old_id'";
         }
         else {
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $sql_edit = "UPDATE user SET username = '$username', password = '$password', email = '$email', gender = '$gender', fullname = '$fullname', profile = '$profile' WHERE username = '$old_id'";
+            $sql_edit = "UPDATE user SET password = '$password', email = '$email', gender = '$gender', fullname = '$fullname', profile = '$profile' WHERE username = '$old_id'";
         }
 
         mysqli_query($conn, $sql_edit);
@@ -70,13 +69,6 @@
         move_uploaded_file($tmpName, $destination);
         return $destination;
     }
-
-    if (isset($_SESSION['username'])) {
-        $username = $_SESSION['username'];
-        $sql = "SELECT * FROM user WHERE username = '$username'";
-        $result = mysqli_query($conn, $sql);
-        $data = mysqli_fetch_assoc($result);
-    }
 ?>
 
 <?php if ($_SESSION['role'] == "User") { ?>
@@ -90,8 +82,8 @@
                 }
             ?>
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="card card-dark mt-4">
+                <div class="col-lg-12 p-4">
+                    <div class="card card-dark">
                         <div class="card-header">
                             <h3 class="card-title"><i class="fas fa-user-edit mr-2"></i>Ubah Profil</h3>
                         </div>
@@ -105,19 +97,11 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-file-signature" style="padding-right:7px;"></i>Nama Lengkap</div>
                                             </div>
+                                            <input type="hidden" name="edit_data" value="<?php echo $data['username']; ?>">
                                             <input type="text" class="form-control" name="fullname" value="<?php echo $data['fullname']; ?>" required>
                                         </div>
-                                    </div>      
-                                    <div class="col-lg-6">
-                                        <div class="input-group mb-2 mt-2">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text" style="padding-right:44px;"><i class="fas fa-user" style="padding-right:11px;"></i>Username</div>
-                                            </div>
-                                            <input type="hidden" name="edit_data" value="<?php echo $data['username']; ?>">
-                                            <input type="text" class="form-control" name="username" value="<?php echo $data['username']; ?>" required>
-                                        </div>
                                     </div>     
-                                    <div class="col-lg-6 mt-2">
+                                    <div class="col-lg-6">
                                         <div class="input-group mb-2 mt-2">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text" style="padding-right:74px;"><i class="fas fa-envelope" style="padding-right:10px;"></i>Email</div>
@@ -125,6 +109,27 @@
                                             <input type="email" class="form-control" name="email" value="<?php echo $data['email']; ?>" required>
                                         </div>
                                     </div>
+                                    <div class="col-lg-6 mt-4">
+                                        <span class="font-weight-light text-red"><strong>*Isi jika ingin mengubah Password!</strong></span>
+                                        <div class="input-group mb-2 mt-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text" style="padding-right:48px;"><i class="fas fa-lock" style="padding-right:11px;"></i>Password</div>
+                                            </div>
+                                            <input type="password" class="form-control" name="password">
+                                        </div>
+                                    </div>                        
+                                    <div class="col-lg-6 mt-4">
+                                        <span class="font-weight-light text-red"><strong>*Upload File jika ingin mengubah Foto Pengguna!</strong></span>
+                                        <div class="input-group mb-2 mt-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-images" style="padding-right:6px;"></i>Foto Pengguna</div>
+                                            </div>
+                                            <input type="hidden" name="oldProfile" value="<?php echo $data['profile']; ?>">
+                                            <input type="file" class="form-control" name="profile">
+                                        </div>
+                                    </div>  
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-6 mt-2">
                                         <div class="input-group mb-2 mt-2">
                                             <div class="input-group-prepend">
@@ -146,31 +151,12 @@
                                             <?php } ?>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-6 mt-4">
-                                        <span class="font-weight-light text-red"><strong>*Isi jika ingin mengubah Password!</strong></span>
-                                        <div class="input-group mb-2 mt-2">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text" style="padding-right:48px;"><i class="fas fa-lock" style="padding-right:11px;"></i>Password</div>
-                                            </div>
-                                            <input type="password" class="form-control" name="password">
-                                        </div>
-                                    </div>                            
-                                    <div class="col-lg-6 mt-4">
-                                        <span class="font-weight-light text-red"><strong>*Upload File jika ingin mengubah Foto Pengguna!</strong></span>
-                                        <div class="input-group mb-2 mt-2">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-images" style="padding-right:6px;"></i>Foto Pengguna</div>
-                                            </div>
-                                            <input type="hidden" name="oldProfile" value="<?php echo $data['profile']; ?>">
-                                            <input type="file" class="form-control" name="profile">
-                                        </div>
-                                    </div>  
+                                    </div>    
                                 </div>
                             </div>
 
                             <div class="card-footer d-flex align-items-end flex-column">
-                                <button type="submit" class="btn btn-dark fas fa-check-square px-4"> Ubah</button>
+                                <button type="submit" class="btn btn-dark fas fa-check-square" style="padding: 10px 60px 10px 60px;">&nbsp;&nbsp;Ubah</button>
                             </div>
                         </form>   
                     </div>

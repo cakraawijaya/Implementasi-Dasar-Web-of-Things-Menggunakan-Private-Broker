@@ -166,7 +166,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer d-flex align-items-end flex-column">
-                  <button type="submit" class="btn btn-primary fas fa-check-square px-4"> Tambah</button>
+                  <button type="submit" class="btn btn-primary fas fa-check-square" style="padding: 10px 60px 10px 60px;">&nbsp;&nbsp;Tambah</button>
                 </div>
               </form>
             </div>
@@ -229,7 +229,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer d-flex align-items-end flex-column">
-                  <button type="submit" class="btn btn-warning fas fa-check-square px-4"> Ubah</button>
+                  <button type="submit" class="btn btn-warning fas fa-check-square" style="padding: 10px 60px 10px 60px;">&nbsp;&nbsp;Ubah</button>
                 </div>
               </form>
             </div>

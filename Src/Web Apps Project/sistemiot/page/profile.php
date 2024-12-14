@@ -1,12 +1,3 @@
-<?php
-    if (isset($_SESSION['username'])) {
-        $username = $_SESSION['username'];
-        $sql = "SELECT * FROM user WHERE username = '$username'";
-        $result = mysqli_query($conn, $sql);
-        $data = mysqli_fetch_assoc($result);
-    }
-?>
-
 <div class="content-wrapper">
     <!-- Main content -->
     <div class="content">
