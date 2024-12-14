@@ -12,6 +12,7 @@
         $oldProfile = $_POST['oldProfile'];
         $username = preg_replace('~\P{L}+~u', '', strtolower($_POST['username']));
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $email = $_POST['email'];
         $gender = $_POST['gender'];
         $fullname = ucwords($_POST['fullname']);
 
@@ -26,21 +27,15 @@
         }
 
         if ($_POST['password'] == "") {
-            $sql_edit = "UPDATE user SET username = '$username', gender = '$gender', fullname = '$fullname', profile = '$profile' WHERE username = '$old_id'";
+            $sql_edit = "UPDATE user SET username = '$username', email = '$email', gender = '$gender', fullname = '$fullname', profile = '$profile' WHERE username = '$old_id'";
         }
         else {
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $sql_edit = "UPDATE user SET username = '$username', password = '$password', gender = '$gender', fullname = '$fullname', profile = '$profile' WHERE username = '$old_id'";
+            $sql_edit = "UPDATE user SET username = '$username', password = '$password', email = '$email', gender = '$gender', fullname = '$fullname', profile = '$profile' WHERE username = '$old_id'";
         }
 
         mysqli_query($conn, $sql_edit);
         $update = true;
-        echo "
-        <script>
-            setInterval(function(){
-                location.href = '?page=profile';
-            }, 15000);
-        </script>";
     }
 
     function upload_img() {
@@ -75,6 +70,13 @@
         move_uploaded_file($tmpName, $destination);
         return $destination;
     }
+
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+        $sql = "SELECT * FROM user WHERE username = '$username'";
+        $result = mysqli_query($conn, $sql);
+        $data = mysqli_fetch_assoc($result);
+    }
 ?>
 
 <?php if ($_SESSION['role'] == "User") { ?>
@@ -84,7 +86,7 @@
         <div class="container-fluid">
             <?php
                 if ($update == true) {
-                    alertType2("<strong><p>Data berhasil diperbarui...</p></strong><span class='font-weight-dark'>Silakan logout terlebih dahulu untuk melihat pembaruan tampilan profil</span>");
+                    alertType2("Data berhasil diperbarui");
                 }
             ?>
             <div class="row">
@@ -95,59 +97,75 @@
                         </div>
 
                         <!-- /.card-header -->
-                        <div class="card-body">
-                            <form class="row g-2" method="POST" action="?page=<?php echo $page; ?>" enctype="multipart/form-data">                                
-                                <div class="col-md-4 mt-2">
-                                    <label><i class="fas fa-user mr-2"></i>Username</label>
-                                    <p class="font-weight-light text-red"><strong>*Username tidak boleh sama!</strong></p>
-                                    <div class="input-group">
-                                        <input type="hidden" name="edit_data" value="<?php echo $_SESSION['username']; ?>">
-                                        <input type="text" class="form-control" name="username" value="<?php echo $_SESSION['username']; ?>" required>
+                        <form method="POST" action="?page=<?php echo $page; ?>" enctype="multipart/form-data">                                
+                            <div class="card-body">
+                                <div class="row">                              
+                                    <div class="col-lg-6">
+                                        <div class="input-group mb-2 mt-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-file-signature" style="padding-right:7px;"></i>Nama Lengkap</div>
+                                            </div>
+                                            <input type="text" class="form-control" name="fullname" value="<?php echo $data['fullname']; ?>" required>
+                                        </div>
+                                    </div>      
+                                    <div class="col-lg-6">
+                                        <div class="input-group mb-2 mt-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text" style="padding-right:44px;"><i class="fas fa-user" style="padding-right:11px;"></i>Username</div>
+                                            </div>
+                                            <input type="hidden" name="edit_data" value="<?php echo $data['username']; ?>">
+                                            <input type="text" class="form-control" name="username" value="<?php echo $data['username']; ?>" required>
+                                        </div>
+                                    </div>     
+                                    <div class="col-lg-6 mt-2">
+                                        <div class="input-group mb-2 mt-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text" style="padding-right:74px;"><i class="fas fa-envelope" style="padding-right:10px;"></i>Email</div>
+                                            </div>
+                                            <input type="email" class="form-control" name="email" value="<?php echo $data['email']; ?>" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4 mt-2">
-                                    <label><i class="fas fa-file-signature mr-2"></i>Nama Lengkap</label>
-                                    <p class="font-weight-light text-red"><strong>*Silakan abaikan jika tidak ingin mengubah!</strong></p>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="fullname" value="<?php echo $_SESSION['fullname']; ?>" required>
+                                    <div class="col-lg-6 mt-2">
+                                        <div class="input-group mb-2 mt-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text" style="padding-right:19px;"><i class="fas fa-female mr-1"></i><i class="fas fa-male" style="padding-right:7px;"></i>Jenis Kelamin</div>
+                                            </div>
+                                            <select class="form-control" name="gender">
+                                            <?php if ($data['gender'] == "Wanita") { ?>
+                                                <option value="Wanita">Wanita</option>
+                                                <option value="Pria">Pria</option>
+                                                <option value="Undefined">Tidak Dijelaskan</option>
+                                            <?php } else if ($data['gender'] == "Undefined") { ?>
+                                                <option value="Undefined">Tidak Dijelaskan</option>
+                                                <option value="Pria">Pria</option>
+                                                <option value="Wanita">Wanita</option>
+                                            <?php } else { ?>
+                                                <option value="Pria">Pria</option>
+                                                <option value="Wanita">Wanita</option>
+                                                <option value="Undefined">Tidak Dijelaskan</option>
+                                            <?php } ?>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4 mt-2">
-                                    <label><i class="fas fa-lock mr-2"></i>Password</label>
-                                    <p class="font-weight-light text-red"><strong>*Silakan abaikan jika tidak ingin mengubah!</strong></p>
-                                    <div class="input-group">
-                                        <button onclick="showPass()" class="btn btn-outline-secondary fas fa-eye" type="button"></button>
-                                        <input type="password" class="form-control" name="password" value="<?php echo $_SESSION['password']; ?>" id="passwordProfile">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-4">
-                                    <label><i class="fas fa-female mr-1"></i><i class="fas fa-male mr-2"></i>Jenis Kelamin</label>
-                                    <p class="font-weight-light text-red"><strong>*Silakan abaikan jika tidak ingin mengubah!</strong></p>
-                                    <div class="input-group">
-                                        <select class="form-control" name="gender">
-                                        <?php if ($_SESSION['gender'] == "Wanita") { ?>
-                                            <option value="Wanita">Wanita</option>
-                                            <option value="Pria">Pria</option>
-                                            <option value="Undefined">Tidak Dijelaskan</option>
-                                        <?php } else if ($_SESSION['gender'] == "Undefined") { ?>
-                                            <option value="Undefined">Tidak Dijelaskan</option>
-                                            <option value="Pria">Pria</option>
-                                            <option value="Wanita">Wanita</option>
-                                        <?php } else { ?>
-                                            <option value="Pria">Pria</option>
-                                            <option value="Wanita">Wanita</option>
-                                            <option value="Undefined">Tidak Dijelaskan</option>
-                                        <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mt-4">
-                                    <label><i class="fas fa-images mr-2"></i>Foto Pengguna</label>
-                                    <p class="font-weight-light text-red"><strong>*Upload File jika ingin mengubah Foto Pengguna!</strong></p>
-                                    <div class="input-group">
-                                        <input type="hidden" name="oldProfile" value="<?php echo $_SESSION['profile']; ?>">
-                                        <input type="file" class="form-control" name="profile">
-                                    </div>
+                                    <div class="col-lg-6 mt-4">
+                                        <span class="font-weight-light text-red"><strong>*Isi jika ingin mengubah Password!</strong></span>
+                                        <div class="input-group mb-2 mt-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text" style="padding-right:48px;"><i class="fas fa-lock" style="padding-right:11px;"></i>Password</div>
+                                            </div>
+                                            <input type="password" class="form-control" name="password">
+                                        </div>
+                                    </div>                            
+                                    <div class="col-lg-6 mt-4">
+                                        <span class="font-weight-light text-red"><strong>*Upload File jika ingin mengubah Foto Pengguna!</strong></span>
+                                        <div class="input-group mb-2 mt-2">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-images" style="padding-right:6px;"></i>Foto Pengguna</div>
+                                            </div>
+                                            <input type="hidden" name="oldProfile" value="<?php echo $data['profile']; ?>">
+                                            <input type="file" class="form-control" name="profile">
+                                        </div>
+                                    </div>  
                                 </div>
                             </div>
 
@@ -161,16 +179,5 @@
         </div>
     </div>
 </div>
-
-<script>
-    function showPass() {
-        var x = document.getElementById("passwordProfile");
-        if (x.type === "password") {
-            x.type = "text";
-        } else {
-            x.type = "password";
-        }
-    }
-</script>
 
 <?php } ?>

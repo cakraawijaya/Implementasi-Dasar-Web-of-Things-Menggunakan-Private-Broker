@@ -1,3 +1,12 @@
+<?php
+  if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    $sql = "SELECT * FROM user WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql);
+    $data = mysqli_fetch_assoc($result);
+  }
+?>
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
   <a class="brand-link">
@@ -8,19 +17,19 @@
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <?php if (strlen($_SESSION['fullname']) <= 15 ) { ?>
+      <?php if (strlen($data['fullname']) <= 15 ) { ?>
         <div class="image">
-          <img src="<?php echo $_SESSION['profile']; ?>" class="img-circle" alt="User Image" style="height:35px;max-height:auto;width:35px;max-width:auto;">
+          <img src="<?php echo $data['profile']; ?>" class="img-circle" alt="User Image" style="height:35px;max-height:auto;width:35px;max-width:auto;">
         </div>
       <?php } else { ?>
         <div class="image" style="padding-top:12px;">
-          <img src="<?php echo $_SESSION['profile']; ?>" class="img-circle" alt="User Image" style="height:35px;max-height:auto;width:35px;max-width:auto;">
+          <img src="<?php echo $data['profile']; ?>" class="img-circle" alt="User Image" style="height:35px;max-height:auto;width:35px;max-width:auto;">
         </div>
       <?php } ?>
       
       <div class="info" style="white-space:normal;">
         <a href="?page=profile" class="d-block">
-          <?php echo $_SESSION['fullname']; ?>
+          <?php echo $data['fullname']; ?>
         </a>
       </div>
     </div>
