@@ -10,10 +10,10 @@
     if (isset($_POST['edit_data'])) {
         $old_id = $_POST['edit_data'];
         $oldProfile = $_POST['oldProfile'];
-        $username = $_POST['username'];
+        $username = preg_replace('~\P{L}+~u', '', strtolower($_POST['username']));
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $gender = $_POST['gender'];
-        $fullname = $_POST['fullname'];
+        $fullname = ucwords($_POST['fullname']);
 
         // Fungsi Edit Gambar
         if ($_FILES['profile']['error'] === 4) {

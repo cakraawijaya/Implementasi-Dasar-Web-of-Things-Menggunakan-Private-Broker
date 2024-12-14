@@ -3,15 +3,47 @@
   include "inc/alert.php";
 
   $register = false;
+  $message = "Silakan Mendaftar di Form berikut";
 
   if (isset($_POST['username'])) {
-    $username = $_POST['username'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $fullname = $_POST['fullname'];
+    $username = preg_replace('~\P{L}+~u', '', strtolower($_POST['username']));
+    $password1 = $_POST['password1'];
+    $password2 = $_POST['password2'];
+    $fullname = ucwords($_POST['fullname']);
+    $email = $_POST['email'];
 
-    $sql_registration = "INSERT INTO user (username, password, fullname) VALUES ('$username', '$password', '$fullname')";
-    mysqli_query($conn, $sql_registration);
-    $register = true;
+    $select_username = "SELECT username FROM user WHERE username = '$username'";
+    $select_email = "SELECT email FROM user WHERE email = '$email'";
+    $check_username = mysqli_fetch_assoc(mysqli_query($conn, $select_username));
+    $check_email = mysqli_fetch_assoc(mysqli_query($conn, $select_email));
+
+    // Input username tidak boleh sama
+    if ($check_username) {
+      echo "<script>
+        alert('Username sudah ada di database!');
+        location.href = 'register.php';
+      </script>";
+      return false;
+    }    
+    // Input email tidak boleh sama
+    else if ($check_email) {
+      echo "<script>
+        alert('Email sudah ada di database!');
+        location.href = 'register.php';
+      </script>";
+      return false;
+    }
+    else {
+      if ($password1 !== $password2) {
+        $message = "<b style='color:red;'><i class='fas fa-exclamation-triangle'></i> Password tidak sama!</b>";
+      }
+      else {
+        $password = password_hash($_POST['password2'], PASSWORD_DEFAULT);
+        $sql_registration = "INSERT INTO user (username, password, email, fullname) VALUES ('$username', '$password', '$email', '$fullname')";
+        mysqli_query($conn, $sql_registration);
+        $register = true;
+      }
+    }
   }
 ?>
 
@@ -32,48 +64,77 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
 <body class="hold-transition register-page">
-<div class="register-box">
+<div class="register-box" style="width:50%;">
   <div class="card card-outline card-success">
     <div class="card-header text-center">
       <h1><b>Sistem</b> IoT</h1>
     </div>
-    <div class="card-body">
-      <p class="login-box-msg">
-        <?php 
-          echo "Silakan Mendaftar di Form berikut";
-          
-          if ($register == true) {
-            alertType1("Data berhasil didaftarkan");
-          } 
-        ?>
-      </p>
+    
+    <form action="" method="POST">
+      <div class="card-body">
+        <p class="login-box-msg">
+          <?php 
+            echo $message;
+            
+            if ($register == true) {
+              alertType1("Data berhasil didaftarkan");
+            } 
+          ?>
+        </p>
 
-      <form action="" method="POST">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" name="fullname" placeholder="Nama Lengkap">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-file-signature"></span>
+        <div class="row">    
+          <div class="col-lg-12">
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <div class="input-group-text" style="padding-right:8px;">
+                  <span class="fas fa-file-signature"></span>
+                </div>
+              </div>            
+              <input type="text" class="form-control" name="fullname" placeholder="Nama Lengkap" required>
+            </div>
+          </div>    
+          <div class="col-lg-6 mt-2">
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <div class="input-group-text" style="padding-right:12px;">
+                  <span class="fas fa-user"></span>
+                </div>
+              </div>            
+              <input type="text" class="form-control" name="username" placeholder="Username" required>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-2">
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <div class="input-group-text" style="padding-right:10px;">
+                  <span class="fas fa-envelope"></span>
+                </div>
+              </div>            
+              <input type="email" class="form-control" name="email" placeholder="Email" required>
+            </div>
+          </div>    
+          <div class="col-lg-6 mt-2">
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <div class="input-group-text" style="padding-right:12px;">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>            
+              <input type="password" class="form-control" name="password1" placeholder="Password" required>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-2">
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <div class="input-group-text" style="padding-right:12px;">
+                  <span class="fas fa-lock"></span>
+                </div>
+              </div>            
+              <input type="password" class="form-control" name="password2" placeholder="Ulangi Password" required>
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" name="username" placeholder="Username">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" name="password" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
-        <hr class="mt-5">
+        <hr class="mt-3">
         <div class="row">
           <div class="col-8 mt-2">
             Sudah punya akun?<a href="login.php" class="text-center"> Login</a>

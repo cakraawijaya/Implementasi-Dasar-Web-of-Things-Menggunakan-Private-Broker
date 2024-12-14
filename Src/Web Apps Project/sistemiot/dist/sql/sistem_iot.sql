@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 13, 2024 at 07:12 AM
+-- Generation Time: Dec 14, 2024 at 12:59 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -43,12 +43,12 @@ CREATE TABLE `data` (
 --
 
 INSERT INTO `data` (`id`, `serial_number`, `username`, `sensor_actuator`, `value`, `name`, `mqtt_topic`, `time`) VALUES
-(1, '12345678', 'kamoee123', 'sensor', '40', 'suhu', 'kelasiot/12345678/suhu', '2024-12-13 13:49:02'),
-(2, '12345678', 'kamoee123', 'sensor', '60', 'kelembapan', 'kelasiot/12345678/kelembapan', '2024-12-13 13:50:05'),
-(3, '12345678', 'kamoee123', 'actuator', '180', 'servo', 'kelasiot/12345678/servo', '2024-12-13 13:50:05'),
-(4, '43765218', 'kamoee123', 'sensor', '25', 'suhu', 'kelasiot/43765218/suhu', '2024-12-13 13:54:09'),
-(5, '43765218', 'kamoee123', 'sensor', '80', 'kelembapan', 'kelasiot/43765218/kelembapan', '2024-12-13 13:54:09'),
-(6, '43765218', 'kamoee123', 'actuator', '150', 'servo', 'kelasiot/43765218/servo', '2024-12-13 13:54:09'),
+(1, '12345678', 'kamoee', 'sensor', '40', 'suhu', 'kelasiot/12345678/suhu', '2024-12-13 13:49:02'),
+(2, '12345678', 'kamoee', 'sensor', '60', 'kelembapan', 'kelasiot/12345678/kelembapan', '2024-12-13 13:50:05'),
+(3, '12345678', 'kamoee', 'actuator', '180', 'servo', 'kelasiot/12345678/servo', '2024-12-13 13:50:05'),
+(4, '43765218', 'kamoee', 'sensor', '25', 'suhu', 'kelasiot/43765218/suhu', '2024-12-13 13:54:09'),
+(5, '43765218', 'kamoee', 'sensor', '80', 'kelembapan', 'kelasiot/43765218/kelembapan', '2024-12-13 13:54:09'),
+(6, '43765218', 'kamoee', 'actuator', '150', 'servo', 'kelasiot/43765218/servo', '2024-12-13 13:54:09'),
 (7, '46213454', 'himawari', 'sensor', '18', 'suhu', 'kelasiot/46213454/suhu', '2024-12-13 13:57:28'),
 (8, '46213454', 'himawari', 'sensor', '65', 'kelembapan', 'kelasiot/46213454/kelembapan', '2024-12-13 13:57:28'),
 (9, '46213454', 'himawari', 'actuator', '95', 'servo', 'kelasiot/46213454/servo', '2024-12-13 13:57:28'),
@@ -88,9 +88,9 @@ CREATE TABLE `devices` (
 --
 
 INSERT INTO `devices` (`serial_number`, `username`, `mcu_type`, `location`, `created_time`, `active`) VALUES
-('12345678', 'kamoee123', 'ESP32', 'Gedung A', '2024-12-13 06:37:34', 'Yes'),
+('12345678', 'kamoee', 'ESP32', 'Gedung A', '2024-12-14 00:55:30', 'Yes'),
 ('43218765', 'bambang', 'Wemos D1 R2', 'Mall', '2024-12-13 06:40:31', 'Yes'),
-('43765218', 'kamoee123', 'ESP8266', 'Kolam', '2024-12-13 05:57:58', 'Yes'),
+('43765218', 'kamoee', 'ESP8266', 'Kolam', '2024-12-13 05:57:58', 'Yes'),
 ('46213454', 'himawari', 'ESP32', 'Taman', '2024-12-13 06:38:19', 'Yes'),
 ('46342134', 'bambang', 'Wemos D1 Mini', 'Pelabuhan', '2024-12-13 06:41:30', 'Yes'),
 ('56142783', 'linling', 'NodeMCU', 'Sawah', '2024-12-13 06:45:04', 'Yes'),
@@ -106,6 +106,7 @@ INSERT INTO `devices` (`serial_number`, `username`, `mcu_type`, `location`, `cre
 CREATE TABLE `user` (
   `username` varchar(30) NOT NULL,
   `password` text NOT NULL,
+  `email` varchar(255) NOT NULL,
   `gender` enum('Wanita','Pria','Undefined') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Undefined',
   `fullname` varchar(100) NOT NULL,
   `profile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'dist/img/default.jpg',
@@ -117,11 +118,11 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`username`, `password`, `gender`, `fullname`, `profile`, `role`, `active`) VALUES
-('bambang', '$2y$10$s1dpneBjJ2BaRA1cbKEoMOytEaH7F1Pt65aJrFjvSd6.6IKe/KCPq', 'Undefined', 'Bambang Puji', 'dist/img/default.jpg', 'User', 'No'),
-('himawari', '$2y$10$S8/3Itu0RKR8dCvzaEv/2uu9cuoaBFELpWfbq4dcO2d/f8LDUK.Yq', 'Wanita', 'Himawari', 'dist/img/admin.jpg', 'Admin', 'Yes'),
-('kamoee123', '$2y$10$K9xgid8jHlzQzl9wKpUuLu9sHHHxO8mAZEIakYwGKZxzYL6Z8TqNS', 'Wanita', 'KamoeeMuaachh', 'dist/img/default.jpg', 'User', 'No'),
-('linling', '$2y$10$CUmcji5eBAdS7.2eSO8ApOaceiOCrApAtCdFmZSvlCzwDigqjKdb6', 'Wanita', 'Lin Ling', 'dist/img/admin.jpg', 'Admin', 'Yes');
+INSERT INTO `user` (`username`, `password`, `email`, `gender`, `fullname`, `profile`, `role`, `active`) VALUES
+('bambang', '$2y$10$s1dpneBjJ2BaRA1cbKEoMOytEaH7F1Pt65aJrFjvSd6.6IKe/KCPq', 'bambang@gmail.com', 'Undefined', 'Bambang Puji', 'dist/img/default.jpg', 'User', 'No'),
+('himawari', '$2y$10$S8/3Itu0RKR8dCvzaEv/2uu9cuoaBFELpWfbq4dcO2d/f8LDUK.Yq', 'himawari@gmail.com', 'Wanita', 'Himawari', 'dist/img/admin.jpg', 'Admin', 'Yes'),
+('kamoee', '$2y$10$4pJHk2iSBG3Fyd1zCcEH6OB3pkdZ/ah5gxAWRQTz2N0ZgEy0Opnje', 'kamoee@gmail.com', 'Undefined', 'Kamoee Muaachh', 'dist/img/default.jpg', 'User', 'No'),
+('linling', '$2y$10$CUmcji5eBAdS7.2eSO8ApOaceiOCrApAtCdFmZSvlCzwDigqjKdb6', 'linling@gmail.com', 'Wanita', 'Lin Ling', 'dist/img/admin.jpg', 'Admin', 'Yes');
 
 --
 -- Indexes for dumped tables
