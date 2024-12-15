@@ -78,7 +78,7 @@
         <div class="container-fluid">
             <?php
                 if ($update == true) {
-                    alertType2("Data berhasil diperbarui");
+                    alertType2("Data berhasil diperbarui", "<i class='fas fa-check'></i>");
                 }
             ?>
             <div class="row">

@@ -1,6 +1,11 @@
 <?php
+  session_start();
   include "config/database.php";
   include "inc/alert.php";
+
+  if (isset($_SESSION['username'])) {
+    echo "<script> location.href = 'login.php'; </script>";
+  }
 
   $register = false;
   $message = "Silakan Mendaftar di Form berikut";
@@ -77,7 +82,7 @@
             echo $message;
             
             if ($register == true) {
-              alertType1("Data berhasil didaftarkan");
+              alertType1("Data berhasil didaftarkan", "<i class='fas fa-check'></i>");
             } 
           ?>
         </p>

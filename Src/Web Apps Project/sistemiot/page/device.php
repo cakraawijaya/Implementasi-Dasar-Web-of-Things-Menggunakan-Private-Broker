@@ -74,15 +74,15 @@
     <div class="container-fluid">
       <?php
         if ($insert == true) {
-          alertType1("Data berhasil ditambahkan");
+          alertType1("Data berhasil ditambahkan", "<i class='fas fa-check'></i>");
         }
 
         if ($update == true) {
-          alertType2("Data berhasil diperbarui");
+          alertType2("Data berhasil diperbarui", "<i class='fas fa-check'></i>");
         }
 
         if ($delete == true) {
-          alertType3("Data berhasil dihapus");
+          alertType3("Data berhasil dihapus", "<i class='fas fa-check'></i>");
         }
       ?>
       <div class="row">
