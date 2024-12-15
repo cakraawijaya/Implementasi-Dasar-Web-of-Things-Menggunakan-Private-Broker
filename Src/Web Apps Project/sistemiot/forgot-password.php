@@ -37,11 +37,17 @@
           echo $message;    
              
           if (isset($_SESSION['status']) == true) {
-            if ($_SESSION['status'] === "Email belum terdaftar") {
+            if ($_SESSION['status'] == "Email belum terdaftar") {
               alertType3($_SESSION['status'], "<i class='fas fa-times'></i>");
+              setcookie('last_timestamps', '', time() - 1);
+              session_unset();
+              session_destroy();
             } 
             else {
               alertType1($_SESSION['status'], "<i class='fas fa-check'></i>");
+              setcookie('last_timestamps', '', time() - 1);
+              session_unset();
+              session_destroy();
             }
           } 
         ?> 
@@ -66,7 +72,7 @@
             </div>
           </form>
           <p class="mt-4 mb-1">
-            Sudah ingat password? <a type="button" href="login.php">Login</a>
+            Belum punya akun? <a type="button" href="register.php">Daftar</a>
           </p>
         </div>
       </div>

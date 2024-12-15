@@ -29,6 +29,7 @@
         if ($result) {
             if ($result['reset_password'] != '0') {
                 $_SESSION['status'] = "Kode sudah dikirimkan";
+                setcookie('last_timestamps', $_SESSION['status']);
                 echo "<script> location.href = 'forgot-password.php'; </script>";
             }
             else {
@@ -37,17 +38,20 @@
                 if ($conn->query($query_update) === TRUE) {
                     sendmail_verify($email, $reset_password, $email_template);
                     $_SESSION['status'] = "Kode RESET telah dikirimkan";
+                    setcookie('last_timestamps', $_SESSION['status']);
                     echo "<script> location.href = 'recover-password.php'; </script>";
                 }
                 else {
                     $_SESSION['status'] = "Email belum terdaftar";
+                    setcookie('last_timestamps', $_SESSION['status']);
                     echo "<script> location.href = 'index.php'; </script>";
                 }
             }
         }
         else {
             $_SESSION['status'] = "Email belum terdaftar";
-            echo  "<script> location.href = 'forgot-password.php'; </script>";
+            setcookie('last_timestamps', $_SESSION['status']);
+            echo "<script> location.href = 'forgot-password.php'; </script>";
         }
         $conn->close();
     }

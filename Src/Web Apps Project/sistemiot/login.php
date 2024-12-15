@@ -130,7 +130,7 @@
         <a href="forgot-password.php">Lupa Password</a>
       </p>
       <p class="mb-0">
-        Belum Punya Akun? 
+        Belum punya akun? 
         <a href="register.php" class="text-center">Daftar</a>
       </p>
     </div>
