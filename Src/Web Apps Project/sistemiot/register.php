@@ -70,7 +70,7 @@
 </head>
 <body class="hold-transition register-page">
 <div class="register-box" style="width:50%;">
-  <div class="card card-outline card-success">
+  <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <h1><b>Sistem</b> IoT</h1>
     </div>
@@ -146,7 +146,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-success btn-block"><i class="fas fa-user-plus mr-2"></i>Daftar</button>
+            <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-user-plus mr-2"></i>Daftar</button>
           </div>
           <!-- /.col -->
         </div>

@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "config/database.php";
+    include "inc/alert.php";
 
     $message = "Masukkan Username dan Password";
 
@@ -90,7 +91,22 @@
       <h1><b>Sistem</b> IoT</h1>
     </div>
     <div class="card-body">
-      <p class="login-box-msg"><?php echo $message; ?></p>
+      <p class="login-box-msg" style="text-align:center;">
+        <?php    
+          echo $message;    
+             
+          if (isset($_SESSION['status']) == true) {
+            if ($_SESSION['status'] == "Email belum terdaftar") {
+              alertType3($_SESSION['status'], "<i class='fas fa-times'></i>");
+              session_unset(); session_destroy(); session_start();
+            } 
+            else {
+              alertType1($_SESSION['status'], "<i class='fas fa-check'></i>");
+              session_unset(); session_destroy(); session_start();
+            }
+          } 
+        ?> 
+      </p> 
 
       <form action="" method="POST">
         <div class="input-group mb-3">
@@ -127,7 +143,7 @@
       </form>
 
       <p class="mt-4 mb-1"><hr>
-        <a href="forgot-password.php">Lupa Password</a>
+        <a href="forgot_password.php">Lupa Password</a>
       </p>
       <p class="mb-0">
         Belum punya akun? 

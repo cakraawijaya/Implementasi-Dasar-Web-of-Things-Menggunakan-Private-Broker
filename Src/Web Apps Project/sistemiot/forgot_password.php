@@ -39,15 +39,11 @@
           if (isset($_SESSION['status']) == true) {
             if ($_SESSION['status'] == "Email belum terdaftar") {
               alertType3($_SESSION['status'], "<i class='fas fa-times'></i>");
-              setcookie('last_timestamps', '', time() - 1);
-              session_unset();
-              session_destroy();
+              session_unset(); session_destroy(); session_start();
             } 
             else {
               alertType1($_SESSION['status'], "<i class='fas fa-check'></i>");
-              setcookie('last_timestamps', '', time() - 1);
-              session_unset();
-              session_destroy();
+              session_unset(); session_destroy(); session_start();
             }
           } 
         ?> 
@@ -55,7 +51,7 @@
 
       <div class="row">    
         <div class="col-lg-12">
-          <form action="send_resetpass.php" method="POST">
+          <form action="send_reset_password.php" method="POST">
             <div class="input-group mb-3">
               <input type="email" class="form-control" name="email" placeholder="Email">
               <div class="input-group-append">
@@ -66,7 +62,7 @@
             </div>
             <div class="row">
               <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane mr-2"></i>Meminta password baru</button>
+                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-lock mr-2"></i>Meminta password baru</button>
               </div>
               <!-- /.col -->
             </div>
