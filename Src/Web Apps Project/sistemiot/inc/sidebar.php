@@ -17,7 +17,7 @@
   <div class="sidebar">
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <?php if (strlen($data['fullname']) <= 15 ) { ?>
+      <?php if (strlen($data['fullname']) <= 23 ) { ?>
         <div class="image">
           <img src="<?php echo $data['profile']; ?>" class="img-circle" alt="User Image" style="height:35px;max-height:auto;width:35px;max-width:auto;">
         </div>
