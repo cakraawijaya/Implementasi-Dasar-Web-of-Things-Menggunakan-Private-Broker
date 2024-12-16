@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 16, 2024 at 03:09 PM
+-- Generation Time: Dec 16, 2024 at 03:41 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -142,7 +142,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `email`, `gender`, `fullname`, `profile`, `role`, `active`, `reset_password`) VALUES
-('albert', '$2y$10$QNshBT8WYWXlvJN.yt0mcOsOLzVdfzE84.sYuZ8DbAl6RryUUj1Ei', 'albert@gmail.com', 'Undefined', 'Albert Wiraradja', 'dist/img/default.jpg', 'User', 'No', '0'),
+('albert', '$2y$10$QNshBT8WYWXlvJN.yt0mcOsOLzVdfzE84.sYuZ8DbAl6RryUUj1Ei', 'albert@gmail.com', 'Undefined', 'Albert Wiraradja', 'dist/img/default.jpg', 'User', 'Yes', '0'),
 ('bambang', '$2y$10$SggO8Sx.C2XMKR1Zy4IU..mI2cyNW8RDnXJ3g9d/8Pxk9MQzgpuB2', 'bambang@gmail.com', 'Pria', 'Bambang Prakoso', 'dist/img/user.jpg', 'User', 'Yes', '0'),
 ('himawari', '$2y$10$LYzaHRoA14tCkR3huoNICOBaAbnANtR8k6CJmn1e2UdVpmRgUMsQG', 'himawari@gmail.com', 'Wanita', 'Sasaki Himawari', 'dist/img/admin.jpg', 'Admin', 'No', '0'),
 ('linling', '$2y$10$CUmcji5eBAdS7.2eSO8ApOaceiOCrApAtCdFmZSvlCzwDigqjKdb6', 'linling@gmail.com', 'Wanita', 'Lin Ling', 'dist/img/admin.jpg', 'Admin', 'Yes', '0');
@@ -188,7 +188,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `data`
 --
 ALTER TABLE `data`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `iot_connection`

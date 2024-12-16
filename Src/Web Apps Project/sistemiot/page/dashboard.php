@@ -5,8 +5,8 @@
     $sql = "SELECT * FROM devices WHERE username = '$username' AND active = 'Yes'";
     $result = mysqli_query($conn, $sql);
 
-    $select_username = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' LIMIT 1"));
-    $serial_number = implode(" ", $select_username);
+    $select_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' LIMIT 1"));
+    $serial_number = implode(" ", $select_serialNumber);
     $conn_data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'"));
   }
 ?>

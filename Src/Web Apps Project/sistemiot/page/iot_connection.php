@@ -13,7 +13,7 @@
     $username_account = $_POST['username_account'];
     $password_account = $_POST['password_account'];
     
-    $sql_edit = "UPDATE iot_connection SET serial_number = '$serial_number', server_name = '$server_name', port = '$port', username_account = $username_account, password_account = '$password_account' WHERE serial_number = '$old_id'";
+    $sql_edit = "UPDATE iot_connection SET serial_number = '$serial_number', server_name = '$server_name', port = '$port', username_account = '$username_account', password_account = '$password_account' WHERE id = '$old_id'";
     mysqli_query($conn, $sql_edit);
     $update = true;
   }
@@ -25,7 +25,7 @@
     $port = $_POST['port'];
     $username_account = $_POST['username_account'];
     $password_account = $_POST['password_account'];
-    
+
     $sql_insert = "INSERT INTO iot_connection (serial_number, server_name, port, username_account, password_account) VALUES ('$serial_number', '$server_name', '$port', '$username_account', '$password_account')";
     mysqli_query($conn, $sql_insert);
     $insert = true;
@@ -34,22 +34,25 @@
   // Mengambil id untuk Edit
   if (isset($_GET['edit'])) {
     $id = $_GET['edit'];
-    $sql_select_data = "SELECT * FROM iot_connection WHERE serial_number = '$id' LIMIT 1";
-    $result = mysqli_query($conn, $sql_select_data);
-    $data = mysqli_fetch_assoc($result);
+    $sql_select_data = "SELECT * FROM iot_connection WHERE id = '$id' LIMIT 1";
+    $edit = mysqli_query($conn, $sql_select_data);
+    $data = mysqli_fetch_assoc($edit);
   }
 
   // Mengambil id untuk Delete
   if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-    $sql_delete_data = "DELETE FROM iot_connection WHERE serial_number = '$id' LIMIT 1";
+    $sql_delete_data = "DELETE FROM iot_connection WHERE id = '$id' LIMIT 1";
     mysqli_query($conn, $sql_delete_data);
     $delete = true;
   }
 
-  // Baca Tabel user
-  $sql = "SELECT * FROM iot_connection";
-  $result = mysqli_query($conn, $sql);
+  if ($_SESSION['username'] > 0) {
+    $username = $_SESSION['username'];
+    $select_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' LIMIT 1"));
+    $serial_number = implode(" ", $select_serialNumber);
+    $result = mysqli_query($conn, "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'");
+  }
 ?>
 
 <div class="content-wrapper">
@@ -90,13 +93,13 @@
                 <tbody>
                   <?php while($row = mysqli_fetch_assoc($result)){ ?>
                   <tr>
-                    <td><?php echo $row['serial_number']; ?></td>
+                    <td><?php echo $row['server_name']; ?></td>
                     <td><?php echo $row['port']; ?></td>
                     <td><?php echo $row['username_account']; ?></td>
                     <td><?php echo $row['password_account']; ?></td>
                     <td style="text-align:center;">
-                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['serial_number']; ?>" class="btn btn-warning fas fa-edit"></a>
-                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['serial_number']; ?>" class="btn btn-danger fas fa-trash-alt"></a>
+                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['id']; ?>" class="btn btn-warning fas fa-edit"></a>
+                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['id']; ?>" class="btn btn-danger fas fa-trash-alt"></a>
                     </td>
                   </tr>
                   <?php } ?>
@@ -117,7 +120,32 @@
               <form method="POST" action="?page=<?php echo $page; ?>">
                 <div class="card-body">
                   <div class="row">
-                            
+                    <div class="col-lg-12">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:38px;"><i class="fas fa-wifi mr-2"></i>Server</div>
+                        </div>
+                        <input type="hidden" name="serial_number" value="<?php echo $serial_number; ?>">
+                        <input type="text" class="form-control" name="server_name" required>
+                        <input type="hidden" name="port" class="form-control" value="443">
+                      </div>
+                    </div>              
+                    <div class="col-lg-12">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-user mr-2" style="padding-right:6px;"></i>Username</div>
+                        </div>
+                        <input type="text" class="form-control" name="username_account" required>
+                      </div>
+                    </div>                   
+                    <div class="col-lg-12">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:18px;"><i class="fas fa-lock mr-2" style="padding-right:5px;"></i>Password</div>
+                        </div>
+                        <input type="text" class="form-control" name="password_account" required>
+                      </div>
+                    </div>         
                   </div>     
                 </div>
                 <!-- /.card-body -->
@@ -139,7 +167,33 @@
               <form method="POST" action="?page=<?php echo $page; ?>">
                 <div class="card-body">
                   <div class="row">
-
+                    <div class="col-lg-12">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:38px;"><i class="fas fa-wifi mr-2"></i>Server</div>
+                        </div>
+                        <input type="hidden" name="edit_data" value="<?php echo $data['id']; ?>">
+                        <input type="hidden" name="serial_number" value="<?php echo $data['serial_number']; ?>">
+                        <input type="text" class="form-control" name="server_name" value="<?php echo $data['server_name']; ?>" required>
+                        <input type="hidden" name="port" class="form-control" value="<?php echo $data['port']; ?>">
+                      </div>
+                    </div>              
+                    <div class="col-lg-12">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-user mr-2" style="padding-right:6px;"></i>Username</div>
+                        </div>
+                        <input type="text" class="form-control" name="username_account" value="<?php echo $data['username_account']; ?>" required>
+                      </div>
+                    </div>                   
+                    <div class="col-lg-12">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:18px;"><i class="fas fa-lock mr-2" style="padding-right:5px;"></i>Password</div>
+                        </div>
+                        <input type="text" class="form-control" name="password_account" value="<?php echo $data['password_account']; ?>" required>
+                      </div>
+                    </div> 
                   </div>                  
                 </div>                      
                 <!-- /.card-body -->
