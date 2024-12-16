@@ -9,7 +9,7 @@
                             <h3 class="card-title mt-2"><i class="fas fa-address-card mr-2"></i>Tampilan Profil</h3>
                             <?php if ($data['role'] == "User") { ?>
                                 <div class="d-flex align-items-end flex-column">
-                                    <a href="?page=edituserprofile" class="nav-link btn btn-sm">
+                                    <a href="?page=edit_user_profile" class="nav-link btn btn-sm">
                                     <i class="fas fa-cog mr-1"></i>Ubah</a>
                                 </div>
                             <?php } ?>

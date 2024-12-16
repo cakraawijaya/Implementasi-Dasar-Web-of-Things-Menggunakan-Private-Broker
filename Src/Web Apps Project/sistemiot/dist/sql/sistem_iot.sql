@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 15, 2024 at 03:31 AM
+-- Generation Time: Dec 16, 2024 at 03:09 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -94,8 +94,30 @@ INSERT INTO `devices` (`serial_number`, `username`, `mcu_type`, `location`, `cre
 ('46213454', 'himawari', 'ESP32', 'Taman', '2024-12-13 06:38:19', 'Yes'),
 ('46342134', 'bambang', 'Wemos D1 Mini', 'Pelabuhan', '2024-12-13 06:41:30', 'Yes'),
 ('56781234', 'himawari', 'RPI-W', 'Gedung B', '2024-12-13 06:39:05', 'Yes'),
-('78561342', 'linling', 'Wemos D1 R1', 'Green House', '2024-12-13 06:43:38', 'Yes'),
-('83562714', 'linling', 'ESP8266', 'Kantor A', '2024-12-13 06:45:04', 'Yes');
+('78561342', 'linling', 'Wemos D1 R1', 'Green House', '2024-12-12 23:43:38', 'Yes'),
+('83562714', 'linling', 'ESP8266', 'Kantor A', '2024-12-12 23:45:04', 'Yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `iot_connection`
+--
+
+CREATE TABLE `iot_connection` (
+  `id` int NOT NULL,
+  `serial_number` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `server_name` varchar(255) NOT NULL,
+  `port` varchar(4) NOT NULL,
+  `username_account` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `password_account` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `iot_connection`
+--
+
+INSERT INTO `iot_connection` (`id`, `serial_number`, `server_name`, `port`, `username_account`, `password_account`) VALUES
+(1, '12345678', 'kelasiotdevan.cloud.shiftr.io', '443', 'kelasiotdevan', 'w4TXjZVczSQ0DyiW');
 
 -- --------------------------------------------------------
 
@@ -122,8 +144,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`username`, `password`, `email`, `gender`, `fullname`, `profile`, `role`, `active`, `reset_password`) VALUES
 ('albert', '$2y$10$QNshBT8WYWXlvJN.yt0mcOsOLzVdfzE84.sYuZ8DbAl6RryUUj1Ei', 'albert@gmail.com', 'Undefined', 'Albert Wiraradja', 'dist/img/default.jpg', 'User', 'No', '0'),
 ('bambang', '$2y$10$SggO8Sx.C2XMKR1Zy4IU..mI2cyNW8RDnXJ3g9d/8Pxk9MQzgpuB2', 'bambang@gmail.com', 'Pria', 'Bambang Prakoso', 'dist/img/user.jpg', 'User', 'Yes', '0'),
-('himawari', '$2y$10$LYzaHRoA14tCkR3huoNICOBaAbnANtR8k6CJmn1e2UdVpmRgUMsQG', 'himawari@gmail.com', 'Wanita', 'Sasaki Himawari', 'dist/img/admin.jpg', 'Admin', 'Yes', '0'),
-('linling', '$2y$10$CUmcji5eBAdS7.2eSO8ApOaceiOCrApAtCdFmZSvlCzwDigqjKdb6', 'linling@gmail.com', 'Wanita', 'Lin Ling', 'dist/img/admin.jpg', 'Admin', 'No', '0');
+('himawari', '$2y$10$LYzaHRoA14tCkR3huoNICOBaAbnANtR8k6CJmn1e2UdVpmRgUMsQG', 'himawari@gmail.com', 'Wanita', 'Sasaki Himawari', 'dist/img/admin.jpg', 'Admin', 'No', '0'),
+('linling', '$2y$10$CUmcji5eBAdS7.2eSO8ApOaceiOCrApAtCdFmZSvlCzwDigqjKdb6', 'linling@gmail.com', 'Wanita', 'Lin Ling', 'dist/img/admin.jpg', 'Admin', 'Yes', '0');
 
 --
 -- Indexes for dumped tables
@@ -146,6 +168,13 @@ ALTER TABLE `devices`
   ADD KEY `username_2` (`username`);
 
 --
+-- Indexes for table `iot_connection`
+--
+ALTER TABLE `iot_connection`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `username` (`serial_number`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -159,7 +188,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `data`
 --
 ALTER TABLE `data`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+
+--
+-- AUTO_INCREMENT for table `iot_connection`
+--
+ALTER TABLE `iot_connection`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -177,6 +212,12 @@ ALTER TABLE `data`
 --
 ALTER TABLE `devices`
   ADD CONSTRAINT `devices_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `iot_connection`
+--
+ALTER TABLE `iot_connection`
+  ADD CONSTRAINT `iot_connection_ibfk_1` FOREIGN KEY (`serial_number`) REFERENCES `devices` (`serial_number`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

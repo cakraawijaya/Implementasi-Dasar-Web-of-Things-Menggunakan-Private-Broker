@@ -4,6 +4,10 @@
     $username = $_SESSION['username'];
     $sql = "SELECT * FROM devices WHERE username = '$username' AND active = 'Yes'";
     $result = mysqli_query($conn, $sql);
+
+    $select_username = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' LIMIT 1"));
+    $serial_number = implode(" ", $select_username);
+    $conn_data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'"));
   }
 ?>
 
@@ -151,17 +155,22 @@
 
 <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 
-<script>
-  const serialNumber = "12345678";
-  const clientId = "mqttjs_" + Math.random().toString(16).substr(2, 8);
-  const port = "443";
-  const host = "wss://kelasiotdevan.cloud.shiftr.io:"+port;
+<script>    
+  const arrayData = <?php echo json_encode($conn_data); ?>;
+
+  const serialNumber = arrayData.serial_number;
+  const serverName = arrayData.server_name;
+  const port = arrayData.port;
+  const host = "wss://"+serverName+":"+port;
+  const clientId = "kelasiot-" + Math.random().toString(16).substr(2, 8);
+  const username_account = arrayData.username_account; 
+  const password_account = arrayData.password_account;
 
   const options = {
     keepalive: 30,
     clientId: clientId,
-    username: "kelasiotdevan",
-    password: "w4TXjZVczSQ0DyiW",
+    username: username_account,
+    password: password_account,
     protocolId: "MQTT",
     protocolVersion: 4,
     reconnectPeriod: 1000,

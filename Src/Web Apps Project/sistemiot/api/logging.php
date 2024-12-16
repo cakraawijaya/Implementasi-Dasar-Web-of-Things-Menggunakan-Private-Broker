@@ -10,10 +10,9 @@
     $serialNumber = $topicExplode[1];
     $name = $topicExplode[2];
 
-    // TROUBLE ADA DI BAGIAN USERNAME
-    // $select = mysqli_query($conn, "SELECT username FROM devices WHERE serial_number = '$serialNumber' LIMIT 1");
-    // $username = $select;
-    $username = "albert";
+    $sql_select = mysqli_query($conn, "SELECT username FROM devices WHERE serial_number = '$serialNumber' LIMIT 1");
+    $result = mysqli_fetch_assoc($sql_select);
+    $username = $result['username'];
 
     if ($topicExplode[2] == "suhu" || $topicExplode[2] == "kelembapan" || $topicExplode[2] == "intensitas_cahaya") {
         $type = "sensor";
