@@ -12,6 +12,15 @@
     $location = $_POST['location'];
     $active = $_POST['active'];
 
+    if (strlen($serial_number) > 8) {
+      echo "
+      <script>
+        alert('Serial Number tidak boleh melebihi 8 kata!');
+        location.href = '?page=device';
+      </script>";
+      return false;
+    }
+
     $sql_edit = "UPDATE devices SET serial_number = '$serial_number', mcu_type = '$controller_type', location = '$location', active = '$active' WHERE serial_number = '$old_id'";
     mysqli_query($conn, $sql_edit);
     $update = true;
@@ -23,6 +32,15 @@
     $username = $_POST['username'];
     $controller_type = $_POST['controller'];
     $location = $_POST['location'];
+
+    if (strlen($serial_number) > 8) {
+      echo "
+      <script>
+        alert('Serial Number tidak boleh melebihi 8 kata!');
+        location.href = '?page=device';
+      </script>";
+      return false;
+    }
 
     $select_serialNumber = "SELECT serial_number FROM devices WHERE serial_number = '$serial_number'";
     $check_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, $select_serialNumber));

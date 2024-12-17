@@ -25,7 +25,7 @@
     
     // Content
     $mail->isHTML(true);
-    $mail->Subject = 'Verifikasi Email';
+    $mail->Subject = 'Reset Password Akun Kelas IoT';
     $mail->Body    = $email_template;
     
     // Send

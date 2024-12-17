@@ -63,6 +63,12 @@
             <p>Perangkat</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="?page=iot_connection" class="nav-link">
+            <i class="nav-icon fas fa-cloud"></i>
+            <p>Koneksi IoT</p>
+          </a>
+        </li>
         <?php if ($_SESSION['role'] == "Admin") { ?>
         <li class="nav-item">
           <a href="?page=user" class="nav-link">
@@ -71,12 +77,6 @@
           </a>
         </li>
         <?php } ?>
-        <li class="nav-item">
-          <a href="?page=iot_connection" class="nav-link">
-            <i class="nav-icon fas fa-cloud"></i>
-            <p>Koneksi IoT</p>
-          </a>
-        </li>
         <li class="nav-item">
           <a href="logout.php" class="nav-link">
             <i class="nav-icon fas fa-sign-out-alt"></i>

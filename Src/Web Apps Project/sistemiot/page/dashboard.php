@@ -162,7 +162,7 @@
   const serverName = arrayData.server_name;
   const port = arrayData.port;
   const host = "wss://"+serverName+":"+port;
-  const clientId = "kelasiot-" + Math.random().toString(16).substr(2, 8);
+  const clientId = arrayData.client_id;
   const username_account = arrayData.username_account; 
   const password_account = arrayData.password_account;
 

@@ -14,7 +14,7 @@
         }
         else {
             $_SESSION['status'] = "Kode tidak sesuai";
-            echo "<script> location.href = 'input_verification_code.php'; </script>";
+            echo "<script> location.href = 'input_reset_code.php'; </script>";
         }
     }
 ?>

@@ -1,5 +1,5 @@
 <?php  
-  require('send_mail_verification.php');
+  require('send_mail_reset.php');
 
   function generateRandomString ($length) {
     $characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -14,7 +14,7 @@
 
   if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $email = $_POST['email'];
-    $reset_password = generateRandomString(12);
+    $reset_password = generateRandomString(10);
 
     $email_template = "
       <h2>Berikut Kode Reset Password Anda:</h2><br>
@@ -35,8 +35,8 @@
 
         if ($conn->query($update) === TRUE) {
           sendmail_verify($email, $reset_password, $email_template);
-          $_SESSION['status'] = "Kode RESET telah dikirimkan";
-          echo "<script> location.href = 'input_verification_code.php'; </script>";
+          $_SESSION['status'] = "Kode RESET dikirim ke EMAIL";
+          echo "<script> location.href = 'input_reset_code.php'; </script>";
         }
         else {
           $_SESSION['status'] = "Email belum terdaftar";

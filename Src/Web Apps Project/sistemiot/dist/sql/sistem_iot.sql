@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 16, 2024 at 03:41 PM
+-- Generation Time: Dec 17, 2024 at 01:43 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -30,11 +30,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `data` (
   `id` int NOT NULL,
   `serial_number` varchar(8) NOT NULL,
-  `username` varchar(30) NOT NULL,
+  `username` varchar(10) NOT NULL,
   `sensor_actuator` enum('sensor','actuator') NOT NULL,
-  `value` varchar(10) NOT NULL,
-  `name` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `mqtt_topic` text NOT NULL,
+  `value` varchar(6) NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `mqtt_topic` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -76,8 +76,8 @@ INSERT INTO `data` (`id`, `serial_number`, `username`, `sensor_actuator`, `value
 
 CREATE TABLE `devices` (
   `serial_number` varchar(8) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `mcu_type` varchar(15) NOT NULL,
+  `username` varchar(10) NOT NULL,
+  `mcu_type` varchar(255) NOT NULL,
   `location` text NOT NULL,
   `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `active` enum('Yes','No') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Yes'
@@ -88,14 +88,14 @@ CREATE TABLE `devices` (
 --
 
 INSERT INTO `devices` (`serial_number`, `username`, `mcu_type`, `location`, `created_time`, `active`) VALUES
-('12345678', 'albert', 'ESP32', 'Gedung A', '2024-12-14 00:55:30', 'Yes'),
-('43218765', 'bambang', 'Wemos D1 R2', 'Mall', '2024-12-13 06:40:31', 'Yes'),
-('43765218', 'albert', 'ESP8266', 'Kolam', '2024-12-13 05:57:58', 'Yes'),
-('46213454', 'himawari', 'ESP32', 'Taman', '2024-12-13 06:38:19', 'Yes'),
-('46342134', 'bambang', 'Wemos D1 Mini', 'Pelabuhan', '2024-12-13 06:41:30', 'Yes'),
-('56781234', 'himawari', 'RPI-W', 'Gedung B', '2024-12-13 06:39:05', 'Yes'),
-('78561342', 'linling', 'Wemos D1 R1', 'Green House', '2024-12-12 23:43:38', 'Yes'),
-('83562714', 'linling', 'ESP8266', 'Kantor A', '2024-12-12 23:45:04', 'Yes');
+('12345678', 'albert', 'ESP32', 'Gedung A', '2024-12-13 17:55:30', 'Yes'),
+('43218765', 'bambang', 'Wemos D1 R2', 'Mall', '2024-12-12 23:40:31', 'Yes'),
+('43765218', 'albert', 'ESP8266', 'Kolam', '2024-12-12 22:57:58', 'Yes'),
+('46213454', 'himawari', 'ESP32', 'Taman', '2024-12-12 23:38:19', 'Yes'),
+('46342134', 'bambang', 'Wemos D1 Mini', 'Pelabuhan', '2024-12-12 23:41:30', 'Yes'),
+('56781234', 'himawari', 'RPI-W', 'Gedung B', '2024-12-12 23:39:05', 'Yes'),
+('78561342', 'linling', 'Wemos D1 R1', 'Green House', '2024-12-12 16:43:38', 'Yes'),
+('83562714', 'linling', 'ESP8266', 'Kantor A', '2024-12-12 16:45:04', 'Yes');
 
 -- --------------------------------------------------------
 
@@ -109,15 +109,16 @@ CREATE TABLE `iot_connection` (
   `server_name` varchar(255) NOT NULL,
   `port` varchar(4) NOT NULL,
   `username_account` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `password_account` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
+  `password_account` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `client_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `iot_connection`
 --
 
-INSERT INTO `iot_connection` (`id`, `serial_number`, `server_name`, `port`, `username_account`, `password_account`) VALUES
-(1, '12345678', 'kelasiotdevan.cloud.shiftr.io', '443', 'kelasiotdevan', 'w4TXjZVczSQ0DyiW');
+INSERT INTO `iot_connection` (`id`, `serial_number`, `server_name`, `port`, `username_account`, `password_account`, `client_id`) VALUES
+(1, '12345678', 'kelasiotdevan.cloud.shiftr.io', '443', 'kelasiotdevan', 'w4TXjZVczSQ0DyiW', 'client-kelasiot-001');
 
 -- --------------------------------------------------------
 
@@ -126,15 +127,15 @@ INSERT INTO `iot_connection` (`id`, `serial_number`, `server_name`, `port`, `use
 --
 
 CREATE TABLE `user` (
-  `username` varchar(30) NOT NULL,
+  `username` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `email` varchar(255) NOT NULL,
   `gender` enum('Wanita','Pria','Undefined') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'Undefined',
-  `fullname` varchar(100) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
   `profile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'dist/img/default.jpg',
   `role` enum('Admin','User') NOT NULL DEFAULT 'User',
   `active` enum('Yes','No') NOT NULL,
-  `reset_password` varchar(255) NOT NULL DEFAULT '0'
+  `reset_password` varchar(10) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -143,7 +144,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`username`, `password`, `email`, `gender`, `fullname`, `profile`, `role`, `active`, `reset_password`) VALUES
 ('albert', '$2y$10$QNshBT8WYWXlvJN.yt0mcOsOLzVdfzE84.sYuZ8DbAl6RryUUj1Ei', 'albert@gmail.com', 'Undefined', 'Albert Wiraradja', 'dist/img/default.jpg', 'User', 'Yes', '0'),
-('bambang', '$2y$10$SggO8Sx.C2XMKR1Zy4IU..mI2cyNW8RDnXJ3g9d/8Pxk9MQzgpuB2', 'bambang@gmail.com', 'Pria', 'Bambang Prakoso', 'dist/img/user.jpg', 'User', 'Yes', '0'),
+('bambang', '$2y$10$SggO8Sx.C2XMKR1Zy4IU..mI2cyNW8RDnXJ3g9d/8Pxk9MQzgpuB2', 'bambang@gmail.com', 'Pria', 'Bambang Prakoso', 'dist/img/user.jpg', 'User', 'No', '0'),
 ('himawari', '$2y$10$LYzaHRoA14tCkR3huoNICOBaAbnANtR8k6CJmn1e2UdVpmRgUMsQG', 'himawari@gmail.com', 'Wanita', 'Sasaki Himawari', 'dist/img/admin.jpg', 'Admin', 'No', '0'),
 ('linling', '$2y$10$CUmcji5eBAdS7.2eSO8ApOaceiOCrApAtCdFmZSvlCzwDigqjKdb6', 'linling@gmail.com', 'Wanita', 'Lin Ling', 'dist/img/admin.jpg', 'Admin', 'Yes', '0');
 
@@ -179,22 +180,6 @@ ALTER TABLE `iot_connection`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`username`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `data`
---
-ALTER TABLE `data`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
---
--- AUTO_INCREMENT for table `iot_connection`
---
-ALTER TABLE `iot_connection`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

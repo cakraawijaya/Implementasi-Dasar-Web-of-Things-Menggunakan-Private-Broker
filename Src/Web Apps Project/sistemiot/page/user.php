@@ -20,6 +20,15 @@
     $role = $_POST['role'];
     $active = $_POST['active'];  
 
+    if (strlen($username) > 10) {
+      echo "
+      <script>
+        alert('Username tidak boleh melebihi 10 kata!');
+        location.href = '?page=user';
+      </script>";
+      return false;
+    }
+
     // Fungsi Edit Gambar
     if ($_FILES['profile']['error'] === 4) {
       $profile = $oldProfile;
@@ -51,6 +60,15 @@
     $gender = $_POST['gender'];    
     $role = $_POST['role'];
 
+    if (strlen($username) > 10) {
+      echo "
+      <script>
+        alert('Username tidak boleh melebihi 10 kata!');
+        location.href = '?page=user';
+      </script>";
+      return false;
+    }
+    
     $select_username = "SELECT username FROM user WHERE username = '$username'";
     $select_email = "SELECT email FROM user WHERE email = '$email'";
     $check_username = mysqli_fetch_assoc(mysqli_query($conn, $select_username));

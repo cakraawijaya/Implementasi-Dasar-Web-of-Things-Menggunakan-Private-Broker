@@ -12,8 +12,36 @@
     $port = $_POST['port'];
     $username_account = $_POST['username_account'];
     $password_account = $_POST['password_account'];
-    
-    $sql_edit = "UPDATE iot_connection SET serial_number = '$serial_number', server_name = '$server_name', port = '$port', username_account = '$username_account', password_account = '$password_account' WHERE id = '$old_id'";
+    $client_id = $_POST['client_id'];
+
+    if (strlen($username_account) > 20) {
+      echo "
+      <script>
+        alert('Username Pengguna Akun tidak boleh melebihi 20 kata!');
+        location.href = '?page=iot_connection';
+      </script>";
+      return false;
+    }
+
+    if (strlen($password_account) > 20) {
+      echo "
+      <script>
+        alert('Password Pengguna Akun tidak boleh melebihi 20 kata!');
+        location.href = '?page=iot_connection';
+      </script>";
+      return false;
+    }
+
+    if (strlen($client_id) > 20) {
+      echo "
+      <script>
+        alert('Client-ID tidak boleh melebihi 20 kata!');
+        location.href = '?page=iot_connection';
+      </script>";
+      return false;
+    }
+
+    $sql_edit = "UPDATE iot_connection SET serial_number = '$serial_number', server_name = '$server_name', port = '$port', username_account = '$username_account', password_account = '$password_account', client_id = '$client_id' WHERE id = '$old_id'";
     mysqli_query($conn, $sql_edit);
     $update = true;
   }
@@ -25,8 +53,36 @@
     $port = $_POST['port'];
     $username_account = $_POST['username_account'];
     $password_account = $_POST['password_account'];
+    $client_id = $_POST['client_id'];
 
-    $sql_insert = "INSERT INTO iot_connection (serial_number, server_name, port, username_account, password_account) VALUES ('$serial_number', '$server_name', '$port', '$username_account', '$password_account')";
+    if (strlen($username_account) > 20) {
+      echo "
+      <script>
+        alert('Username Pengguna Akun tidak boleh melebihi 20 kata!');
+        location.href = '?page=iot_connection';
+      </script>";
+      return false;
+    }
+
+    if (strlen($password_account) > 20) {
+      echo "
+      <script>
+        alert('Password Pengguna Akun tidak boleh melebihi 20 kata!');
+        location.href = '?page=iot_connection';
+      </script>";
+      return false;
+    }
+
+    if (strlen($client_id) > 20) {
+      echo "
+      <script>
+        alert('Client-ID tidak boleh melebihi 20 kata!');
+        location.href = '?page=iot_connection';
+      </script>";
+      return false;
+    }
+
+    $sql_insert = "INSERT INTO iot_connection (serial_number, server_name, port, username_account, password_account, client_id) VALUES ('$serial_number', '$server_name', '$port', '$username_account', '$password_account', '$client_id')";
     mysqli_query($conn, $sql_insert);
     $insert = true;
   }
@@ -87,6 +143,7 @@
                     <th>Port</th>
                     <th>Nama Pengguna Akun</th>
                     <th>Password Pengguna Akun</th>
+                    <th>Client-ID</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -97,9 +154,10 @@
                     <td><?php echo $row['port']; ?></td>
                     <td><?php echo $row['username_account']; ?></td>
                     <td><?php echo $row['password_account']; ?></td>
+                    <td><?php echo $row['client_id']; ?></td>
                     <td style="text-align:center;">
-                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['id']; ?>" class="btn btn-warning fas fa-edit"></a>
-                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['id']; ?>" class="btn btn-danger fas fa-trash-alt"></a>
+                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['id']; ?>" class="btn btn-warning fas fa-edit" style="padding: 7px 12px 7px 12px;"></a>
+                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['id']; ?>" class="btn btn-danger fas fa-trash-alt mt-2" style="padding: 6px 14px 6px 14px;"></a>
                     </td>
                   </tr>
                   <?php } ?>
@@ -120,7 +178,7 @@
               <form method="POST" action="?page=<?php echo $page; ?>">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:38px;"><i class="fas fa-wifi mr-2"></i>Server</div>
@@ -130,7 +188,7 @@
                         <input type="hidden" name="port" class="form-control" value="443">
                       </div>
                     </div>              
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-user mr-2" style="padding-right:6px;"></i>Username</div>
@@ -138,14 +196,22 @@
                         <input type="text" class="form-control" name="username_account" required>
                       </div>
                     </div>                   
-                    <div class="col-lg-12">
+                    <div class="col-lg-6 mt-2">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:18px;"><i class="fas fa-lock mr-2" style="padding-right:5px;"></i>Password</div>
                         </div>
                         <input type="text" class="form-control" name="password_account" required>
                       </div>
-                    </div>         
+                    </div>           
+                    <div class="col-lg-6 mt-2">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:25px;"><i class="fas fa-key mr-2" style="padding-right:3px;"></i>Client-ID</div>
+                        </div>
+                        <input type="text" class="form-control" name="client_id" required>
+                      </div>
+                    </div>      
                   </div>     
                 </div>
                 <!-- /.card-body -->
@@ -167,7 +233,7 @@
               <form method="POST" action="?page=<?php echo $page; ?>">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:38px;"><i class="fas fa-wifi mr-2"></i>Server</div>
@@ -178,7 +244,7 @@
                         <input type="hidden" name="port" class="form-control" value="<?php echo $data['port']; ?>">
                       </div>
                     </div>              
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-user mr-2" style="padding-right:6px;"></i>Username</div>
@@ -186,12 +252,20 @@
                         <input type="text" class="form-control" name="username_account" value="<?php echo $data['username_account']; ?>" required>
                       </div>
                     </div>                   
-                    <div class="col-lg-12">
+                    <div class="col-lg-6 mt-2">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:18px;"><i class="fas fa-lock mr-2" style="padding-right:5px;"></i>Password</div>
                         </div>
                         <input type="text" class="form-control" name="password_account" value="<?php echo $data['password_account']; ?>" required>
+                      </div>
+                    </div>                 
+                    <div class="col-lg-6 mt-2">
+                      <div class="input-group mb-2 mt-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text" style="padding-right:25px;"><i class="fas fa-key mr-2" style="padding-right:3px;"></i>Client-ID</div>
+                        </div>
+                        <input type="text" class="form-control" name="client_id" value="<?php echo $data['client_id']; ?>" required>
                       </div>
                     </div> 
                   </div>                  

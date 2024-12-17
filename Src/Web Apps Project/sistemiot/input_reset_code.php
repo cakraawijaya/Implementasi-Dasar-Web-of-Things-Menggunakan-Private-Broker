@@ -6,7 +6,7 @@
     echo "<script> location.href = 'login.php'; </script>";
   }
 
-  $message = "Masukkan Kode Verifikasi";
+  $message = "Masukkan Kode Reset Password";
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sistem IoT | Kode Verifikasi</title>
+  <title>Sistem IoT | Kode Reset Password</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -37,11 +37,10 @@
           echo $message;    
              
           if (isset($_SESSION['status']) == true) {
-            if ($_SESSION['status'] == "Email belum terdaftar") {
+            if ($_SESSION['status'] == "Kode tidak sesuai") {
               alertType3($_SESSION['status'], "<i class='fas fa-times'></i>");
               session_unset(); session_destroy(); session_start();
-            } 
-            else {
+            } else {
               alertType1($_SESSION['status'], "<i class='fas fa-check'></i>");
               session_unset(); session_destroy(); session_start();
             }
