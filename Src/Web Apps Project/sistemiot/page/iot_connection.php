@@ -82,30 +82,32 @@
       return false;
     }
 
-    $select_data = mysqli_query($conn, "SELECT * FROM iot_connection");
-    $dataCheck = mysqli_fetch_assoc($select_data);
+    $select_data = "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'";
+    $check_data = mysqli_fetch_assoc(mysqli_query($conn, $select_data));
+    $serverName = isset($check_data['server_name']) ? $check_data['server_name'] : '';
+    $usernameAccount = isset($check_data['username_account']) ? $check_data['username_account'] : '';
 
-    if ($server_name === $dataCheck['server_name']) {
+    if ($serverName === $server_name) {
       echo "
       <script>
         alert('Nama Server tidak boleh sama!');
         location.href = '?page=iot_connection';
       </script>";
       return false;
-    }
-    else if ($username_account === $dataCheck['username_account']) {
-        echo "
-        <script>
-          alert('Username Pengguna tidak boleh sama!');
-          location.href = '?page=iot_connection';
-        </script>";
-        return false;
-    }
+    } 
+    else if ($usernameAccount === $username_account) {
+      echo "
+      <script>
+        alert('Username tidak boleh sama!');
+        location.href = '?page=iot_connection';
+      </script>";
+      return false;
+    } 
     else {
       $sql_insert = "INSERT INTO iot_connection (serial_number, server_name, port, username_account, password_account, client_id) VALUES ('$serial_number', '$server_name', '$port', '$username_account', '$password_account', '$client_id')";
       mysqli_query($conn, $sql_insert);
       $insert = true;
-    }
+    } 
   }
 
   // Mengambil id untuk Edit
@@ -186,8 +188,8 @@
                     <td><?php echo $row['password_account']; ?></td>
                     <td><?php echo $row['client_id']; ?></td>
                     <td style="text-align:center;">
-                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['id']; ?>" class="btn btn-warning fas fa-edit" style="padding: 7px 12px 7px 12px;"></a>
-                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['id']; ?>" class="btn btn-danger fas fa-trash-alt mt-2" style="padding: 6px 14px 6px 14px;"></a>
+                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['id']; ?>" class="btn btn-warning fas fa-edit mt-2 mb-2" style="padding: 7px 12px 7px 12px;"></a>
+                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['id']; ?>" class="btn btn-danger fas fa-trash-alt mt-2 mb-2" style="padding: 6px 14px 6px 14px;"></a>
                     </td>
                   </tr>
                   <?php } ?>
