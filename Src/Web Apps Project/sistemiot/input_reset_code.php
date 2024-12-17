@@ -52,7 +52,7 @@
         <div class="col-lg-12">
           <form action="verify_reset_password.php" method="POST">
             <div class="input-group mb-3">
-              <input type="text" class="form-control" name="code" placeholder="Kode Verifikasi">
+              <input type="text" class="form-control" name="code" placeholder="Kode Reset Password">
               <div class="input-group-append">
                 <div class="input-group-text">
                   <span class="fas fa-list-ol"></span>

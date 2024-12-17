@@ -3,6 +3,7 @@
   if ($_SESSION['username'] > 0) {
     $username = $_SESSION['username'];
     $select_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' LIMIT 1"));
+    
     if ($select_serialNumber != "") {
       $serial_number = implode(" ", $select_serialNumber);
       $conn_data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'"));
