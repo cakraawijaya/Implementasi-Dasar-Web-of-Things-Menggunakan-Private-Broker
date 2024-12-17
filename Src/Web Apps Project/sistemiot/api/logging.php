@@ -11,11 +11,11 @@
     $name = $topicExplode[2];
 
     $select_data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM devices WHERE serial_number = '$serialNumber' LIMIT 1"));
-    $serial_number = $select_data['serial_number'];
+    $serialnumber = $select_data['serial_number'];
     $username = $select_data['username'];
 
-    if ($serialNumber === $serial_number) {
-        $serial_number = $serialNumber;
+    if ($serialNumber === $serialnumber) {
+        $serial_number = $serialnumber;
     }
 
     if ($topicExplode[2] == "suhu" || $topicExplode[2] == "kelembapan" || $topicExplode[2] == "intensitas_cahaya") {

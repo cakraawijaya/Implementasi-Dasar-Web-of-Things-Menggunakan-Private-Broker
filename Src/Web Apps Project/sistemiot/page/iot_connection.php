@@ -82,9 +82,30 @@
       return false;
     }
 
-    $sql_insert = "INSERT INTO iot_connection (serial_number, server_name, port, username_account, password_account, client_id) VALUES ('$serial_number', '$server_name', '$port', '$username_account', '$password_account', '$client_id')";
-    mysqli_query($conn, $sql_insert);
-    $insert = true;
+    $select_data = mysqli_query($conn, "SELECT * FROM iot_connection");
+    $dataCheck = mysqli_fetch_assoc($select_data);
+
+    if ($server_name === $dataCheck['server_name']) {
+      echo "
+      <script>
+        alert('Nama Server tidak boleh sama!');
+        location.href = '?page=iot_connection';
+      </script>";
+      return false;
+    }
+    else if ($username_account === $dataCheck['username_account']) {
+        echo "
+        <script>
+          alert('Username Pengguna tidak boleh sama!');
+          location.href = '?page=iot_connection';
+        </script>";
+        return false;
+    }
+    else {
+      $sql_insert = "INSERT INTO iot_connection (serial_number, server_name, port, username_account, password_account, client_id) VALUES ('$serial_number', '$server_name', '$port', '$username_account', '$password_account', '$client_id')";
+      mysqli_query($conn, $sql_insert);
+      $insert = true;
+    }
   }
 
   // Mengambil id untuk Edit
@@ -106,8 +127,17 @@
   if ($_SESSION['username'] > 0) {
     $username = $_SESSION['username'];
     $select_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' LIMIT 1"));
-    $serial_number = implode(" ", $select_serialNumber);
-    $result = mysqli_query($conn, "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'");
+    if ($select_serialNumber != "") {
+      $serial_number = implode(" ", $select_serialNumber);
+      $result = mysqli_query($conn, "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'");
+    } else {
+      echo "
+      <script>
+        alert('Tambahkan Perangkat terlebih dahulu!');
+        location.href = '?page=device';
+      </script>";
+      return false;
+    }
   }
 ?>
 

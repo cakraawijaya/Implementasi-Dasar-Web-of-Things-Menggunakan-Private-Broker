@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 17, 2024 at 01:43 AM
+-- Generation Time: Dec 17, 2024 at 03:54 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -43,29 +43,29 @@ CREATE TABLE `data` (
 --
 
 INSERT INTO `data` (`id`, `serial_number`, `username`, `sensor_actuator`, `value`, `name`, `mqtt_topic`, `time`) VALUES
-(1, '12345678', 'albert', 'sensor', '40', 'suhu', 'kelasiot/12345678/suhu', '2024-12-13 13:49:02'),
-(2, '12345678', 'albert', 'sensor', '60', 'kelembapan', 'kelasiot/12345678/kelembapan', '2024-12-13 13:50:05'),
+(1, '12345678', 'albert', 'sensor', '40.5', 'suhu', 'kelasiot/12345678/suhu', '2024-12-13 13:49:02'),
+(2, '12345678', 'albert', 'sensor', '60.0', 'kelembapan', 'kelasiot/12345678/kelembapan', '2024-12-13 13:50:05'),
 (3, '12345678', 'albert', 'actuator', '180', 'servo', 'kelasiot/12345678/servo', '2024-12-13 13:50:05'),
-(4, '43765218', 'albert', 'sensor', '25', 'suhu', 'kelasiot/43765218/suhu', '2024-12-13 13:54:09'),
-(5, '43765218', 'albert', 'sensor', '80', 'kelembapan', 'kelasiot/43765218/kelembapan', '2024-12-13 13:54:09'),
+(4, '43765218', 'albert', 'sensor', '25.3', 'suhu', 'kelasiot/43765218/suhu', '2024-12-13 13:54:09'),
+(5, '43765218', 'albert', 'sensor', '80.0', 'kelembapan', 'kelasiot/43765218/kelembapan', '2024-12-13 13:54:09'),
 (6, '43765218', 'albert', 'actuator', '150', 'servo', 'kelasiot/43765218/servo', '2024-12-13 13:54:09'),
-(7, '46213454', 'himawari', 'sensor', '18', 'suhu', 'kelasiot/46213454/suhu', '2024-12-13 13:57:28'),
-(8, '46213454', 'himawari', 'sensor', '65', 'kelembapan', 'kelasiot/46213454/kelembapan', '2024-12-13 13:57:28'),
+(7, '46213454', 'himawari', 'sensor', '18.6', 'suhu', 'kelasiot/46213454/suhu', '2024-12-13 13:57:28'),
+(8, '46213454', 'himawari', 'sensor', '65.4', 'kelembapan', 'kelasiot/46213454/kelembapan', '2024-12-13 13:57:28'),
 (9, '46213454', 'himawari', 'actuator', '95', 'servo', 'kelasiot/46213454/servo', '2024-12-13 13:57:28'),
-(10, '56781234', 'himawari', 'sensor', '28', 'suhu', 'kelasiot/56781234/suhu', '2024-12-13 14:00:06'),
-(11, '56781234', 'himawari', 'sensor', '72', 'kelembapan', 'kelasiot/56781234/kelembapan', '2024-12-13 14:00:06'),
+(10, '56781234', 'himawari', 'sensor', '28.2', 'suhu', 'kelasiot/56781234/suhu', '2024-12-13 14:00:06'),
+(11, '56781234', 'himawari', 'sensor', '72.8', 'kelembapan', 'kelasiot/56781234/kelembapan', '2024-12-13 14:00:06'),
 (12, '56781234', 'himawari', 'actuator', '34', 'servo', 'kelasiot/56781234/servo', '2024-12-13 14:00:06'),
-(13, '83562714', 'linling', 'sensor', '38', 'suhu', 'kelasiot/56142783/suhu', '2024-12-13 14:02:46'),
-(14, '83562714', 'linling', 'sensor', '50', 'kelembapan', 'kelasiot/56142783/kelembapan', '2024-12-13 14:02:46'),
+(13, '83562714', 'linling', 'sensor', '38.0', 'suhu', 'kelasiot/56142783/suhu', '2024-12-13 14:02:46'),
+(14, '83562714', 'linling', 'sensor', '50.2', 'kelembapan', 'kelasiot/56142783/kelembapan', '2024-12-13 14:02:46'),
 (15, '83562714', 'linling', 'actuator', '120', 'servo', 'kelasiot/56142783/servo', '2024-12-13 14:02:46'),
-(16, '78561342', 'linling', 'sensor', '60', 'suhu', 'kelasiot/78561342/suhu', '2024-12-13 14:04:29'),
-(17, '78561342', 'linling', 'sensor', '25', 'kelembapan', 'kelasiot/78561342/kelembapan', '2024-12-13 14:04:29'),
+(16, '78561342', 'linling', 'sensor', '60.5', 'suhu', 'kelasiot/78561342/suhu', '2024-12-13 14:04:29'),
+(17, '78561342', 'linling', 'sensor', '25.7', 'kelembapan', 'kelasiot/78561342/kelembapan', '2024-12-13 14:04:29'),
 (18, '78561342', 'linling', 'actuator', '42', 'servo', 'kelasiot/78561342/servo', '2024-12-13 14:04:29'),
-(19, '46342134', 'bambang', 'sensor', '32', 'suhu', 'kelasiot/46342134/suhu', '2024-12-13 14:06:45'),
-(20, '46342134', 'bambang', 'sensor', '58', 'kelembapan', 'kelasiot/46342134/kelembapan', '2024-12-13 14:06:45'),
+(19, '46342134', 'bambang', 'sensor', '32.3', 'suhu', 'kelasiot/46342134/suhu', '2024-12-13 14:06:45'),
+(20, '46342134', 'bambang', 'sensor', '58.7', 'kelembapan', 'kelasiot/46342134/kelembapan', '2024-12-13 14:06:45'),
 (21, '46342134', 'bambang', 'actuator', '58', 'servo', 'kelasiot/46342134/servo', '2024-12-13 14:06:45'),
-(22, '43218765', 'bambang', 'sensor', '28', 'suhu', 'kelasiot/43218765/suhu', '2024-12-13 14:08:58'),
-(23, '43218765', 'bambang', 'sensor', '46', 'kelembapan', 'kelasiot/43218765/kelembapan', '2024-12-13 14:08:58'),
+(22, '43218765', 'bambang', 'sensor', '28.0', 'suhu', 'kelasiot/43218765/suhu', '2024-12-13 14:08:58'),
+(23, '43218765', 'bambang', 'sensor', '46.5', 'kelembapan', 'kelasiot/43218765/kelembapan', '2024-12-13 14:08:58'),
 (24, '43218765', 'bambang', 'actuator', '73', 'servo', 'kelasiot/43218765/servo', '2024-12-13 14:08:58');
 
 -- --------------------------------------------------------
@@ -90,7 +90,7 @@ CREATE TABLE `devices` (
 INSERT INTO `devices` (`serial_number`, `username`, `mcu_type`, `location`, `created_time`, `active`) VALUES
 ('12345678', 'albert', 'ESP32', 'Gedung A', '2024-12-13 17:55:30', 'Yes'),
 ('43218765', 'bambang', 'Wemos D1 R2', 'Mall', '2024-12-12 23:40:31', 'Yes'),
-('43765218', 'albert', 'ESP8266', 'Kolam', '2024-12-12 22:57:58', 'Yes'),
+('43765218', 'albert', 'ESP8266', 'Kolam', '2024-12-12 22:57:58', 'No'),
 ('46213454', 'himawari', 'ESP32', 'Taman', '2024-12-12 23:38:19', 'Yes'),
 ('46342134', 'bambang', 'Wemos D1 Mini', 'Pelabuhan', '2024-12-12 23:41:30', 'Yes'),
 ('56781234', 'himawari', 'RPI-W', 'Gedung B', '2024-12-12 23:39:05', 'Yes'),
@@ -180,6 +180,22 @@ ALTER TABLE `iot_connection`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `data`
+--
+ALTER TABLE `data`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `iot_connection`
+--
+ALTER TABLE `iot_connection`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
