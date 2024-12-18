@@ -249,6 +249,32 @@ Coming Soon...
 <td><img src="Assets/images/Delete User.jpg" alt="delete-user"></td>
 </tr>
 </table>
+<table>
+<tr>
+<th width="210">Code Success</th>
+<th width="210">Code Failed</th>
+<th width="210">Email Reset</th>
+<th width="210">Reset Success</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Code Success.jpg" alt="code-success"></td>
+<td><img src="Assets/images/Code Failed.jpg" alt="code-failed"></td>
+<td><img src="Assets/images/Email Reset.jpg" alt="email-reset"></td>
+<td><img src="Assets/images/Reset Success.jpg" alt="reset-success"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="280">Login</th>
+<th width="280">Register</th>
+<th width="280">Forgot Password</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Login.jpg" alt="login"></td>
+<td><img src="Assets/images/Register.jpg" alt="register"></td>
+<td><img src="Assets/images/Forgot Password.jpg" alt="forgot-password"></td>
+</tr>
+</table>
 
 <br><br>
 
