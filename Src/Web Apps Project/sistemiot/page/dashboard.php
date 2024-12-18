@@ -2,11 +2,20 @@
   // Baca Tabel Perangkat Yang Aktif
   if ($_SESSION['username'] > 0) {
     $username = $_SESSION['username'];
-    $select_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' LIMIT 1"));
+    $select_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' AND active = 'Yes'"));
     
     if ($select_serialNumber != "") {
       $serial_number = implode(" ", $select_serialNumber);
       $conn_data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'"));
+
+      if (isset($conn_data['serial_number']) == "") {
+        echo "
+        <script>
+          alert('Matikan Perangkat yang tidak digunakan dan Pastikan Koneksi IoT sudah dibuat!');
+          location.href = '?page=iot_connection';
+        </script>";
+        return false;
+      }
     }
 
     $sql = "SELECT * FROM devices WHERE username = '$username' AND active = 'Yes'";
@@ -31,6 +40,7 @@
     <div class="content">
       <div class="container-fluid">
         <div class="row">
+
           <!-- Suhu -->
           <div class="col-lg-4">
             <div class="small-box bg-info">
@@ -102,7 +112,7 @@
               <div class="card-header">
                 <h3 class="card-title"><i class="fas fa-adjust mr-2"></i>Lampu</h3>
               </div>
-              <div class="card-body table-responsive pad">
+              <div class="card-body table-responsive pad" style="margin-bottom:13px;">
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                   <label class="btn btn-secondary" id="label-lampu1-nyala">
                     <input type="radio" name="lampu1" onchange="publishLampu(this.value)" id="option_on" autocomplete="off"><i class="fas fa-lightbulb mr-2"></i>Nyala

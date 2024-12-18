@@ -180,17 +180,18 @@
         <div class="col-lg-12">
           <div class="card card-dark mt-4">
             <div class="card-header">
-              <h3 class="card-title"><i class="nav-icon fas fa-cloud mr-2"></i>Koneksi IoT Yang Dibuat</h3>
+              <h3 class="card-title"><i class="nav-icon fas fa-cloud mr-2"></i>Koneksi IoT</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                   <tr>
+                    <th>Serial Number</th>
                     <th>Nama Server</th>
                     <th>Port</th>
-                    <th>Nama Pengguna Akun</th>
-                    <th>Password Pengguna Akun</th>
+                    <th>Username Shiftr.io</th>
+                    <th>Password Shiftr.io</th>
                     <th>Client-ID</th>
                     <th>Aksi</th>
                   </tr>
@@ -198,6 +199,7 @@
                 <tbody>
                   <?php while($row = mysqli_fetch_assoc($result)){ ?>
                   <tr>
+                    <td><?php echo $row['serial_number']; ?></td>
                     <td><?php echo $row['server_name']; ?></td>
                     <td><?php echo $row['port']; ?></td>
                     <td><?php echo $row['username_account']; ?></td>
