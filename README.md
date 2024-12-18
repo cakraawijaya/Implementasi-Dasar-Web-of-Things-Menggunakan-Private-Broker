@@ -211,6 +211,44 @@ Coming Soon...
 <td><img src="Assets/images/Sensor Data.jpg" alt="sensor-data"></td>
 </tr>
 </table>
+<table>
+<tr>
+<th width="280">Add Device</th>
+<th width="280">Edit Device</th>
+<th width="280">Delete Device</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Add Device.jpg" alt="add-device"></td>
+<td><img src="Assets/images/Edit Device.jpg" alt="edit-device"></td>
+<td><img src="Assets/images/Delete Device.jpg" alt="delete-device"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="280">Add Connection</th>
+<th width="280">Edit Connection</th>
+<th width="280">Delete Connection</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Add Connection.jpg" alt="add-connection"></td>
+<td><img src="Assets/images/Edit Connection.jpg" alt="edit-connection"></td>
+<td><img src="Assets/images/Edit Connection.jpg" alt="delete-connection"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="210">User View</th>
+<th width="210">Add User</th>
+<th width="210">Edit User</th>
+<th width="210">Delete User</th>
+</tr>
+<tr>
+<td><img src="Assets/images/User View.jpg" alt="user-view"></td>
+<td><img src="Assets/images/Add User.jpg" alt="add-user"></td>
+<td><img src="Assets/images/Edit User.jpg" alt="edit-user"></td>
+<td><img src="Assets/images/Delete User.jpg" alt="delete-user"></td>
+</tr>
+</table>
 
 <br><br>
 
