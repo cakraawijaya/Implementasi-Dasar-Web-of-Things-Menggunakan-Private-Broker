@@ -260,7 +260,7 @@ Coming Soon...
 ## Get Started
 1. Download and extract this repository.<br><br>
    
-2. Move the ``` sistem_iot ``` directory into the laragon directory, whose details you can find out as follows: ``` C:\laragon\www ```. The other directories are up to you.<br><br>
+2. Move the ``` sistem_iot ``` directory into the laragon directory, whose details you can find out as follows: ``` C:\laragon\www ```. Other extracted directories are up to you.<br><br>
 
 3. Make sure you have the necessary electronic components.<br><br>
    
