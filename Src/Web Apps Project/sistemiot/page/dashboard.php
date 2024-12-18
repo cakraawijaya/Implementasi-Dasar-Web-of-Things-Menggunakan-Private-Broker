@@ -3,15 +3,26 @@
   if ($_SESSION['username'] > 0) {
     $username = $_SESSION['username'];
     $select_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' AND active = 'Yes'"));
+    $selectcount_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(serial_number) FROM devices WHERE username = '$username' AND active = 'Yes'"));
     
     if ($select_serialNumber != "") {
       $serial_number = implode(" ", $select_serialNumber);
+      $count_serialNumber = implode(" ", $selectcount_serialNumber);
       $conn_data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'"));
+
+      if ($count_serialNumber > 1) {
+        echo "
+        <script>
+          alert('Matikan Perangkat yang tidak digunakan!');
+          location.href = '?page=device';
+        </script>";
+        return false;
+      }
 
       if (isset($conn_data['serial_number']) == "") {
         echo "
         <script>
-          alert('Matikan Perangkat yang tidak digunakan dan Pastikan Koneksi IoT sudah dibuat!');
+          alert('Koneksi IoT belum dibuat!');
           location.href = '?page=iot_connection';
         </script>";
         return false;
