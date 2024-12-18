@@ -20,10 +20,10 @@ Coming Soon...
 | Application Support | Laragon |
 | Driver | CP210X USB Driver |
 | IoT Platform | Shiftr.io |
-| Communications Protocol | • WebSocket Secure (WSS)<br>• Message Queuing Telemetry Transport (MQTT) |
+| Communications Protocol | • WebSocket Secure (WSS)<br>• Message Queuing Telemetry Transport (MQTT)<br>• Simple Mail Transfer Protocol (SMTP) |
 | IoT Architecture | 3 Layer |
 | Framework | AdminLTE v3.2.0 |
-| Web Library | MQTT.js |
+| Web Library | • MQTT.js<br>• PHPMailer |
 | Arduino Library | • WiFi (default)<br>• Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer |
 | Actuators | • Servo Motor SG90 180° (x1)<br>• LED (x1)<br>• RGB LED (x1) |
 | Sensor | • DHT22: Air Temperature & Humidity (x1)<br>• LDR: Light Dependent Resistor (x1) |
@@ -104,14 +104,23 @@ Coming Soon...
 <br><br>
 
 ## Database
+1. Open ``` Laragon ```, then install ``` phpMyAdmin ```. How to install: click ``` Menu ``` button -> ``` Tools ``` -> ``` Quick add ``` -> ``` *phpmyadmin ```.<br><br>
 
-Coming Soon...
+2. Then if so, click ``` Start All ``` button to start the server locally.<br><br>
+
+3. Access the browser first in order to open the database admin panel, please copy the following link: ``` localhost/phpmyadmin/ ```.<br><br>
+
+4. Create a database called ``` sistem_iot ``` on local.<br><br>
+
+5. Open the ``` sistem_iot ``` database and Import ``` sistem_iot.sql ``` in the ``` sistemiot/dist/sql ``` directory.
 
 <br><br>
 
 ## Default Account
-
-Coming Soon...
+| Role | Username | Password |
+| --- | --- | --- |
+| Admin | linling | admin123 |
+| User | albert | user123 |
 
 <br><br>
 
@@ -124,6 +133,20 @@ Coming Soon...
 ## Highlights
 
 Coming Soon...
+
+<br><br>
+
+## Reset Database Increment
+
+<table><tr><td width="840">
+   
+```sql
+SET  @num := 0;
+UPDATE your_table SET id = @num := (@num+1);
+ALTER TABLE your_table AUTO_INCREMENT =1;
+```
+
+</td></tr></table>
 
 <br><br>
 
