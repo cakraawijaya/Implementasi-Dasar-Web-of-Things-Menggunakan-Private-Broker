@@ -109,9 +109,9 @@ Segera Hadir...
 
 2. Buka ``` ngrok.yml ``` -> lokasi: ``` C:\Users\[User Name]\AppData\Local\ngrok ```.<br><br>
 
-3. Buat akun terlebih dahulu di Web: ``` ngrok.com ```. Kemudian lakukan konfigurasi Auth Token dan Api Key.<br><br>
+3. Buat akun terlebih dahulu di Web: ``` ngrok.com ```. Kemudian cari ``` authtoken ``` dan ``` api_key ``` yang ada di Web tersebut, jika belum ada maka buatlah.<br><br> 
 
-4. Salin, lalu Tempelkan ``` authtoken ``` dan ``` api_key ``` ke dalam sebuah file ``` ngrok.yml ```. Dan buatlah seperti yang terlihat di bawah ini :
+4. Salin dan Tempelkan ``` authtoken ``` dan ``` api_key ``` ke dalam sebuah file ``` ngrok.yml ```. Dan buatlah seperti yang terlihat di bawah ini :
 
    <table><tr><td width="810">
       
@@ -141,7 +141,7 @@ Segera Hadir...
 
 6. Lalu ``` CTRL + Klik Link ``` yang ada -> lalu pilih ``` Visit Site ```.<br><br>
 
-7. Pada ``` browser ``` anda tertera URL, kemudian atur URL seperti berikut: ``` [URL Https NGROK]/sistemiot/ ```.
+7. Pada ``` browser ``` anda tertera URL. Kemudian atur URL seperti berikut: ``` [URL Https NGROK]/sistemiot/ ```.
     
     • Contoh penulisan:
 
