@@ -103,6 +103,58 @@ Coming Soon...
 
 <br><br>
 
+## Ngrok Setup
+
+1. Extract the file, then move the file ``` ngrok.exe ``` into the folder -> ``` C:\laragon\www ```.<br><br>
+
+2. Open ``` ngrok.yml ``` -> location: ``` C:\Users\[User Name]\AppData\Local\ngrok ```.<br><br>
+
+3. First create an account on the Web: ``` ngrok.com ```. Then search for ``` authtoken ``` and ``` api_key ``` on the Web, if there is no one then create it.<br><br> 
+
+4. Copy and Paste ``` authtoken ``` and ``` api_key ``` into a file ``` ngrok.yml ```. And create it as seen below :
+
+   <table><tr><td width="810">
+      
+   ```yml 
+   version: "3"
+   agent:
+     authtoken: [YOUR NGROK AUTHTOKEN]
+     api_key: [YOUR NGROK API_KEY]
+   tunnels:
+     basic:
+       proto: http
+       addr: 80
+       schemes: ["http", "https"]
+   ````
+   
+   </td></tr></table><br>
+
+5. Open ``` ngrok.exe ```, and then type the command: 
+
+   <table><tr><td width="810">
+     
+   ```bash 
+   ngrok start --all 
+   ```
+   
+   </td></tr></table><br>
+
+6. Then ``` CTRL + Click the Link ``` that is there -> then select ``` Visit Site ```.<br><br>
+
+7. In your ``` browser ``` there is a URL. Then set the URL as follows: ``` [URL Https NGROK]/sistemiot/ ```.
+    
+    • Writing example:
+
+    <table><tr><td width="810">
+   
+    ```bash
+    https://3268-2001-448a-5020-91c4-dddf-9df7-f648-1ec5.ngrok-free.app/sistemiot/
+    ```
+    
+    </td></tr></table>
+
+<br><br>
+
 ## Database
 1. Open ``` Laragon ```, then install ``` phpMyAdmin ```. How to install: click ``` Menu ``` button -> ``` Tools ``` -> ``` Quick add ``` -> ``` *phpmyadmin ```.<br><br>
 
