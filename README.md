@@ -92,8 +92,89 @@ Coming Soon...
 <br><br>
 
 ## Arduino IDE Setup
+1. Open the ``` Arduino IDE ``` first, then open the project by clicking ``` File ``` -> ``` Open ``` : 
 
-Coming Soon...
+   <table><tr><td width="810">
+   
+      ``` kelasiotpemula_devancmw.ino ```
+
+   </td></tr></table><br>
+   
+2. Fill in the ``` Additional Board Manager URLs ``` in Arduino IDE
+
+   <table><tr><td width="810">
+      
+      Click ``` File ``` -> ``` Preferences ``` -> enter the ``` Boards Manager Url ``` by copying the following link :
+      
+      ```
+      https://dl.espressif.com/dl/package_esp32_index.json
+      ```
+
+   </td></tr></table><br>
+   
+3. ``` Board Setup ``` in Arduino IDE
+
+   <table>
+      <tr><th width="810">
+
+      How to setup the ``` DOIT ESP32 DEVKIT V1 ``` board
+            
+      </th></tr>
+      <tr><td>
+      
+      • Click ``` Tools ``` -> ``` Board ``` -> ``` Boards Manager ``` -> Install ``` esp32 ```. 
+      
+      • Then selecting a Board by clicking: ``` Tools ``` -> ``` Board ``` -> ``` ESP32 Arduino ``` -> ``` DOIT ESP32 DEVKIT V1 ```.
+
+   </td></tr></table><br>
+   
+4. ``` Change the Board Speed ``` in Arduino IDE
+
+   <table><tr><td width="810">
+      
+      Click ``` Tools ``` -> ``` Upload Speed ``` -> ``` 115200 ```
+
+   </td></tr></table><br>
+   
+5. ``` Install Library ``` in Arduino IDE
+
+   <table><tr><td width="810">
+      
+      Download all the library zip files. Then paste it in the: ``` C:\Users\Computer_Username\Documents\Arduino\libraries ```
+
+   </td></tr></table><br>
+
+6. ``` Port Setup ``` in Arduino IDE
+
+   <table><tr><td width="810">
+      
+      Click ``` Port ``` -> Choose according to your device port ``` (you can see in device manager) ```
+
+   </td></tr></table><br>
+
+7. Change the ``` WiFi Name ```, ``` WiFi Password ```, and so on according to what you are currently using.<br><br>
+
+8. Before uploading the program please click: ``` Verify ```.<br><br>
+
+9. If there is no error in the program code, then please click: ``` Upload ```.<br><br>
+    
+10. Some things you need to do when using the ``` ESP32 board ``` :
+
+    <table><tr><td width="810">
+       
+      • ``` Arduino IDE ``` information: ``` Uploading... ``` -> immediately press and hold the ``` BOOT ``` button.
+
+      • ``` Arduino IDE ``` information: ``` Writing at .... (%) ``` -> release the ``` BOOT ``` button.
+
+      • Wait until the message appears: ``` Done Uploading ``` -> ``` The program is directly operated ```.
+
+      • Press the ``` EN (RST) ``` button and then ``` Restart ``` to handle the ``` ESP32 ``` board that cannot process the ``` SC ```.
+
+      • Do not press the ``` BOOT ``` and ``` EN ``` buttons at the same time as this may switch to ``` Upload Firmware ``` mode.
+
+    </td></tr></table><br>
+
+11. If there is still a problem when uploading the program, then try checking the ``` driver ``` / ``` port ``` / ``` others ``` section.
 
 <br><br>
 
