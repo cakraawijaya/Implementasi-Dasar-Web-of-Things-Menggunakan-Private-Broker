@@ -183,8 +183,98 @@ Segera Hadir...
 <br><br>
 
 ## Sorotan
-
-Segera Hadir...
+<table>
+<tr>
+<th width="840">Dasbor</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Dashboard.jpg" alt="dashboard"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="420">Profil Admin</th>
+<th width="420">Profil Pengguna</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Admin Profile.jpg" alt="admin-profile"></td>
+<td><img src="Assets/images/User Profile.jpg" alt="user-profile"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="420">Data Aktuator</th>
+<th width="420">Data Sensor</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Actuator Data.jpg" alt="actuator-data"></td>
+<td><img src="Assets/images/Sensor Data.jpg" alt="sensor-data"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="280">Tambah Perangkat</th>
+<th width="280">Ubah Perangkat</th>
+<th width="280">Hapus Perangkat</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Add Device.jpg" alt="add-device"></td>
+<td><img src="Assets/images/Edit Device.jpg" alt="edit-device"></td>
+<td><img src="Assets/images/Delete Device.jpg" alt="delete-device"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="280">Tambah Koneksi</th>
+<th width="280">Ubah Koneksi</th>
+<th width="280">Hapus Koneksi</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Add Connection.jpg" alt="add-connection"></td>
+<td><img src="Assets/images/Edit Connection.jpg" alt="edit-connection"></td>
+<td><img src="Assets/images/Edit Connection.jpg" alt="delete-connection"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="210">Tampilan Pengguna</th>
+<th width="210">Tambah Pengguna</th>
+<th width="210">Ubah Pengguna</th>
+<th width="210">Hapus Pengguna</th>
+</tr>
+<tr>
+<td><img src="Assets/images/User View.jpg" alt="user-view"></td>
+<td><img src="Assets/images/Add User.jpg" alt="add-user"></td>
+<td><img src="Assets/images/Edit User.jpg" alt="edit-user"></td>
+<td><img src="Assets/images/Delete User.jpg" alt="delete-user"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="210">Kode Sukses</th>
+<th width="210">Kode Gagal</th>
+<th width="210">Setel Ulang Email</th>
+<th width="210">Setel Ulang Berhasil</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Code Success.jpg" alt="code-success"></td>
+<td><img src="Assets/images/Code Failed.jpg" alt="code-failed"></td>
+<td><img src="Assets/images/Email Reset.jpg" alt="email-reset"></td>
+<td><img src="Assets/images/Reset Success.jpg" alt="reset-success"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="280">Masuk</th>
+<th width="280">Pendaftaran</th>
+<th width="280">Lupa Password</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Login.jpg" alt="login"></td>
+<td><img src="Assets/images/Register.jpg" alt="register"></td>
+<td><img src="Assets/images/Forgot Password.jpg" alt="forgot-password"></td>
+</tr>
+</table>
 
 <br><br>
 
