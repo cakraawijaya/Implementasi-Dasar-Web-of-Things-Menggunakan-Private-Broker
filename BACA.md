@@ -20,11 +20,11 @@ Segera Hadir...
 | Dukungan Aplikasi | Laragon |
 | Driver | CP210X USB Driver |
 | Platform IoT | Shiftr.io |
-| Protokol Komunikasi | • WebSocket Secure (WSS)<br>• Message Queuing Telemetry Transport (MQTT) |
+| Protokol Komunikasi | • WebSocket Secure (WSS)<br>• Message Queuing Telemetry Transport (MQTT)<br>• Simple Mail Transfer Protocol (SMTP) |
 | Arsitektur IoT | 3 Lapisan |
 | Kerangka Kerja | AdminLTE v3.2.0 |
-| Pustaka Web | MQTT.js |
-| Pustaka Arduino | • WiFi (default)<br>• Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer |
+| Pustaka Web | • MQTT.js<br>• PHPMailer |
+| Pustaka Arduino | • WiFi (bawaan)<br>• Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer |
 | Aktuator | • Motor Servo SG90 180° (x1)<br>• LED (x1)<br>• LED RGB (x1) |
 | Sensor | • DHT22: Suhu & Kelembaban Udara (x1)<br>• LDR: Cahaya (x1) |
 | Komponen Lainnya | • Kabel USB Mikro - USB tipe A (x1)<br>• Kabel jumper (1 set)<br>• Breadboard (x1)<br>• Resistor (x1) |
@@ -104,14 +104,23 @@ Segera Hadir...
 <br><br>
 
 ## Basis Data
+1. Buka ``` Laragon ```, kemudian instal ``` phpMyAdmin ```. Cara instal: klik tombol ``` Menu ``` -> ``` Tools ``` -> ``` Quick add ``` -> ``` *phpmyadmin ```.<br><br>
 
-Segera Hadir...
+2. Kemudian jika sudah, klik tombol ``` Start All ``` untuk memulai server secara lokal.<br><br>
+
+3. Akses ``` peramban ``` terlebih dahulu untuk membuka panel admin basis data, silakan salin tautan berikut: ``` localhost/phpmyadmin/ ```.<br><br>
+   
+3. Buat basis data bernama ``` sistem_iot ``` di lokal.<br><br>
+
+4. Buka basis data ``` sistem_iot ``` dan Impor ``` sistem_iot.sql ``` di direktori ``` sistemiot/dist/sql ```.<br><br>
 
 <br><br>
 
 ## Akun Bawaan
-
-Segera Hadir...
+| Peran | Nama Pengguna | Kata Sandi |
+| --- | --- | --- |
+| Admin | linling | admin123 |
+| User | albert | user123 |
 
 <br><br>
 
