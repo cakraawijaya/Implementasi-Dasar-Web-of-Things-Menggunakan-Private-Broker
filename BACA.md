@@ -103,6 +103,58 @@ Segera Hadir...
 
 <br><br>
 
+## Pengaturan Ngrok
+
+1. Ekstrak file, lalu pindahkan file ``` ngrok.exe ``` ke dalam folder -> ``` C:\laragon\www ```.<br><br>
+
+2. Buka ``` ngrok.yml ``` -> lokasi: ``` C:\Users\[User Name]\AppData\Local\ngrok ```.<br><br>
+
+3. Buat akun terlebih dahulu di Web: ``` ngrok.com ```. Kemudian lakukan konfigurasi Auth Token dan Api Key.<br><br>
+
+4. Salin, lalu Tempelkan ``` authtoken ``` dan ``` api_key ``` ke dalam sebuah file ``` ngrok.yml ```. Dan buatlah seperti yang terlihat di bawah ini :
+
+   <table><tr><td width="810">
+      
+   ```yml 
+   version: "3"
+   agent:
+     authtoken: [YOUR NGROK AUTHTOKEN]
+     api_key: [YOUR NGROK API_KEY]
+   tunnels:
+     basic:
+       proto: http
+       addr: 80
+       schemes: ["http", "https"]
+   ````
+   
+   </td></tr></table><br>
+
+5. Buka ``` ngrok.exe ```, lalu ketikkan perintah: 
+
+   <table><tr><td width="810">
+     
+   ```bash 
+   ngrok start --all 
+   ```
+   
+   </td></tr></table><br>
+
+6. Lalu ``` CTRL + Klik Link ``` yang ada -> lalu pilih ``` Visit Site ```.<br><br>
+
+7. Pada ``` browser ``` anda tertera URL, kemudian atur URL seperti berikut: ``` [URL Https NGROK]/sistemiot/ ```.
+    
+    • Contoh penulisan:
+
+    <table><tr><td width="810">
+   
+    ```bash
+    https://3268-2001-448a-5020-91c4-dddf-9df7-f648-1ec5.ngrok-free.app/sistemiot/
+    ```
+    
+    </td></tr></table>
+
+<br><br>
+
 ## Basis Data
 1. Buka ``` Laragon ```, kemudian instal ``` phpMyAdmin ```. Cara instal: klik tombol ``` Menu ``` -> ``` Tools ``` -> ``` Quick add ``` -> ``` *phpmyadmin ```.<br><br>
 
