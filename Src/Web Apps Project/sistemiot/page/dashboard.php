@@ -41,7 +41,7 @@
       return false;
     } 
     else {
-      if ($notActive != "") {
+      if ($notActive && $serial_number == "") {
         echo "
         <script>
           alert('Perangkat belum diaktifkan!');
