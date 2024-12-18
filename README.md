@@ -183,8 +183,34 @@ Coming Soon...
 <br><br>
 
 ## Highlights
-
-Coming Soon...
+<table>
+<tr>
+<th width="840">Dashboard</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Dashboard.jpg" alt="dashboard"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="420">Admin Profile</th>
+<th width="420">User Profile</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Admin Profile.jpg" alt="admin-profile"></td>
+<td><img src="Assets/images/User Profile.jpg" alt="user-profile"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="420">Actuator Data</th>
+<th width="420">Sensor Data</th>
+</tr>
+<tr>
+<td><img src="Assets/images/Actuator Data.jpg" alt="actuator-data"></td>
+<td><img src="Assets/images/Sensor Data.jpg" alt="sensor-data"></td>
+</tr>
+</table>
 
 <br><br>
 
