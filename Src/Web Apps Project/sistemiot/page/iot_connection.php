@@ -228,7 +228,7 @@
               <form method="POST" action="?page=<?php echo $page; ?>">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 mt-2">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:67px;"><i class="fas fa-wifi mr-2"></i>Server</div>
@@ -237,7 +237,7 @@
                         <input type="hidden" name="port" class="form-control" value="443">
                       </div>
                     </div>              
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 mt-2">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:41px;"><i class="fas fa-user mr-2" style="padding-right:6px;"></i>Username</div>
@@ -296,7 +296,7 @@
               <form method="POST" action="?page=<?php echo $page; ?>">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 mt-2">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:67px;"><i class="fas fa-wifi mr-2"></i>Server</div>
@@ -306,7 +306,7 @@
                         <input type="hidden" name="port" class="form-control" value="<?php echo $data['port']; ?>">
                       </div>
                     </div>              
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 mt-2">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
                           <div class="input-group-text" style="padding-right:41px;"><i class="fas fa-user mr-2" style="padding-right:6px;"></i>Username</div>

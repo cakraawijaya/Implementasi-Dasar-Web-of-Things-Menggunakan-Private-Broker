@@ -131,8 +131,8 @@
                     <td><?php echo $row['created_time']; ?></td>
                     <td><?php echo $row['active']; ?></td>
                     <td style="text-align:center;">
-                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['serial_number']; ?>" class="btn btn-warning fas fa-edit"></a>
-                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['serial_number']; ?>" class="btn btn-danger fas fa-trash-alt"></a>
+                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['serial_number']; ?>" class="btn btn-warning fas fa-edit mt-2 mb-2" style="padding: 6px 12px 6px 12px;"></a>
+                      <a href="?page=<?php echo $page ?>&delete=<?php echo $row['serial_number']; ?>" class="btn btn-danger fas fa-trash-alt mt-2 mb-2" style="padding: 6px 14px 6px 14px;"></a>
                     </td>
                   </tr>
                   <?php } ?>

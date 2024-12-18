@@ -30,7 +30,7 @@
     }
 
     $userDevice = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM devices WHERE username = '$username'"));
-    $notActive = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM devices WHERE username = '$username' AND active = 'No'"));
+    $deviceActive = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' AND active = 'Yes'"));
 
     if ($userDevice == "") {
       echo "
@@ -40,19 +40,18 @@
       </script>";
       return false;
     } 
+
+    if ($deviceActive) {
+      $sql = "SELECT * FROM devices WHERE username = '$username' AND active = 'Yes'";
+      $result = mysqli_query($conn, $sql);    
+    } 
     else {
-      if ($notActive && $serial_number == "") {
-        echo "
-        <script>
-          alert('Perangkat belum diaktifkan!');
-          location.href = '?page=device';
-        </script>";
-        return false;
-      }
-      else {
-        $sql = "SELECT * FROM devices WHERE username = '$username' AND active = 'Yes'";
-        $result = mysqli_query($conn, $sql);
-      }
+      echo "
+      <script>
+        alert('Perangkat belum diaktifkan!');
+        location.href = '?page=device';
+      </script>";
+      return false;  
     }
   }
 ?>
