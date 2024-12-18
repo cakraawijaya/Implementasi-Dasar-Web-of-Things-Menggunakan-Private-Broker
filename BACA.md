@@ -136,6 +136,20 @@ Segera Hadir...
 
 <br><br>
 
+## Setel Ulang Increment Basis Data
+
+<table><tr><td width="840">
+   
+```sql
+SET  @num := 0;
+UPDATE your_table SET id = @num := (@num+1);
+ALTER TABLE your_table AUTO_INCREMENT =1;
+```
+
+</td></tr></table>
+
+<br><br>
+
 ## Appreciation
 
 Jika karya ini bermanfaat bagi anda, maka dukunglah karya ini sebagai bentuk apresiasi kepada penulis dengan mengklik tombol ``` ⭐Bintang ``` di bagian atas repositori.
