@@ -7,8 +7,8 @@
     
     if ($select_serialNumber != "") {
       $serial_number = implode(" ", $select_serialNumber);
-      $count_serialNumber = implode(" ", $selectcount_serialNumber);
       $conn_data = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'"));
+      $count_serialNumber = implode(" ", $selectcount_serialNumber);
 
       if ($count_serialNumber > 1) {
         echo "
@@ -29,8 +29,31 @@
       }
     }
 
-    $sql = "SELECT * FROM devices WHERE username = '$username' AND active = 'Yes'";
-    $result = mysqli_query($conn, $sql);
+    $userDevice = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM devices WHERE username = '$username'"));
+    $notActive = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM devices WHERE username = '$username' AND active = 'No'"));
+
+    if ($userDevice == "") {
+      echo "
+      <script>
+        alert('Perangkat belum dibuat!');
+        location.href = '?page=device';
+      </script>";
+      return false;
+    } 
+    else {
+      if ($notActive != "") {
+        echo "
+        <script>
+          alert('Perangkat belum diaktifkan!');
+          location.href = '?page=device';
+        </script>";
+        return false;
+      }
+      else {
+        $sql = "SELECT * FROM devices WHERE username = '$username' AND active = 'Yes'";
+        $result = mysqli_query($conn, $sql);
+      }
+    }
   }
 ?>
 
