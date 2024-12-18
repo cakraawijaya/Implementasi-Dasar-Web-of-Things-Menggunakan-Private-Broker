@@ -49,6 +49,7 @@
   // Tambah data
   else if (isset($_POST['serial_number'])) {
     $serial_number = $_POST['serial_number'];
+    $username = $_SESSION['username'];
     $server_name = $_POST['server_name'];
     $port = $_POST['port'];
     $username_account = $_POST['username_account'];
@@ -82,10 +83,12 @@
       return false;
     }
 
-    $select_data = "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'";
-    $check_data = mysqli_fetch_assoc(mysqli_query($conn, $select_data));
+    $select_data = mysqli_query($conn, "SELECT * FROM iot_connection WHERE username = '$username'");
+    $check_data = mysqli_fetch_assoc($select_data);
+
     $serverName = isset($check_data['server_name']) ? $check_data['server_name'] : '';
     $usernameAccount = isset($check_data['username_account']) ? $check_data['username_account'] : '';
+    $serialNumber = isset($check_data['serial_number']) ? $check_data['serial_number'] : '';
 
     if ($serverName === $server_name) {
       echo "
@@ -103,11 +106,19 @@
       </script>";
       return false;
     } 
+    else if ($serial_number === $serialNumber) {
+      echo "
+      <script>
+        alert('Serial Number tidak boleh sama!');
+        location.href = '?page=iot_connection';
+      </script>";
+      return false;
+    }
     else {
-      $sql_insert = "INSERT INTO iot_connection (serial_number, server_name, port, username_account, password_account, client_id) VALUES ('$serial_number', '$server_name', '$port', '$username_account', '$password_account', '$client_id')";
+      $sql_insert = "INSERT INTO iot_connection (serial_number, username, server_name, port, username_account, password_account, client_id) VALUES ('$serial_number', '$username', '$server_name', '$port', '$username_account', '$password_account', '$client_id')";
       mysqli_query($conn, $sql_insert);
       $insert = true;
-    } 
+    }
   }
 
   // Mengambil id untuk Edit
@@ -128,19 +139,24 @@
 
   if ($_SESSION['username'] > 0) {
     $username = $_SESSION['username'];
-    $select_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' LIMIT 1"));
-    if ($select_serialNumber != "") {
-      $serial_number = implode(" ", $select_serialNumber);
-      $result = mysqli_query($conn, "SELECT * FROM iot_connection WHERE serial_number = '$serial_number'");
-    } else {
+    $select_serialNumber = mysqli_fetch_assoc(mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username'"));
+    
+    if ($select_serialNumber == "") {
       echo "
       <script>
         alert('Tambahkan Perangkat terlebih dahulu!');
         location.href = '?page=device';
       </script>";
       return false;
+    } 
+    else {
+      $serial_number = implode(" ", $select_serialNumber);
+      $result = mysqli_query($conn, "SELECT * FROM iot_connection WHERE username = '$username'");
     }
   }
+
+  $select_active = mysqli_query($conn, "SELECT * FROM devices WHERE username = '$username' AND active = 'Yes'");
+  $select_serialNumber = mysqli_query($conn, "SELECT serial_number FROM devices WHERE username = '$username' AND active = 'Yes'");
 ?>
 
 <div class="content-wrapper">
@@ -188,7 +204,7 @@
                     <td><?php echo $row['password_account']; ?></td>
                     <td><?php echo $row['client_id']; ?></td>
                     <td style="text-align:center;">
-                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['id']; ?>" class="btn btn-warning fas fa-edit mt-2 mb-2" style="padding: 7px 12px 7px 12px;"></a>
+                      <a href="?page=<?php echo $page ?>&edit=<?php echo $row['id']; ?>" class="btn btn-warning fas fa-edit mt-2 mb-2" style="padding: 6px 12px 6px 12px;"></a>
                       <a href="?page=<?php echo $page ?>&delete=<?php echo $row['id']; ?>" class="btn btn-danger fas fa-trash-alt mt-2 mb-2" style="padding: 6px 14px 6px 14px;"></a>
                     </td>
                   </tr>
@@ -213,9 +229,8 @@
                     <div class="col-lg-6">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:38px;"><i class="fas fa-wifi mr-2"></i>Server</div>
+                          <div class="input-group-text" style="padding-right:67px;"><i class="fas fa-wifi mr-2"></i>Server</div>
                         </div>
-                        <input type="hidden" name="serial_number" value="<?php echo $serial_number; ?>">
                         <input type="text" class="form-control" name="server_name" required>
                         <input type="hidden" name="port" class="form-control" value="443">
                       </div>
@@ -223,7 +238,7 @@
                     <div class="col-lg-6">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-user mr-2" style="padding-right:6px;"></i>Username</div>
+                          <div class="input-group-text" style="padding-right:41px;"><i class="fas fa-user mr-2" style="padding-right:6px;"></i>Username</div>
                         </div>
                         <input type="text" class="form-control" name="username_account" required>
                       </div>
@@ -231,7 +246,7 @@
                     <div class="col-lg-6 mt-2">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:18px;"><i class="fas fa-lock mr-2" style="padding-right:5px;"></i>Password</div>
+                          <div class="input-group-text" style="padding-right:46px;"><i class="fas fa-lock mr-2" style="padding-right:5px;"></i>Password</div>
                         </div>
                         <input type="text" class="form-control" name="password_account" required>
                       </div>
@@ -239,11 +254,25 @@
                     <div class="col-lg-6 mt-2">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:25px;"><i class="fas fa-key mr-2" style="padding-right:3px;"></i>Client-ID</div>
+                          <div class="input-group-text" style="padding-right:52px;"><i class="fas fa-key mr-2" style="padding-right:3px;"></i>Client-ID</div>
                         </div>
                         <input type="text" class="form-control" name="client_id" required>
                       </div>
                     </div>      
+                    <?php if (mysqli_fetch_assoc($select_active) != "") { ?>
+                      <div class="col-lg-6 mt-2">
+                        <div class="input-group mb-2 mt-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text" style="padding-right:12px;"><i class="fas fa-tags mr-2"></i>Serial Number</div>
+                          </div>
+                          <select class="form-control" name="serial_number">
+                            <?php while ($data = mysqli_fetch_assoc($select_serialNumber)) { ?>
+                              <option><?php echo $data['serial_number']; ?></option>  
+                            <?php } ?>
+                          </select>
+                        </div>
+                      </div>                        
+                    <?php } ?>
                   </div>     
                 </div>
                 <!-- /.card-body -->
@@ -268,10 +297,9 @@
                     <div class="col-lg-6">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:38px;"><i class="fas fa-wifi mr-2"></i>Server</div>
+                          <div class="input-group-text" style="padding-right:67px;"><i class="fas fa-wifi mr-2"></i>Server</div>
                         </div>
                         <input type="hidden" name="edit_data" value="<?php echo $data['id']; ?>">
-                        <input type="hidden" name="serial_number" value="<?php echo $data['serial_number']; ?>">
                         <input type="text" class="form-control" name="server_name" value="<?php echo $data['server_name']; ?>" required>
                         <input type="hidden" name="port" class="form-control" value="<?php echo $data['port']; ?>">
                       </div>
@@ -279,7 +307,7 @@
                     <div class="col-lg-6">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:13px;"><i class="fas fa-user mr-2" style="padding-right:6px;"></i>Username</div>
+                          <div class="input-group-text" style="padding-right:41px;"><i class="fas fa-user mr-2" style="padding-right:6px;"></i>Username</div>
                         </div>
                         <input type="text" class="form-control" name="username_account" value="<?php echo $data['username_account']; ?>" required>
                       </div>
@@ -287,7 +315,7 @@
                     <div class="col-lg-6 mt-2">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:18px;"><i class="fas fa-lock mr-2" style="padding-right:5px;"></i>Password</div>
+                          <div class="input-group-text" style="padding-right:46px;"><i class="fas fa-lock mr-2" style="padding-right:5px;"></i>Password</div>
                         </div>
                         <input type="text" class="form-control" name="password_account" value="<?php echo $data['password_account']; ?>" required>
                       </div>
@@ -295,11 +323,25 @@
                     <div class="col-lg-6 mt-2">
                       <div class="input-group mb-2 mt-2">
                         <div class="input-group-prepend">
-                          <div class="input-group-text" style="padding-right:25px;"><i class="fas fa-key mr-2" style="padding-right:3px;"></i>Client-ID</div>
+                          <div class="input-group-text" style="padding-right:52px;"><i class="fas fa-key mr-2" style="padding-right:3px;"></i>Client-ID</div>
                         </div>
                         <input type="text" class="form-control" name="client_id" value="<?php echo $data['client_id']; ?>" required>
                       </div>
-                    </div> 
+                    </div>                      
+                    <?php if (mysqli_fetch_assoc($select_active) != "") { ?>
+                      <div class="col-lg-6 mt-2">
+                        <div class="input-group mb-2 mt-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text" style="padding-right:12px;"><i class="fas fa-tags mr-2"></i>Serial Number</div>
+                          </div>
+                          <select class="form-control" name="serial_number">
+                            <?php while ($data = mysqli_fetch_assoc($select_serialNumber)) { ?>
+                              <option><?php echo $data['serial_number']; ?></option>  
+                            <?php } ?>
+                          </select>
+                        </div>
+                      </div>                        
+                    <?php } ?>
                   </div>                  
                 </div>                      
                 <!-- /.card-body -->
