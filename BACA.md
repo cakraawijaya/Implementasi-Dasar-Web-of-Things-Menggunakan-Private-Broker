@@ -261,7 +261,7 @@ Segera Hadir...
 ## Get Started
 1. Unduh dan ekstrak repositori ini.<br><br>
 
-2. Pindahkan direktori ``` sistem_iot ``` ke dalam direktori laragon, yang rinciannya dapat anda lihat sebagai berikut: ``` C:\laragon\www ```. Direktori lainnya terserah anda.<br><br>
+2. Pindahkan direktori ``` sistem_iot ``` ke dalam direktori laragon, yang rinciannya dapat anda lihat sebagai berikut: ``` C:\laragon\www ```. Direktori hasil ekstrak lainnya terserah anda.<br><br>
    
 3. Pastikan anda memiliki komponen elektronik yang diperlukan.<br><br>
    
