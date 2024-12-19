@@ -287,7 +287,7 @@ Segera Hadir...
 <th width="840">Perangkat</th>
 </tr>
 <tr>
-<td><img src="Assets/Documentation/Experiment/Perangkat.jpg" alt="perangkat"></td>
+<td><img src="Assets/Documentation/Experiment/Device.jpg" alt="device"></td>
 </tr>
 </table>
 <table>
