@@ -5,13 +5,11 @@
 ![Type](https://img.shields.io/badge/Type-Bootcamp-light.svg?style=flat&logo=gitbook&logoColor=white&color=%23F7DF1E)
 
 # Implementasi-Dasar-Web-of-Things-Menggunakan-Private-Broker
-
 Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan device IoT. Proyek ini hanyalah contoh kecil dari implementasi Web of Things. Bagi pengguna, Web ini akan sangat membantu, utamanya dalam hal monitoring dan controlling. Selain itu juga ada fitur Data Logging di dalamnya. Mengenai fitur yang berhubungan dengan akun, koneksi, device, dan lain sebagainya juga telah dibuat seefisien mungkin sehingga diharapkan pengguna akan mudah beradaptasi dan nyaman dalam menggunakan Web ini.
 
 <br>
 
 ## Kebutuhan Proyek
-
 | Bagian | Deskripsi |
 | --- | --- |
 | Fitur | • Publish<br>• Subscribe<br>• Buat<br>• Baca<br>• Ubah<br>• Hapus<br>• Paginasi<br>• Cari<br>• Validasi<br>• Cetak<br>• Ekspor<br>• DLL |
@@ -32,7 +30,6 @@ Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan dev
 <br><br>
 
 ## Unduh & Instal
-
 1. Arduino IDE
 
    <table><tr><td width="810">
@@ -86,7 +83,6 @@ Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan dev
 <br><br>
 
 ## Rancangan Proyek
-
 Segera Hadir...
 
 <br><br>
@@ -180,13 +176,25 @@ Segera Hadir...
 <br><br>
 
 ## Pengaturan Private Broker
+1. Buat akun Shiftr.io di: ``` https://cloud.shiftr.io/welcome/sign-up ```.<br><br>
 
-Segera Hadir...
+2. Jika sudah, masuk akun Shiftr.io di: ``` https://cloud.shiftr.io/welcome/sign-in ```.<br><br>
+
+3. Kemudian klik tombol ``` Deploy Instance ```. Lalu atur sesuai kebutuhan anda dan klik tombol ``` Deploy Instance ```.<br><br>
+
+4. Pada menu ``` Instance ```, silakan anda klik link domain yang sudah disediakan.<br><br>
+
+5. Kemudian klik tombol ``` Sign In ```, lalu klik tombol ``` Allow Request ```.<br><br>
+
+6. Selanjutnya, anda pilih tombol ``` Open Settings ``` (simbol gerigi di bagian kanan bawah).<br><br>
+
+7. Pilih menu ``` Tokens ``` -> klik tombol ``` Create Token ``` -> atur sesuai kebutuhan anda dan klik tombol ``` Create ```.<br><br>
+
+8. Pilih menu ``` Webhooks ``` -> klik tombol ``` Create Webhook ``` -> atur bagian ``` Topic ``` menyesuaikan dengan yang ada di file .ino dan Web yang dibuat. Selain itu juga perlu atur bagian ``` URL ```, ubah URL menjadi seperti berikut: ``` [YOUR_NGROK_URL]/[YOUR_PROJECT] ``` -> klik tombol ``` Create ```.
 
 <br><br>
 
 ## Pengaturan Ngrok
-
 1. Ekstrak file, lalu pindahkan file ``` ngrok.exe ``` ke dalam folder -> ``` C:\laragon\www ```.<br><br>
 
 2. Buka ``` ngrok.yml ``` -> lokasi: ``` C:\Users\[User Name]\AppData\Local\ngrok ```.<br><br>
@@ -370,7 +378,6 @@ Segera Hadir...
 <br><br>
 
 ## Setel Ulang Increment Basis Data
-
 <table><tr><td width="840">
    
 ```sql
@@ -384,19 +391,16 @@ ALTER TABLE your_table AUTO_INCREMENT =1;
 <br><br>
 
 ## Apresiasi
-
 Jika karya ini bermanfaat bagi anda, maka dukunglah karya ini sebagai bentuk apresiasi kepada penulis dengan mengklik tombol ``` ⭐Bintang ``` di bagian atas repositori.
 
 <br><br>
 
 ## Penafian
-
 Aplikasi ini merupakan hasil pengembangan dari Bootcamp Nusabot. Saya tidak memungkiri bahwa saya masih menggunakan layanan pihak ketiga dalam pengerjaan ini, antara lain: library, framework, dan lain sebagainya.
 
 <br><br>
 
 ## LISENSI
-
 LISENSI MIT - Hak Cipta © 2024 - Devan C. M. Wijaya, S.Kom
 
 Dengan ini diberikan izin tanpa biaya kepada siapa pun yang mendapatkan salinan perangkat lunak ini dan file dokumentasi terkait perangkat lunak untuk menggunakannya tanpa batasan, termasuk namun tidak terbatas pada hak untuk menggunakan, menyalin, memodifikasi, menggabungkan, mempublikasikan, mendistribusikan, mensublisensikan, dan/atau menjual salinan Perangkat Lunak ini, dan mengizinkan orang yang menerima Perangkat Lunak ini untuk dilengkapi dengan persyaratan berikut:
