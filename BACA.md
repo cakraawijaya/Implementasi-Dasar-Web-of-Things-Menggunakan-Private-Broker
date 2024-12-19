@@ -284,6 +284,14 @@ Segera Hadir...
 ## Sorotan
 <table>
 <tr>
+<th width="840">Perangkat</th>
+</tr>
+<tr>
+<td><img src="Assets/Documentation/Experiment/Perangkat.jpg" alt="perangkat"></td>
+</tr>
+</table>
+<table>
+<tr>
 <th width="840">Dasbor</th>
 </tr>
 <tr>
