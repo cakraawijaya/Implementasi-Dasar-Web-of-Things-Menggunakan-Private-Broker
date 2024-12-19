@@ -10,9 +10,9 @@ Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan dev
 
 <br>
 
-## Project Requirements
+## Kebutuhan Proyek
 
-| Part | Description |
+| Bagian | Deskripsi |
 | --- | --- |
 | Fitur | • Publish<br>• Subscribe<br>• Buat<br>• Baca<br>• Ubah<br>• Hapus<br>• Paginasi<br>• Cari<br>• Validasi<br>• Cetak<br>• Ekspor<br>• DLL |
 | Papan Pengembangan | DOIT ESP32 DEVKIT V1 |
@@ -258,7 +258,7 @@ Segera Hadir...
 
 <br><br>
 
-## Get Started
+## Memulai
 1. Unduh dan ekstrak repositori ini.<br><br>
 
 2. Pindahkan direktori ``` sistem_iot ``` ke dalam direktori laragon, yang rinciannya dapat anda lihat sebagai berikut: ``` C:\laragon\www ```. Direktori hasil ekstrak lainnya terserah anda penempatannya.<br><br>
@@ -383,7 +383,7 @@ ALTER TABLE your_table AUTO_INCREMENT =1;
 
 <br><br>
 
-## Appreciation
+## Apresiasi
 
 Jika karya ini bermanfaat bagi anda, maka dukunglah karya ini sebagai bentuk apresiasi kepada penulis dengan mengklik tombol ``` ⭐Bintang ``` di bagian atas repositori.
 
