@@ -83,7 +83,24 @@ This Web-based project was created to handle a number of user traffic and IoT de
 <br><br>
 
 ## Project Designs
-Coming Soon...
+<table>
+<tr>
+<th width="420">Block Diagram</th>
+<th width="420">Pictorial Diagram</th>
+</tr>
+<tr>
+<td><img src="Assets/Documentation/Diagram/Block Diagram.jpg" alt="block-diagram"></td>
+<td><img src="Assets/Documentation/Diagram/Pictorial Diagram.jpg" alt="pictorial-diagram"></td>
+</tr>
+</table>
+<table>
+<tr>
+<th width="840">Wiring</th>
+</tr>
+<tr>
+<td><img src="Assets/Documentation/Table/Device Wiring.jpg" alt="wiring"></td>
+</tr>
+</table>
 
 <br><br>
 
