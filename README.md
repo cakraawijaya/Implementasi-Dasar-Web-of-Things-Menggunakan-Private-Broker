@@ -22,7 +22,7 @@ This Web-based project was created to handle a number of user traffic and IoT de
 | IoT Architecture | 3 Layer |
 | Framework | AdminLTE v3.2.0 |
 | Web Library | • MQTT.js<br>• PHPMailer |
-| Arduino Library | • WiFi (default)<br>• Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer |
+| Arduino Library | • WiFi (default)<br>• MQTT<br>• ESP32Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer |
 | Actuators | • Servo Motor SG90 180° (x1)<br>• LED (x1)<br>• RGB LED (x1) |
 | Sensor | • DHT22: Air Temperature & Humidity (x1)<br>• LDR: Light Dependent Resistor (x1) |
 | Other Components | • Micro USB cable - USB type A (x1)<br>• Jumper cable (1 set)<br>• Breadboard (x1)<br>• Resistor (x1) |
@@ -286,7 +286,7 @@ Coming Soon...
 <th width="840">Dashboard</th>
 </tr>
 <tr>
-<td><img src="Assets/images/Dashboard.jpg" alt="dashboard"></td>
+<td><img src="Assets/Documentation/Experiment/Dashboard.jpg" alt="dashboard"></td>
 </tr>
 </table>
 <table>
@@ -295,8 +295,8 @@ Coming Soon...
 <th width="420">User Profile</th>
 </tr>
 <tr>
-<td><img src="Assets/images/Admin Profile.jpg" alt="admin-profile"></td>
-<td><img src="Assets/images/User Profile.jpg" alt="user-profile"></td>
+<td><img src="Assets/Documentation/Experiment/Admin Profile.jpg" alt="admin-profile"></td>
+<td><img src="Assets/Documentation/Experiment/User Profile.jpg" alt="user-profile"></td>
 </tr>
 </table>
 <table>
@@ -305,8 +305,8 @@ Coming Soon...
 <th width="420">Sensor Data</th>
 </tr>
 <tr>
-<td><img src="Assets/images/Actuator Data.jpg" alt="actuator-data"></td>
-<td><img src="Assets/images/Sensor Data.jpg" alt="sensor-data"></td>
+<td><img src="Assets/Documentation/Experiment/Actuator Data.jpg" alt="actuator-data"></td>
+<td><img src="Assets/Documentation/Experiment/Sensor Data.jpg" alt="sensor-data"></td>
 </tr>
 </table>
 <table>
@@ -316,9 +316,9 @@ Coming Soon...
 <th width="280">Delete Device</th>
 </tr>
 <tr>
-<td><img src="Assets/images/Add Device.jpg" alt="add-device"></td>
-<td><img src="Assets/images/Edit Device.jpg" alt="edit-device"></td>
-<td><img src="Assets/images/Delete Device.jpg" alt="delete-device"></td>
+<td><img src="Assets/Documentation/Experiment/Add Device.jpg" alt="add-device"></td>
+<td><img src="Assets/Documentation/Experiment/Edit Device.jpg" alt="edit-device"></td>
+<td><img src="Assets/Documentation/Experiment/Delete Device.jpg" alt="delete-device"></td>
 </tr>
 </table>
 <table>
@@ -328,9 +328,9 @@ Coming Soon...
 <th width="280">Delete Connection</th>
 </tr>
 <tr>
-<td><img src="Assets/images/Add Connection.jpg" alt="add-connection"></td>
-<td><img src="Assets/images/Edit Connection.jpg" alt="edit-connection"></td>
-<td><img src="Assets/images/Delete Connection.jpg" alt="delete-connection"></td>
+<td><img src="Assets/Documentation/Experiment/Add Connection.jpg" alt="add-connection"></td>
+<td><img src="Assets/Documentation/Experiment/Edit Connection.jpg" alt="edit-connection"></td>
+<td><img src="Assets/Documentation/Experiment/Delete Connection.jpg" alt="delete-connection"></td>
 </tr>
 </table>
 <table>
@@ -341,10 +341,10 @@ Coming Soon...
 <th width="210">Delete User</th>
 </tr>
 <tr>
-<td><img src="Assets/images/User View.jpg" alt="user-view"></td>
-<td><img src="Assets/images/Add User.jpg" alt="add-user"></td>
-<td><img src="Assets/images/Edit User.jpg" alt="edit-user"></td>
-<td><img src="Assets/images/Delete User.jpg" alt="delete-user"></td>
+<td><img src="Assets/Documentation/Experiment/User View.jpg" alt="user-view"></td>
+<td><img src="Assets/Documentation/Experiment/Add User.jpg" alt="add-user"></td>
+<td><img src="Assets/Documentation/Experiment/Edit User.jpg" alt="edit-user"></td>
+<td><img src="Assets/Documentation/Experiment/Delete User.jpg" alt="delete-user"></td>
 </tr>
 </table>
 <table>
@@ -355,10 +355,10 @@ Coming Soon...
 <th width="210">Reset Success</th>
 </tr>
 <tr>
-<td><img src="Assets/images/Code Success.jpg" alt="code-success"></td>
-<td><img src="Assets/images/Code Failed.jpg" alt="code-failed"></td>
-<td><img src="Assets/images/Email Reset.jpg" alt="email-reset"></td>
-<td><img src="Assets/images/Reset Success.jpg" alt="reset-success"></td>
+<td><img src="Assets/Documentation/Experiment/Code Success.jpg" alt="code-success"></td>
+<td><img src="Assets/Documentation/Experiment/Code Failed.jpg" alt="code-failed"></td>
+<td><img src="Assets/Documentation/Experiment/Email Reset.jpg" alt="email-reset"></td>
+<td><img src="Assets/Documentation/Experiment/Reset Success.jpg" alt="reset-success"></td>
 </tr>
 </table>
 <table>
@@ -368,9 +368,9 @@ Coming Soon...
 <th width="280">Forgot Password</th>
 </tr>
 <tr>
-<td><img src="Assets/images/Login.jpg" alt="login"></td>
-<td><img src="Assets/images/Register.jpg" alt="register"></td>
-<td><img src="Assets/images/Forgot Password.jpg" alt="forgot-password"></td>
+<td><img src="Assets/Documentation/Experiment/Login.jpg" alt="login"></td>
+<td><img src="Assets/Documentation/Experiment/Register.jpg" alt="register"></td>
+<td><img src="Assets/Documentation/Experiment/Forgot Password.jpg" alt="forgot-password"></td>
 </tr>
 </table>
 
