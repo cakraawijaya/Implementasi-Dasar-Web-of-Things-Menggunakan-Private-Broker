@@ -323,7 +323,7 @@ Segera Hadir...
 <tr>
 <td><img src="Assets/images/Add Connection.jpg" alt="add-connection"></td>
 <td><img src="Assets/images/Edit Connection.jpg" alt="edit-connection"></td>
-<td><img src="Assets/images/Edit Connection.jpg" alt="delete-connection"></td>
+<td><img src="Assets/images/Delete Connection.jpg" alt="delete-connection"></td>
 </tr>
 </table>
 <table>
