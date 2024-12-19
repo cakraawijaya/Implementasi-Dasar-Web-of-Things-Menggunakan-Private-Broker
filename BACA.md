@@ -180,17 +180,17 @@ Segera Hadir...
 
 2. Jika sudah, masuk akun Shiftr.io di: ``` https://cloud.shiftr.io/welcome/sign-in ```.<br><br>
 
-3. Kemudian klik tombol ``` Deploy Instance ```. Lalu atur sesuai kebutuhan anda dan klik tombol ``` Deploy Instance ```.<br><br>
+3. Kemudian, klik tombol ``` Deploy Instance ```. Lalu atur sesuai kebutuhan dan klik tombol ``` Deploy Instance ```.<br><br>
 
-4. Pada menu ``` Instance ```, silakan anda klik link domain yang sudah disediakan.<br><br>
+4. Pada menu ``` Instance ```, klik link domain yang sudah disediakan.<br><br>
 
-5. Kemudian klik tombol ``` Sign In ```, lalu klik tombol ``` Allow Request ```.<br><br>
+5. Kemudian, klik tombol ``` Sign In ``` -> klik tombol ``` Allow Request ```.<br><br>
 
-6. Selanjutnya, anda pilih tombol ``` Open Settings ``` (simbol gerigi di bagian kanan bawah).<br><br>
+6. Selanjutnya, pilih tombol ``` Open Settings ``` (simbol gerigi di bagian kanan bawah).<br><br>
 
-7. Pilih menu ``` Tokens ``` -> klik tombol ``` Create Token ``` -> atur sesuai kebutuhan anda dan klik tombol ``` Create ```.<br><br>
+7. Pilih menu ``` Tokens ``` -> klik tombol ``` Create Token ``` -> atur sesuai kebutuhan dan klik tombol ``` Create ```.<br><br>
 
-8. Pilih menu ``` Webhooks ``` -> klik tombol ``` Create Webhook ``` -> atur bagian ``` Topic ``` menyesuaikan dengan yang ada di file .ino dan Web yang dibuat. Selain itu juga perlu atur bagian ``` URL ```, ubah URL menjadi seperti berikut: ``` [YOUR_NGROK_URL]/[YOUR_PROJECT] ``` -> klik tombol ``` Create ```.
+8. Pilih menu ``` Webhooks ``` -> klik tombol ``` Create Webhook ``` -> atur bagian ``` Topic ``` menyesuaikan dengan yang ada di file .ino dan Web yang dibuat. Selain itu juga perlu atur bagian ``` URL ```, ubah URL menjadi seperti ini: ``` [YOUR_NGROK_URL]/[YOUR_WEB_PROJECT] ``` -> klik tombol ``` Create ```.
 
 <br><br>
 
