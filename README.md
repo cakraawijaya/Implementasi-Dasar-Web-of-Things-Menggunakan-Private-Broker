@@ -283,6 +283,14 @@ Coming Soon...
 ## Highlights
 <table>
 <tr>
+<th width="840">Device</th>
+</tr>
+<tr>
+<td><img src="Assets/Documentation/Experiment/Device.jpg" alt="device"></td>
+</tr>
+</table>
+<table>
+<tr>
 <th width="840">Dashboard</th>
 </tr>
 <tr>
