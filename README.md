@@ -5,13 +5,11 @@
 ![Type](https://img.shields.io/badge/Type-Bootcamp-light.svg?style=flat&logo=gitbook&logoColor=white&color=%23F7DF1E)
 
 # Implementasi-Dasar-Web-of-Things-Menggunakan-Private-Broker
-
 This Web-based project was created to handle a number of user traffic and IoT devices. This project is just a small example of Web of Things implementation. For users, this Web will be very helpful, especially in terms of monitoring and controlling. In addition, there is also a Data Logging feature in it. Regarding features related to accounts, connections, devices, and so on have also been made as efficient as possible so that it is hoped that users will be adaptable and comfortable in using this Web.
 
 <br>
 
 ## Project Requirements
-
 | Part | Description |
 | --- | --- |
 | Features | • Publish<br>• Subscribe<br>• Create<br>• Read<br>• Update<br>• Delete<br>• Pagination<br>• Search<br>• Validation<br>• Print<br>• Export<br>• ETC |
@@ -32,7 +30,6 @@ This Web-based project was created to handle a number of user traffic and IoT de
 <br><br>
 
 ## Download & Install
-
 1. Arduino IDE
 
    <table><tr><td width="810">
@@ -86,7 +83,6 @@ This Web-based project was created to handle a number of user traffic and IoT de
 <br><br>
 
 ## Project Designs
-
 Coming Soon...
 
 <br><br>
@@ -179,13 +175,25 @@ Coming Soon...
 <br><br>
 
 ## Private Broker Setup
+1. Create a Shiftr.io account at: ``` https://cloud.shiftr.io/welcome/sign-up ```.<br><br>
 
-Coming Soon...
+2. If so, login to your Shiftr.io account at: ``` https://cloud.shiftr.io/welcome/sign-in ```.<br><br>
+
+3. Then, click the ``` Deploy Instance ``` button. Then set it as needed and click the ``` Deploy Instance ``` button.<br><br>
+
+4. On the ``` Instance ``` menu, click the domain link provided.<br><br>
+
+5. Then, click the ``` Sign In ``` button -> click the ``` Allow Request ``` button.<br><br>
+
+6. Next, select the ``` Open Settings ``` button (the gear symbol at the bottom right).<br><br>
+
+7. Select the ``` Tokens ``` menu -> click the ``` Create Token ``` button -> set it as needed and click the ``` Create ``` button.<br><br>
+
+8. Select the ``` Webhooks ``` menu -> click the ``` Create Webhook ``` button -> set the ``` Topic ``` section according to what is in the .ino file and the Web created. In addition, you also need to set the ``` URL ``` section, change the URL to something like this: ``` [YOUR_NGROK_URL]/[YOUR_WEB_PROJECT] ``` -> click the ``` Create ``` button.
 
 <br><br>
 
 ## Ngrok Setup
-
 1. Extract the file, then move the file ``` ngrok.exe ``` into the folder -> ``` C:\laragon\www ```.<br><br>
 
 2. Open ``` ngrok.yml ``` -> location: ``` C:\Users\[User Name]\AppData\Local\ngrok ```.<br><br>
@@ -369,7 +377,6 @@ Coming Soon...
 <br><br>
 
 ## Reset Database Increment
-
 <table><tr><td width="840">
    
 ```sql
@@ -383,19 +390,16 @@ ALTER TABLE your_table AUTO_INCREMENT =1;
 <br><br>
 
 ## Appreciation
-
 If this work is useful to you, then support this work as a form of appreciation to the author by clicking the `⭐Star` button at the top of the repository.
 
 <br><br>
 
 ## Disclaimer
-
 This application is the result of the development of the Nusabot Bootcamp. I do not deny that I still use third-party services in this work, including: libraries, frameworks, and so on.
 
 <br><br>
 
 ## LICENSE
-
 MIT License - Copyright © 2024 - Devan C. M. Wijaya, S.Kom
 
 Permission is hereby granted without charge to any person obtaining a copy of this software and the software-related documentation files to deal in them without restriction, including without limitation the right to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons receiving the Software to be furnished therewith on the following terms:
