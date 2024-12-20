@@ -85,10 +85,12 @@ Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan dev
 ## Rancangan Proyek
 <table>
 <tr>
-<th width="420">Diagram Blok</th>
-<th width="420">Diagram Ilustrasi</th>
+<th width="280">Infrastruktur</th>
+<th width="280">Diagram Blok</th>
+<th width="280">Diagram Ilustrasi</th>
 </tr>
 <tr>
+<td><img src="Assets/Documentation/Diagram/Infrastructure.jpg" alt="infrastructure"></td>
 <td><img src="Assets/Documentation/Diagram/Block Diagram.jpg" alt="block-diagram"></td>
 <td><img src="Assets/Documentation/Diagram/Pictorial Diagram.jpg" alt="pictorial-diagram"></td>
 </tr>
