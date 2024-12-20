@@ -85,10 +85,12 @@ This Web-based project was created to handle a number of user traffic and IoT de
 ## Project Designs
 <table>
 <tr>
-<th width="420">Block Diagram</th>
-<th width="420">Pictorial Diagram</th>
+<th width="280">Infrastructure</th>
+<th width="280">Block Diagram</th>
+<th width="280">Pictorial Diagram</th>
 </tr>
 <tr>
+<td><img src="Assets/Documentation/Diagram/Infrastructure.jpg" alt="infrastructure"></td>
 <td><img src="Assets/Documentation/Diagram/Block Diagram.jpg" alt="block-diagram"></td>
 <td><img src="Assets/Documentation/Diagram/Pictorial Diagram.jpg" alt="pictorial-diagram"></td>
 </tr>
