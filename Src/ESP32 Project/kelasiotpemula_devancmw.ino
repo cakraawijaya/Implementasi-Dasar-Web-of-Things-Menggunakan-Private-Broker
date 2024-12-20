@@ -15,13 +15,13 @@ DHTesp dhtSensor;
 // Network
 const char ssid[] = "YOUR_WIFI_NAME";
 const char pass[] = "YOUR_WIFI_PASSWORD";
-const char brokerName[] = "kelasiotdevan.cloud.shiftr.io";
-const char username_account[] = "kelasiotdevan";
-const char password_account[] = "w4TXjZVczSQ0DyiW";
-const char clientID[] = "client-kelasiot-001";
+const char brokerName[] = "YOUR_SHIFTR_IO_DOMAIN";
+const char username_account[] = "YOUR_SHIFTR_IO_ACCOUNT_USERNAME";
+const char password_account[] = "YOUR_SHIFTR_IO_ACCOUNT_PASSWORD";
+const char clientID[] = "YOUR_CLIENT_ID";
 
 // Serial Number dan Topic MQTT
-const String serial_number = "83562714"; // Harus diisi 8 kata (sudah saya tetapkan)
+const String serial_number = "YOUR_SERIAL_NUMBER"; // Harus diisi 8 kata (sudah saya tetapkan)
 const String topicLed = "kelasiot/"+serial_number+"/led";
 const String topicServo = "kelasiot/"+serial_number+"/servo";
 const String topicIntensitasCahaya = "kelasiot/"+serial_number+"/intensitas_cahaya";
