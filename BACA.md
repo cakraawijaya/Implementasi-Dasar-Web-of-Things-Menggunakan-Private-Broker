@@ -224,7 +224,7 @@ Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan dev
    
    </td></tr></table><br>
 
-2. Buat Sandi aplikasi melalui link di bawah ini:
+2. Buat Sandi Aplikasi melalui link di bawah ini:
   
    <table><tr><td width="810">
 
@@ -234,7 +234,7 @@ Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan dev
    
    </td></tr></table><br>
 
-3. Salin dan Tempelkan sandi aplikasi tersebut beserta nama gmail anda ke dalam skrip ``` send_mail_reset.php ```. Contohnya di bawah ini:
+3. Salin dan Tempelkan Sandi Aplikasi tersebut beserta Nama Gmail anda ke dalam skrip ``` send_mail_reset.php ```. Contohnya di bawah ini:
 
    <table><tr><td width="810">
 
