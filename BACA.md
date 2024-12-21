@@ -213,6 +213,40 @@ Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan dev
 
 <br><br>
 
+## Pengaturan Sandi Aplikasi Gmail
+1. Aktifkan Verifikasi 2 Langkah melalui link di bawah ini:
+  
+   <table><tr><td width="810">
+
+   ```link
+   https://myaccount.google.com/signinoptions/twosv
+   ```
+   
+   </td></tr></table><br>
+
+2. Buat Sandi aplikasi melalui link di bawah ini:
+  
+   <table><tr><td width="810">
+
+   ```link
+   https://myaccount.google.com/apppasswords
+   ```
+   
+   </td></tr></table><br>
+
+3. Salin dan Tempelkan sandi aplikasi tersebut beserta nama gmail anda ke dalam skrip ``` send_mail_reset.php ```. Contohnya di bawah ini:
+
+   <table><tr><td width="810">
+
+   ```php
+   $mail->Username   = 'wtechnoid@gmail.com';
+   $mail->Password   = 'xmqwiuplourbodvs';
+   ```
+   
+   </td></tr></table>
+
+<br><br>
+
 ## Pengaturan Ngrok
 1. Ekstrak file, lalu pindahkan file ``` ngrok.exe ``` ke dalam folder -> ``` C:\laragon\www ```.<br><br>
 
@@ -234,7 +268,7 @@ Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan dev
        proto: http
        addr: 80
        schemes: ["http", "https"]
-   ````
+   ```
    
    </td></tr></table><br>
 
@@ -423,7 +457,7 @@ Jika karya ini bermanfaat bagi anda, maka dukunglah karya ini sebagai bentuk apr
 <br><br>
 
 ## Penafian
-Aplikasi ini merupakan hasil pengembangan dari Bootcamp Nusabot. Saya tidak memungkiri bahwa saya masih menggunakan layanan pihak ketiga dalam pengerjaan ini, antara lain: library, framework, dan lain sebagainya.
+Aplikasi ini merupakan hasil pengembangan dari Bootcamp Nusabot x Kelas IoT. Saya tidak memungkiri bahwa saya masih menggunakan layanan pihak ketiga dalam pengerjaan ini, antara lain: library, framework, dan lain sebagainya.
 
 <br><br>
 
