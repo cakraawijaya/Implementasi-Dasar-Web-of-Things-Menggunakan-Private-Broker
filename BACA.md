@@ -284,10 +284,8 @@ Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan dev
 
 6. Lalu ``` CTRL + Klik Link ``` yang ada -> lalu pilih ``` Visit Site ```.<br><br>
 
-7. Pada ``` browser ``` anda tertera URL. Kemudian atur URL seperti berikut: ``` [URL Https NGROK]/sistemiot/ ```.
-    
-    • Contoh penulisan:
-
+7. Pada ``` browser ``` anda tertera URL. Kemudian atur URL seperti berikut: ``` [URL Https NGROK]/sistemiot/ ```. Contohnya di bawah ini:
+   
     <table><tr><td width="810">
    
     ```bash
