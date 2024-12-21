@@ -432,6 +432,14 @@ This Web-based project was created to handle a number of user traffic and IoT de
 <td><img src="Assets/Documentation/Experiment/Forgot Password.jpg" alt="forgot-password"></td>
 </tr>
 </table>
+<table>
+<tr>
+<th width="840">Private Broker</th>
+</tr>
+<tr>
+<td><img src="Assets/Documentation/Experiment/Private Broker.jpg" alt="private-broker"></td>
+</tr>
+</table>
 
 <br><br>
 
