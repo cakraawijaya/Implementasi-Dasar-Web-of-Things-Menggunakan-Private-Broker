@@ -212,6 +212,40 @@ This Web-based project was created to handle a number of user traffic and IoT de
 
 <br><br>
 
+## Gmail App Password Setup
+1. Enable 2-Step Verification via the link below:
+  
+   <table><tr><td width="810">
+
+   ```link
+   https://myaccount.google.com/signinoptions/twosv
+   ```
+   
+   </td></tr></table><br>
+
+2. Create an App Password via the link below:
+  
+   <table><tr><td width="810">
+
+   ```link
+   https://myaccount.google.com/apppasswords
+   ```
+   
+   </td></tr></table><br>
+
+3. Copy and Paste the App Password and your Gmail Name into the ``send_mail_reset.php`` script. Example below:
+
+   <table><tr><td width="810">
+
+   ```php
+   $mail->Username   = 'wtechnoid@gmail.com';
+   $mail->Password   = 'xmqwiuplourbodvs';
+   ```
+   
+   </td></tr></table>
+
+<br><br>
+
 ## Ngrok Setup
 1. Extract the file, then move the file ``` ngrok.exe ``` into the folder -> ``` C:\laragon\www ```.<br><br>
 
@@ -233,7 +267,7 @@ This Web-based project was created to handle a number of user traffic and IoT de
        proto: http
        addr: 80
        schemes: ["http", "https"]
-   ````
+   ```
    
    </td></tr></table><br>
 
@@ -422,7 +456,7 @@ If this work is useful to you, then support this work as a form of appreciation 
 <br><br>
 
 ## Disclaimer
-This application is the result of the development of the Nusabot Bootcamp. I do not deny that I still use third-party services in this work, including: libraries, frameworks, and so on.
+This application is the result of the development of the Nusabot x Kelas IoT Bootcamp. I do not deny that I still use third-party services in this work, including: libraries, frameworks, and so on.
 
 <br><br>
 
