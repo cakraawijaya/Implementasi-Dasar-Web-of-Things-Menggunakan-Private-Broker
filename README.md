@@ -283,9 +283,7 @@ This Web-based project was created to handle a number of user traffic and IoT de
 
 6. Then ``` CTRL + Click the Link ``` that is there -> then select ``` Visit Site ```.<br><br>
 
-7. In your ``` browser ``` there is a URL. Then set the URL as follows: ``` [URL Https NGROK]/sistemiot/ ```.
-    
-    • Writing example:
+7. In your ``` browser ``` there is a URL. Then set the URL as follows: ``` [URL Https NGROK]/sistemiot/ ```. Example below:
 
     <table><tr><td width="810">
    
