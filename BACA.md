@@ -19,7 +19,7 @@ Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan dev
 | Driver | CP210X USB Driver |
 | Platform IoT | Shiftr.io |
 | Protokol Komunikasi | • WebSocket Secure (WSS)<br>• Message Queuing Telemetry Transport (MQTT)<br>• Simple Mail Transfer Protocol (SMTP) |
-| Arsitektur IoT | 3 Lapisan |
+| Arsitektur IoT | 4 Lapisan |
 | Kerangka Kerja | AdminLTE v3.2.0 |
 | Pustaka Web | • MQTT.js<br>• PHPMailer |
 | Pustaka Arduino | • WiFi (bawaan)<br>• MQTT<br>• ESP32Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer |

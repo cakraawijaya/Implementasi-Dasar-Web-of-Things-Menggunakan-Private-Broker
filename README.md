@@ -19,7 +19,7 @@ This Web-based project was created to handle a number of user traffic and IoT de
 | Driver | CP210X USB Driver |
 | IoT Platform | Shiftr.io |
 | Communications Protocol | • WebSocket Secure (WSS)<br>• Message Queuing Telemetry Transport (MQTT)<br>• Simple Mail Transfer Protocol (SMTP) |
-| IoT Architecture | 3 Layer |
+| IoT Architecture | 4 Layer |
 | Framework | AdminLTE v3.2.0 |
 | Web Library | • MQTT.js<br>• PHPMailer |
 | Arduino Library | • WiFi (default)<br>• MQTT<br>• ESP32Servo<br>• DHT_sensor_library_for_ESPx<br>• Nusabot Simple Timer |
