@@ -45,7 +45,7 @@ This Web-based project was created to handle a number of user traffic and IoT de
    <table><tr><td width="810">
 
    ```
-   https://bit.ly/CP210X_USB_Driver
+   https://bit.ly/CP210X_USBdriver
    ```
 
    </td></tr></table><br>
