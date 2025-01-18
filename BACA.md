@@ -45,7 +45,7 @@ Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan dev
    <table><tr><td width="810">
 
    ```
-   https://bit.ly/CP210X_USB_Driver
+   https://bit.ly/CP210X_USBdriver
    ```
 
    </td></tr></table><br>
