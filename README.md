@@ -141,7 +141,7 @@ This Web-based project was created to handle a number of user traffic and IoT de
       How to setup the ``` DOIT ESP32 DEVKIT V1 ``` board
             
       </th></tr>
-      <tr><td>
+      <tr><td width="810">
       
       • Click ``` Tools ``` -> ``` Board ``` -> ``` Boards Manager ``` -> Install ``` esp32 ```. 
       
