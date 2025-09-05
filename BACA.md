@@ -4,7 +4,7 @@
 ![Project](https://img.shields.io/badge/Project-Website-light.svg?style=flat&logo=googlechrome&logoColor=white&color=%23F7DF1E)
 ![Type](https://img.shields.io/badge/Type-Bootcamp-light.svg?style=flat&logo=gitbook&logoColor=white&color=%23F7DF1E)
 
-# Implementasi-Dasar-Web-of-Things-Menggunakan-Private-Broker
+# Implementasi Dasar Web of Things Menggunakan Private Broker
 Proyek berbasis Web ini dibuat untuk menangani sejumlah traffic pengguna dan device IoT. Proyek ini hanyalah contoh kecil dari implementasi Web of Things. Bagi pengguna, Web ini akan sangat membantu, utamanya dalam hal monitoring dan controlling. Selain itu juga ada fitur Data Logging di dalamnya. Mengenai fitur yang berhubungan dengan akun, koneksi, device, dan lain sebagainya juga telah dibuat seefisien mungkin sehingga diharapkan pengguna akan mudah beradaptasi dan nyaman dalam menggunakan Web ini.
 
 <br>
