@@ -4,7 +4,7 @@
 ![Project](https://img.shields.io/badge/Project-Website-light.svg?style=flat&logo=googlechrome&logoColor=white&color=%23F7DF1E)
 ![Type](https://img.shields.io/badge/Type-Bootcamp-light.svg?style=flat&logo=gitbook&logoColor=white&color=%23F7DF1E)
 
-# Implementasi-Dasar-Web-of-Things-Menggunakan-Private-Broker
+# Implementasi Dasar Web of Things Menggunakan Private Broker
 This Web-based project was created to handle a number of user traffic and IoT devices. This project is just a small example of Web of Things implementation. For users, this Web will be very helpful, especially in terms of monitoring and controlling. In addition, there is also a Data Logging feature in it. Regarding features related to accounts, connections, devices, and so on have also been made as efficient as possible so that it is hoped that users will be adaptable and comfortable in using this Web.
 
 <br>
